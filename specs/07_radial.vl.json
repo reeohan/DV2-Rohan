@@ -1,0 +1,129 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Idiom: radial (polar area) chart. Arc marks: each month gets an equal 30-degree slice (angles in radians, scale: null), radius = visitor days on a sqrt scale so wedge AREA is proportional to value; hue = wet vs dry season. A radial layout suits cyclic data because December sits next to January.",
+  "title": {
+    "text": "A year on the Great Barrier Reef",
+    "subtitle": "Average visitor days per month (Jan at top, clockwise)"
+  },
+  "width": 380,
+  "height": 380,
+  "data": {
+    "url": "data/reef_monthly.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "month": "number",
+        "visitor_days": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "calculate": "['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][datum.month - 1]",
+      "as": "month_name"
+    },
+    {
+      "calculate": "datum.month >= 5 && datum.month <= 10 ? 'Dry season (May-Oct)' : 'Wet season (Nov-Apr)'",
+      "as": "season"
+    },
+    {
+      "calculate": "(datum.month - 1) / 12 * 2 * PI",
+      "as": "angle_start"
+    },
+    {
+      "calculate": "datum.month / 12 * 2 * PI",
+      "as": "angle_end"
+    },
+    {
+      "calculate": "(datum.angle_start + datum.angle_end) / 2",
+      "as": "angle_mid"
+    }
+  ],
+  "encoding": {
+    "radius": {
+      "field": "visitor_days",
+      "type": "quantitative",
+      "scale": {
+        "type": "sqrt",
+        "zero": true,
+        "rangeMin": 25
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "arc",
+        "innerRadius": 25,
+        "stroke": "#ffffff",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "color": {
+          "field": "season",
+          "type": "nominal",
+          "title": null,
+          "scale": {
+            "domain": [
+              "Dry season (May-Oct)",
+              "Wet season (Nov-Apr)"
+            ],
+            "range": [
+              "#0e6e8c",
+              "#8cc5d6"
+            ]
+          },
+          "legend": {
+            "orient": "bottom"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "month_name",
+            "title": "Month"
+          },
+          {
+            "field": "visitor_days",
+            "title": "Visitor days",
+            "format": ","
+          },
+          {
+            "field": "season",
+            "title": "Season"
+          }
+        ],
+        "theta": {
+          "field": "angle_start",
+          "type": "quantitative",
+          "scale": null
+        },
+        "theta2": {
+          "field": "angle_end"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "radiusOffset": 14,
+        "fontSize": 11,
+        "color": "#33424a"
+      },
+      "encoding": {
+        "text": {
+          "field": "month_name"
+        },
+        "theta": {
+          "field": "angle_mid",
+          "type": "quantitative",
+          "scale": null
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

@@ -1,0 +1,346 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Idiom: flow map (origin-destination map). Rule marks drawn between two geographic points using longitude/latitude and longitude2/latitude2; line WIDTH encodes trip volume and hue encodes the origin city, with destination circles sized by total arrivals. Shows a relationship between places, which a choropleth or symbol map cannot. Click a legend entry to isolate one origin. Only each city's six largest flows are drawn, to keep the map readable.",
+  "title": {
+    "text": "Where coastal visitors travel from",
+    "subtitle": "Overnight trips from capital cities to coastal tourism regions. Line width shows trip volume."
+  },
+  "width": 560,
+  "height": 470,
+  "projection": {
+    "type": "equalEarth",
+    "rotate": [
+      -134,
+      0,
+      0
+    ]
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/aus_states.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "states"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#eef1f3",
+        "stroke": "#ffffff",
+        "strokeWidth": 1
+      }
+    },
+    {
+      "data": {
+        "url": "data/flows.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "origin_lat": "number",
+            "origin_lon": "number",
+            "dest_lat": "number",
+            "dest_lon": "number",
+            "trips_k": "number"
+          }
+        }
+      },
+      "params": [
+        {
+          "name": "pickOrigin",
+          "select": {
+            "type": "point",
+            "fields": [
+              "origin"
+            ]
+          },
+          "bind": "legend"
+        }
+      ],
+      "mark": {
+        "type": "rule",
+        "strokeCap": "round"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "origin_lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "origin_lat",
+          "type": "quantitative"
+        },
+        "longitude2": {
+          "field": "dest_lon"
+        },
+        "latitude2": {
+          "field": "dest_lat"
+        },
+        "strokeWidth": {
+          "field": "trips_k",
+          "type": "quantitative",
+          "title": "Trips ('000)",
+          "scale": {
+            "range": [
+              0.6,
+              7
+            ]
+          },
+          "legend": {
+            "format": ",.0f"
+          }
+        },
+        "color": {
+          "field": "origin",
+          "type": "nominal",
+          "title": "Travelling from (click)",
+          "scale": {
+            "domain": [
+              "Sydney",
+              "Melbourne",
+              "Brisbane",
+              "Perth",
+              "Adelaide"
+            ],
+            "range": [
+              "#0e6e8c",
+              "#e9a23b",
+              "#7f77dd",
+              "#1d9e75",
+              "#d85a30"
+            ]
+          }
+        },
+        "opacity": {
+          "condition": {
+            "param": "pickOrigin",
+            "value": 0.55
+          },
+          "value": 0.06
+        },
+        "order": {
+          "field": "trips_k",
+          "sort": "descending"
+        },
+        "tooltip": [
+          {
+            "field": "origin",
+            "title": "From"
+          },
+          {
+            "field": "dest_region",
+            "title": "To"
+          },
+          {
+            "field": "trips_k",
+            "title": "Trips ('000)",
+            "format": ",.0f"
+          },
+          {
+            "field": "rank_from_origin",
+            "title": "Rank from this city"
+          }
+        ]
+      },
+      "transform": [
+        {
+          "window": [
+            {
+              "op": "rank",
+              "as": "rank_from_origin"
+            }
+          ],
+          "groupby": [
+            "origin"
+          ],
+          "sort": [
+            {
+              "field": "trips_k",
+              "order": "descending"
+            }
+          ]
+        },
+        {
+          "filter": "datum.rank_from_origin <= 6"
+        }
+      ]
+    },
+    {
+      "data": {
+        "url": "data/flows.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "dest_lat": "number",
+            "dest_lon": "number",
+            "trips_k": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "aggregate": [
+            {
+              "op": "sum",
+              "field": "trips_k",
+              "as": "total_k"
+            }
+          ],
+          "groupby": [
+            "dest_region",
+            "dest_lat",
+            "dest_lon"
+          ]
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "color": "#1d2a31",
+        "stroke": "#ffffff",
+        "strokeWidth": 0.8,
+        "opacity": 0.85
+      },
+      "encoding": {
+        "longitude": {
+          "field": "dest_lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "dest_lat",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "total_k",
+          "type": "quantitative",
+          "legend": null,
+          "scale": {
+            "range": [
+              20,
+              220
+            ]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "dest_region",
+            "title": "Region"
+          },
+          {
+            "field": "total_k",
+            "title": "Total trips ('000)",
+            "format": ",.0f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "city": "Sydney",
+            "lat": -33.87,
+            "lon": 151.21
+          },
+          {
+            "city": "Melbourne",
+            "lat": -37.81,
+            "lon": 144.96
+          },
+          {
+            "city": "Brisbane",
+            "lat": -27.47,
+            "lon": 153.03
+          },
+          {
+            "city": "Perth",
+            "lat": -31.95,
+            "lon": 115.86
+          },
+          {
+            "city": "Adelaide",
+            "lat": -34.93,
+            "lon": 138.6
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "dy": -14,
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#ffffff",
+        "stroke": "#ffffff",
+        "strokeWidth": 3
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "city"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "city": "Sydney",
+            "lat": -33.87,
+            "lon": 151.21
+          },
+          {
+            "city": "Melbourne",
+            "lat": -37.81,
+            "lon": 144.96
+          },
+          {
+            "city": "Brisbane",
+            "lat": -27.47,
+            "lon": 153.03
+          },
+          {
+            "city": "Perth",
+            "lat": -31.95,
+            "lon": 115.86
+          },
+          {
+            "city": "Adelaide",
+            "lat": -34.93,
+            "lon": 138.6
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "dy": -14,
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#1d2a31"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "city"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

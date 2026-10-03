@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coastal tourism in Australia</title>
+
+  <!-- Vega, Vega-Lite and Vega-Embed (pinned to major versions that match the v5 specs) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+  <style>
+    :root {
+      --ocean: #0e6e8c;
+      --sand: #c89b5a;
+      --ink: #1d2a31;
+      --muted: #56636b;
+      --line: #dfe5e8;
+      --page: #ffffff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.55;
+    }
+    header {
+      border-top: 10px solid var(--ocean);
+      padding: 3rem 1.5rem 2rem;
+      max-width: 60rem;
+      margin: 0 auto;
+    }
+    h1 { font-size: 2.4rem; line-height: 1.15; margin: 0 0 0.75rem; letter-spacing: -0.01em; }
+    header p { max-width: 38rem; color: var(--muted); margin: 0; }
+    main { max-width: 60rem; margin: 0 auto; padding: 0 1.5rem 4rem; }
+    section { padding: 2.5rem 0 1rem; border-top: 1px solid var(--line); }
+    h2 { font-size: 1.35rem; margin: 0 0 0.25rem; }
+    section > p { color: var(--muted); max-width: 40rem; margin: 0 0 1.5rem; }
+    figure { margin: 0 0 2.5rem; overflow-x: auto; }
+    figcaption { font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem; max-width: 40rem; }
+    .error { color: #9b2c2c; font-size: 0.9rem; }
+    footer { max-width: 60rem; margin: 0 auto; padding: 1.5rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Coastal tourism in Australia</h1>
+    <p>Where visitors go, when they travel, and how much coastal economies depend on them.</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Comparing coastal regions</h2>
+      <p>Visitor numbers, overnight stays and spending across Australia's tourism regions.</p>
+      <figure><div id="c01"></div><figcaption>Choropleth map</figcaption></figure>
+      <figure><div id="c02"></div><figcaption>Proportional symbol map</figcaption></figure>
+      <figure><div id="c13"></div><figcaption>Flow map</figcaption></figure>
+      <figure><div id="c03"></div><figcaption>Parallel coordinates</figcaption></figure>
+      <figure><div id="c04"></div><figcaption>Dumbbell chart</figcaption></figure>
+    </section>
+
+    <section>
+      <h2>Seasonal patterns</h2>
+      <p>When visitors arrive, and how the rhythm changes from the tropics to the south.</p>
+      <figure><div id="c05"></div><figcaption>Heatmap</figcaption></figure>
+      <figure><div id="c06"></div><figcaption>Cycle plot</figcaption></figure>
+      <figure><div id="c07"></div><figcaption>Radial chart</figcaption></figure>
+      <figure><div id="c08"></div><figcaption>Streamgraph</figcaption></figure>
+    </section>
+
+    <section>
+      <h2>Why coastal tourism matters</h2>
+      <p>Tourism's weight in the marine economy and in regional jobs.</p>
+      <figure><div id="c09"></div><figcaption>Waffle chart</figcaption></figure>
+      <figure><div id="c10"></div><figcaption>Marimekko chart</figcaption></figure>
+      <figure><div id="c11"></div><figcaption>Jittered strip plot</figcaption></figure>
+      <figure><div id="c12"></div><figcaption>Slope chart</figcaption></figure>
+    </section>
+  </main>
+
+  <footer>
+    Data: Tourism Research Australia, Australian Bureau of Statistics, Great Barrier Reef Marine Park Authority, Australian Institute of Marine Science.
+  </footer>
+
+  <script>
+    // One shared theme so all 12 charts look like a set. Edit here, not in each spec.
+    const theme = {
+      font: "Helvetica Neue, Arial, sans-serif",
+      background: "#ffffff",
+      title: { anchor: "start", fontSize: 16, subtitleFontSize: 12, subtitleColor: "#56636b", offset: 12 },
+      axis: { labelColor: "#33424a", titleColor: "#33424a", gridColor: "#eef1f3", domainColor: "#9aa5ab", tickColor: "#9aa5ab" },
+      legend: { labelColor: "#33424a", titleColor: "#33424a" }
+    };
+
+    const charts = {
+      c01: "specs/01_choropleth.vl.json",
+      c02: "specs/02_proportional_symbols.vl.json",
+      c13: "specs/13_flow_map.vl.json",
+      c03: "specs/03_parallel_coordinates.vl.json",
+      c04: "specs/04_dumbbell.vl.json",
+      c05: "specs/05_heatmap.vl.json",
+      c06: "specs/06_cycle_plot.vl.json",
+      c07: "specs/07_radial.vl.json",
+      c08: "specs/08_streamgraph.vl.json",
+      c09: "specs/09_waffle.vl.json",
+      c10: "specs/10_marimekko.vl.json",
+      c11: "specs/11_jitter_strip.vl.json",
+      c12: "specs/12_slope.vl.json"
+    };
+
+    for (const [id, specUrl] of Object.entries(charts)) {
+      vegaEmbed("#" + id, specUrl, { config: theme, actions: { export: true, source: false, compiled: false, editor: true } })
+        .catch(err => {
+          document.getElementById(id).innerHTML =
+            `<p class="error">${specUrl} didn't load: ${err.message}. ` +
+            `If you opened this file by double-clicking it, run it through a local web server instead (see README).</p>`;
+        });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Idiom: Marimekko (mosaic) chart (Vega-Lite has no Sankey). Rect marks: column WIDTH = each state's share of national tourism spend, segment HEIGHT = coastal vs inland share within that state, hue = region type. Every rectangle's area is its share of the national total.",
+  "title": {
+    "text": "Coastal regions take the lion's share in almost every state",
+    "subtitle": "Column width: state's share of national overnight spend. Column split: coastal vs inland regions."
+  },
+  "width": 620,
+  "height": 340,
+  "data": {
+    "url": "data/regions.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "spend_m": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "aggregate": [
+        {
+          "op": "sum",
+          "field": "spend_m",
+          "as": "spend"
+        }
+      ],
+      "groupby": [
+        "state",
+        "coastal"
+      ]
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "sum",
+          "field": "spend",
+          "as": "state_total"
+        }
+      ],
+      "groupby": [
+        "state"
+      ]
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "sum",
+          "field": "spend",
+          "as": "national_total"
+        }
+      ]
+    },
+    {
+      "stack": "spend",
+      "groupby": [],
+      "as": [
+        "sx1",
+        "sx2"
+      ],
+      "offset": "normalize",
+      "sort": [
+        {
+          "field": "state_total",
+          "order": "descending"
+        },
+        {
+          "field": "state",
+          "order": "ascending"
+        }
+      ]
+    },
+    {
+      "window": [
+        {
+          "op": "min",
+          "field": "sx1",
+          "as": "x1"
+        },
+        {
+          "op": "max",
+          "field": "sx2",
+          "as": "x2"
+        }
+      ],
+      "groupby": [
+        "state"
+      ],
+      "frame": [
+        null,
+        null
+      ]
+    },
+    {
+      "stack": "spend",
+      "groupby": [
+        "state"
+      ],
+      "as": [
+        "y1",
+        "y2"
+      ],
+      "offset": "normalize",
+      "sort": [
+        {
+          "field": "coastal",
+          "order": "ascending"
+        }
+      ]
+    },
+    {
+      "calculate": "datum.spend / datum.state_total",
+      "as": "share_of_state"
+    },
+    {
+      "calculate": "datum.state_total / datum.national_total",
+      "as": "state_share"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "stroke": "#ffffff",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "x1",
+          "type": "quantitative",
+          "title": "Share of national overnight spend",
+          "axis": {
+            "format": ".0%",
+            "grid": false
+          }
+        },
+        "x2": {
+          "field": "x2"
+        },
+        "y": {
+          "field": "y1",
+          "type": "quantitative",
+          "title": "Share of state spend",
+          "axis": {
+            "format": ".0%",
+            "grid": false
+          }
+        },
+        "y2": {
+          "field": "y2"
+        },
+        "color": {
+          "field": "coastal",
+          "type": "nominal",
+          "title": null,
+          "scale": {
+            "domain": [
+              "Coastal",
+              "Inland"
+            ],
+            "range": [
+              "#0e6e8c",
+              "#c89b5a"
+            ]
+          },
+          "legend": {
+            "orient": "top"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "title": "State"
+          },
+          {
+            "field": "coastal",
+            "title": "Region type"
+          },
+          {
+            "field": "spend",
+            "title": "Spend ($m)",
+            "format": ",.0f"
+          },
+          {
+            "field": "share_of_state",
+            "title": "Share of state",
+            "format": ".0%"
+          },
+          {
+            "field": "state_share",
+            "title": "State share of national",
+            "format": ".1%"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "aggregate": [
+            {
+              "op": "min",
+              "field": "x1",
+              "as": "x1"
+            },
+            {
+              "op": "max",
+              "field": "x2",
+              "as": "x2"
+            },
+            {
+              "op": "max",
+              "field": "state_share",
+              "as": "state_share"
+            }
+          ],
+          "groupby": [
+            "state"
+          ]
+        },
+        {
+          "calculate": "(datum.x1 + datum.x2) / 2",
+          "as": "xc"
+        },
+        {
+          "filter": "datum.state_share >= 0.02"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "baseline": "top",
+        "dy": 4,
+        "fontWeight": "bold",
+        "fontSize": 11,
+        "color": "#ffffff"
+      },
+      "encoding": {
+        "x": {
+          "field": "xc",
+          "type": "quantitative"
+        },
+        "y": {
+          "datum": 1
+        },
+        "text": {
+          "field": "state"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

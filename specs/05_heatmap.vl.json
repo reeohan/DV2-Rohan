@@ -1,0 +1,116 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Idiom: heatmap. Rect marks positioned by month (x) and region (y); diverging colour shows each month relative to that region's own average (1.0 = average), so small regions' seasonality is as visible as big regions'. Rows are sorted north to south.",
+  "title": {
+    "text": "The tropics peak in winter, the south peaks in summer",
+    "subtitle": "Overnight trips each month compared with the region's monthly average"
+  },
+  "width": {
+    "step": 38
+  },
+  "height": {
+    "step": 30
+  },
+  "data": {
+    "url": "data/monthly_regions.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "month": "number",
+        "lat": "number",
+        "trips_k": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "joinaggregate": [
+        {
+          "op": "mean",
+          "field": "trips_k",
+          "as": "region_mean"
+        }
+      ],
+      "groupby": [
+        "region"
+      ]
+    },
+    {
+      "calculate": "datum.trips_k / datum.region_mean",
+      "as": "index"
+    }
+  ],
+  "mark": {
+    "type": "rect",
+    "stroke": "#ffffff",
+    "strokeWidth": 1.5
+  },
+  "encoding": {
+    "x": {
+      "field": "month",
+      "type": "ordinal",
+      "title": null,
+      "axis": {
+        "labelExpr": "['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][datum.value - 1]",
+        "labelAngle": 0,
+        "orient": "top",
+        "domain": false,
+        "ticks": false
+      }
+    },
+    "y": {
+      "field": "region",
+      "type": "nominal",
+      "title": null,
+      "sort": {
+        "field": "lat",
+        "op": "max",
+        "order": "descending"
+      },
+      "axis": {
+        "domain": false,
+        "ticks": false
+      }
+    },
+    "color": {
+      "field": "index",
+      "type": "quantitative",
+      "title": [
+        "vs region's",
+        "average"
+      ],
+      "scale": {
+        "scheme": "blueorange",
+        "domainMid": 1
+      },
+      "legend": {
+        "format": ".1f"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "region",
+        "title": "Region"
+      },
+      {
+        "field": "month",
+        "title": "Month"
+      },
+      {
+        "field": "trips_k",
+        "title": "Trips ('000)",
+        "format": ",.1f"
+      },
+      {
+        "field": "index",
+        "title": "vs average",
+        "format": ".2f"
+      }
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

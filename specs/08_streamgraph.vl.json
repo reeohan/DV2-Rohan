@@ -1,0 +1,135 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Idiom: streamgraph. Area marks stacked around a central baseline (stack: center); thickness = arrivals, hue = state of stay. Shows the yearly pulse, the 2020 collapse and the recovery at a glance. Click a legend entry to isolate a state.",
+  "title": {
+    "text": "Where international visitors stayed, month by month",
+    "subtitle": "Short-term visitor arrivals by state or territory of intended stay"
+  },
+  "width": 720,
+  "height": 320,
+  "data": {
+    "url": "data/arrivals_monthly.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "year": "number",
+        "month": "number",
+        "arrivals": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "calculate": "datetime(datum.year, datum.month - 1, 1)",
+      "as": "date"
+    },
+    {
+      "calculate": "indexof(['NSW', 'VIC', 'QLD', 'WA', 'SA', 'TAS', 'NT', 'ACT'], datum.state)",
+      "as": "state_order"
+    }
+  ],
+  "params": [
+    {
+      "name": "pickState",
+      "select": {
+        "type": "point",
+        "fields": [
+          "state"
+        ]
+      },
+      "bind": "legend"
+    }
+  ],
+  "mark": {
+    "type": "area",
+    "interpolate": "monotone"
+  },
+  "encoding": {
+    "x": {
+      "field": "date",
+      "type": "temporal",
+      "timeUnit": "yearmonth",
+      "title": null,
+      "axis": {
+        "format": "%Y",
+        "tickCount": {
+          "interval": "year",
+          "step": 1
+        },
+        "domain": false,
+        "gridDash": [
+          2,
+          3
+        ]
+      }
+    },
+    "y": {
+      "field": "arrivals",
+      "type": "quantitative",
+      "stack": "center",
+      "axis": null
+    },
+    "color": {
+      "field": "state",
+      "type": "nominal",
+      "title": "State (click)",
+      "sort": [
+        "NSW",
+        "VIC",
+        "QLD",
+        "WA",
+        "SA",
+        "TAS",
+        "NT",
+        "ACT"
+      ],
+      "scale": {
+        "domain": [
+          "NSW",
+          "VIC",
+          "QLD",
+          "WA",
+          "SA",
+          "TAS",
+          "NT",
+          "ACT"
+        ],
+        "scheme": "tableau10"
+      }
+    },
+    "opacity": {
+      "condition": {
+        "param": "pickState",
+        "value": 0.9
+      },
+      "value": 0.15
+    },
+    "tooltip": [
+      {
+        "field": "date",
+        "type": "temporal",
+        "timeUnit": "yearmonth",
+        "title": "Month"
+      },
+      {
+        "field": "state",
+        "title": "State"
+      },
+      {
+        "field": "arrivals",
+        "title": "Arrivals",
+        "format": ","
+      }
+    ],
+    "order": {
+      "field": "state_order",
+      "type": "quantitative",
+      "sort": "descending"
+    }
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

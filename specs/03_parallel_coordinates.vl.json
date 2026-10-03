@@ -1,0 +1,226 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Idiom: parallel coordinates. One line mark per coastal region; each vertical axis is a different measure, normalised to 0-1 so they can share a vertical position channel. Hue = state; clicking the legend highlights a state.",
+  "title": {
+    "text": "Coastal regions have very different visitor profiles",
+    "subtitle": "Each line is a regional coastal tourism region (capital cities excluded). Axes run from lowest to highest value."
+  },
+  "width": 680,
+  "height": 320,
+  "data": {
+    "url": "data/regions.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "visitors_k": "number",
+        "nights_k": "number",
+        "spend_m": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "filter": "datum.coastal === 'Coastal' && datum.capital === 'No'"
+    },
+    {
+      "calculate": "datum.visitors_k",
+      "as": "Visitors (000s)"
+    },
+    {
+      "calculate": "datum.nights_k",
+      "as": "Nights (000s)"
+    },
+    {
+      "calculate": "datum.nights_k / datum.visitors_k",
+      "as": "Avg stay (nights)"
+    },
+    {
+      "calculate": "datum.spend_m * 1000 / datum.nights_k",
+      "as": "Spend per night ($)"
+    },
+    {
+      "calculate": "datum.spend_m * 1000 / datum.visitors_k",
+      "as": "Spend per visitor ($)"
+    },
+    {
+      "window": [
+        {
+          "op": "row_number",
+          "as": "line_id"
+        }
+      ]
+    },
+    {
+      "fold": [
+        "Visitors (000s)",
+        "Nights (000s)",
+        "Avg stay (nights)",
+        "Spend per night ($)",
+        "Spend per visitor ($)"
+      ],
+      "as": [
+        "measure",
+        "value"
+      ]
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "min",
+          "field": "value",
+          "as": "min"
+        },
+        {
+          "op": "max",
+          "field": "value",
+          "as": "max"
+        }
+      ],
+      "groupby": [
+        "measure"
+      ]
+    },
+    {
+      "calculate": "(datum.value - datum.min) / (datum.max - datum.min)",
+      "as": "norm"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "measure",
+      "type": "nominal",
+      "sort": [
+        "Visitors (000s)",
+        "Nights (000s)",
+        "Avg stay (nights)",
+        "Spend per night ($)",
+        "Spend per visitor ($)"
+      ],
+      "axis": {
+        "title": null,
+        "labelAngle": 0,
+        "domain": false,
+        "ticks": false,
+        "labelFontWeight": "bold",
+        "labelPadding": 10
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#c7cdd1"
+      },
+      "encoding": {
+        "detail": {
+          "aggregate": "count"
+        }
+      }
+    },
+    {
+      "params": [
+        {
+          "name": "pickState",
+          "select": {
+            "type": "point",
+            "fields": [
+              "state"
+            ]
+          },
+          "bind": "legend"
+        }
+      ],
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "y": {
+          "field": "norm",
+          "type": "quantitative",
+          "axis": null
+        },
+        "detail": {
+          "field": "line_id",
+          "type": "nominal"
+        },
+        "color": {
+          "field": "state",
+          "type": "nominal",
+          "title": "State (click)",
+          "scale": {
+            "scheme": "tableau10"
+          }
+        },
+        "opacity": {
+          "condition": {
+            "param": "pickState",
+            "value": 0.85
+          },
+          "value": 0.1
+        },
+        "tooltip": [
+          {
+            "field": "region",
+            "title": "Region"
+          },
+          {
+            "field": "measure",
+            "title": "Measure"
+          },
+          {
+            "field": "value",
+            "title": "Value",
+            "format": ",.0f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dx": -6,
+        "align": "right",
+        "baseline": "bottom",
+        "color": "#56636b",
+        "fontSize": 10
+      },
+      "encoding": {
+        "y": {
+          "value": 0
+        },
+        "text": {
+          "aggregate": "max",
+          "field": "max",
+          "format": ",.0f"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dx": -6,
+        "align": "right",
+        "baseline": "top",
+        "color": "#56636b",
+        "fontSize": 10
+      },
+      "encoding": {
+        "y": {
+          "value": 320
+        },
+        "text": {
+          "aggregate": "min",
+          "field": "min",
+          "format": ",.0f"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

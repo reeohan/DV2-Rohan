@@ -1,0 +1,117 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Idiom: cycle plot. Faceted by month; inside each panel a line mark shows that month across years, and a rule marks the month's average. Reading across panels shows seasonality; reading within a panel shows the multi-year trend.",
+  "title": {
+    "text": "Seasonality and recovery in international arrivals",
+    "subtitle": "Short-term visitor arrivals to Australia, 2022-2025. Each mini-line runs from 2022 (left) to 2025 (right); the flat line is that month's average."
+  },
+  "data": {
+    "url": "data/arrivals_monthly.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "year": "number",
+        "month": "number",
+        "arrivals": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "filter": "datum.year >= 2022"
+    },
+    {
+      "aggregate": [
+        {
+          "op": "sum",
+          "field": "arrivals",
+          "as": "arrivals"
+        }
+      ],
+      "groupby": [
+        "year",
+        "month"
+      ]
+    }
+  ],
+  "facet": {
+    "column": {
+      "field": "month",
+      "type": "ordinal",
+      "title": null,
+      "header": {
+        "labelExpr": "['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][datum.value - 1]",
+        "labelOrient": "bottom",
+        "labelFontWeight": "bold"
+      }
+    }
+  },
+  "spacing": 4,
+  "spec": {
+    "width": 46,
+    "height": 260,
+    "layer": [
+      {
+        "mark": {
+          "type": "rule",
+          "color": "#c89b5a",
+          "strokeWidth": 2
+        },
+        "encoding": {
+          "y": {
+            "aggregate": "mean",
+            "field": "arrivals",
+            "type": "quantitative"
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "line",
+          "color": "#0e6e8c",
+          "strokeWidth": 2,
+          "point": {
+            "size": 18,
+            "color": "#0e6e8c"
+          }
+        },
+        "encoding": {
+          "x": {
+            "field": "year",
+            "type": "ordinal",
+            "axis": null
+          },
+          "y": {
+            "field": "arrivals",
+            "type": "quantitative",
+            "title": "Arrivals",
+            "axis": {
+              "format": "~s"
+            }
+          },
+          "tooltip": [
+            {
+              "field": "year",
+              "title": "Year"
+            },
+            {
+              "field": "month",
+              "title": "Month"
+            },
+            {
+              "field": "arrivals",
+              "title": "Arrivals",
+              "format": ","
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke": "#e3e7ea",
+      "fill": "#fafbfc"
+    }
+  }
+}

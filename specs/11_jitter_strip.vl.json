@@ -1,0 +1,146 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Idiom: jittered strip plot (a beeswarm-style layout; a true beeswarm needs Vega's force transform). Point marks: x = tourism's share of regional jobs, y = coastal vs inland, with a fixed pseudo-random vertical offset so dots don't overlap. The most tourism-dependent regions are labelled.",
+  "title": {
+    "text": "Some coastal economies lean heavily on tourism",
+    "subtitle": "Tourism's share of all jobs in each tourism region, latest year"
+  },
+  "width": 620,
+  "height": {
+    "step": 110
+  },
+  "data": {
+    "url": "data/regions.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "jobs_share_2024": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "window": [
+        {
+          "op": "row_number",
+          "as": "idx"
+        }
+      ]
+    },
+    {
+      "calculate": "((datum.idx * 9301 + 49297) % 233280) / 233280 - 0.5",
+      "as": "jitter"
+    },
+    {
+      "window": [
+        {
+          "op": "rank",
+          "as": "dependence_rank"
+        }
+      ],
+      "sort": [
+        {
+          "field": "jobs_share_2024",
+          "order": "descending"
+        }
+      ]
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "jobs_share_2024",
+      "type": "quantitative",
+      "title": "Tourism share of regional jobs (%)",
+      "scale": {
+        "zero": true
+      }
+    },
+    "y": {
+      "field": "coastal",
+      "type": "nominal",
+      "title": null,
+      "axis": {
+        "labelFontWeight": "bold",
+        "labelFontSize": 12,
+        "domain": false,
+        "ticks": false
+      }
+    },
+    "yOffset": {
+      "field": "jitter",
+      "type": "quantitative",
+      "scale": {
+        "domain": [
+          -0.5,
+          0.5
+        ]
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "circle",
+        "size": 90,
+        "opacity": 0.8,
+        "stroke": "#ffffff",
+        "strokeWidth": 0.8
+      },
+      "encoding": {
+        "color": {
+          "field": "coastal",
+          "type": "nominal",
+          "legend": null,
+          "scale": {
+            "domain": [
+              "Coastal",
+              "Inland"
+            ],
+            "range": [
+              "#0e6e8c",
+              "#c89b5a"
+            ]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "region",
+            "title": "Region"
+          },
+          {
+            "field": "state",
+            "title": "State"
+          },
+          {
+            "field": "jobs_share_2024",
+            "title": "Tourism share of jobs (%)"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.dependence_rank <= 4"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "fontSize": 10,
+        "color": "#33424a"
+      },
+      "encoding": {
+        "text": {
+          "field": "region"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

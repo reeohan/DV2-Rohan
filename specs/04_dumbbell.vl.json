@@ -1,0 +1,128 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Idiom: dumbbell (connected dot) chart. Two point marks per region joined by a line; horizontal position = spend, hue = visitor type. The gap between dots makes the domestic-vs-international difference easy to judge.",
+  "title": {
+    "text": "Domestic travellers drive most coastal spending",
+    "subtitle": "Overnight visitor spend by visitor type, regional coastal tourism regions ($ million)"
+  },
+  "width": 500,
+  "height": {
+    "step": 22
+  },
+  "data": {
+    "url": "data/regions.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "dom_spend_m": "number",
+        "intl_spend_m": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "filter": "datum.coastal === 'Coastal' && datum.capital === 'No'"
+    },
+    {
+      "fold": [
+        "dom_spend_m",
+        "intl_spend_m"
+      ],
+      "as": [
+        "visitor_key",
+        "spend"
+      ]
+    },
+    {
+      "calculate": "datum.visitor_key === 'dom_spend_m' ? 'Domestic' : 'International'",
+      "as": "Visitor type"
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "region",
+      "type": "nominal",
+      "title": null,
+      "sort": {
+        "op": "sum",
+        "field": "spend",
+        "order": "descending"
+      },
+      "axis": {
+        "domain": false,
+        "ticks": false,
+        "grid": true,
+        "gridColor": "#eef1f3"
+      }
+    },
+    "x": {
+      "field": "spend",
+      "type": "quantitative",
+      "title": "Spend ($ million)",
+      "axis": {
+        "grid": false
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "color": "#b9c2c7",
+        "strokeWidth": 2.5
+      },
+      "encoding": {
+        "detail": {
+          "field": "region",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 110,
+        "opacity": 1
+      },
+      "encoding": {
+        "color": {
+          "field": "Visitor type",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Domestic",
+              "International"
+            ],
+            "range": [
+              "#0e6e8c",
+              "#e9a23b"
+            ]
+          },
+          "legend": {
+            "orient": "bottom",
+            "title": null
+          }
+        },
+        "tooltip": [
+          {
+            "field": "region",
+            "title": "Region"
+          },
+          {
+            "field": "Visitor type"
+          },
+          {
+            "field": "spend",
+            "title": "Spend ($m)",
+            "format": ",.0f"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

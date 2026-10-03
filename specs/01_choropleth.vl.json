@@ -1,0 +1,118 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Idiom: choropleth map. Area marks (state shapes) + colour lightness channel. The metric is a ratio (share of spend), not a raw total, so large states don't dominate just because they're big.",
+  "title": {
+    "text": "How much of each state's tourism spend happens on the coast",
+    "subtitle": "Share of overnight visitor spend in coastal tourism regions"
+  },
+  "width": 520,
+  "height": 440,
+  "data": {
+    "url": "data/regions.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "spend_m": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "calculate": "datum.coastal === 'Coastal' ? datum.spend_m : 0",
+      "as": "coastal_spend_m"
+    },
+    {
+      "aggregate": [
+        {
+          "op": "sum",
+          "field": "coastal_spend_m",
+          "as": "coastal_spend_m"
+        },
+        {
+          "op": "sum",
+          "field": "spend_m",
+          "as": "total_spend_m"
+        }
+      ],
+      "groupby": [
+        "state"
+      ]
+    },
+    {
+      "calculate": "datum.coastal_spend_m / datum.total_spend_m",
+      "as": "coastal_share"
+    },
+    {
+      "lookup": "state",
+      "from": {
+        "data": {
+          "url": "data/aus_states.topojson",
+          "format": {
+            "type": "topojson",
+            "feature": "states"
+          }
+        },
+        "key": "properties.STATE"
+      },
+      "as": "geo"
+    }
+  ],
+  "projection": {
+    "type": "equalEarth",
+    "rotate": [
+      -134,
+      0,
+      0
+    ]
+  },
+  "mark": {
+    "type": "geoshape",
+    "stroke": "#ffffff",
+    "strokeWidth": 1
+  },
+  "encoding": {
+    "shape": {
+      "field": "geo",
+      "type": "geojson"
+    },
+    "color": {
+      "field": "coastal_share",
+      "type": "quantitative",
+      "title": "Coastal share of spend",
+      "scale": {
+        "scheme": "blues",
+        "domain": [
+          0,
+          1
+        ]
+      },
+      "legend": {
+        "format": ".0%",
+        "orient": "bottom-left",
+        "direction": "horizontal",
+        "gradientLength": 180
+      }
+    },
+    "tooltip": [
+      {
+        "field": "state",
+        "title": "State"
+      },
+      {
+        "field": "coastal_share",
+        "title": "Coastal share",
+        "format": ".0%"
+      },
+      {
+        "field": "coastal_spend_m",
+        "title": "Coastal spend ($m)",
+        "format": ",.0f"
+      },
+      {
+        "field": "total_spend_m",
+        "title": "Total spend ($m)",
+        "format": ",.0f"
+      }
+    ]
+  }
+}

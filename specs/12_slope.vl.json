@@ -1,0 +1,150 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Idiom: slope chart. Line marks joining two time points; vertical position = tourism's share of jobs, line slope = change, hue = whether dependence rose or fell. Regional coastal tourism regions only. Declines are greyed out so rising dependence stands out.",
+  "title": {
+    "text": "Did coastal regions become more reliant on tourism?",
+    "subtitle": "Tourism share of regional jobs (%), before COVID vs latest year"
+  },
+  "width": 300,
+  "height": 480,
+  "data": {
+    "url": "data/regions.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "jobs_share_2019": "number",
+        "jobs_share_2024": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "filter": "datum.coastal === 'Coastal' && datum.capital === 'No'"
+    },
+    {
+      "calculate": "datum.jobs_share_2024 >= datum.jobs_share_2019 ? 'Rose' : 'Fell'",
+      "as": "direction"
+    },
+    {
+      "calculate": "datum.jobs_share_2024 - datum.jobs_share_2019",
+      "as": "change"
+    },
+    {
+      "fold": [
+        "jobs_share_2019",
+        "jobs_share_2024"
+      ],
+      "as": [
+        "period_key",
+        "share"
+      ]
+    },
+    {
+      "calculate": "datum.period_key === 'jobs_share_2019' ? '2018-19' : '2023-24'",
+      "as": "period"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "period",
+      "type": "ordinal",
+      "title": null,
+      "scale": {
+        "padding": 0.1
+      },
+      "axis": {
+        "labelAngle": 0,
+        "orient": "top",
+        "domain": false,
+        "ticks": false,
+        "labelFontWeight": "bold"
+      }
+    },
+    "y": {
+      "field": "share",
+      "type": "quantitative",
+      "title": "Tourism share of jobs (%)",
+      "scale": {
+        "zero": false
+      }
+    },
+    "color": {
+      "field": "direction",
+      "type": "nominal",
+      "title": null,
+      "scale": {
+        "domain": [
+          "Rose",
+          "Fell"
+        ],
+        "range": [
+          "#0e6e8c",
+          "#9aa5ab"
+        ]
+      },
+      "legend": {
+        "orient": "bottom"
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2,
+        "point": {
+          "size": 40,
+          "filled": true
+        }
+      },
+      "encoding": {
+        "detail": {
+          "field": "region",
+          "type": "nominal"
+        },
+        "tooltip": [
+          {
+            "field": "region",
+            "title": "Region"
+          },
+          {
+            "field": "period",
+            "title": "Year"
+          },
+          {
+            "field": "share",
+            "title": "Share of jobs (%)"
+          },
+          {
+            "field": "change",
+            "title": "Change (pts)",
+            "format": "+.1f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.period === '2023-24'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "fontSize": 10
+      },
+      "encoding": {
+        "text": {
+          "field": "region"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Idiom: proportional symbol map. Point marks placed by longitude/latitude; circle AREA encodes visitors (size scales area, not radius); hue separates coastal from inland.",
+  "title": {
+    "text": "Where overnight visitors go",
+    "subtitle": "Circle area shows overnight visitors to each tourism region"
+  },
+  "width": 560,
+  "height": 460,
+  "projection": {
+    "type": "equalEarth",
+    "rotate": [
+      -134,
+      0,
+      0
+    ]
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/aus_states.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "states"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e9eef1",
+        "stroke": "#ffffff",
+        "strokeWidth": 1
+      }
+    },
+    {
+      "data": {
+        "url": "data/regions.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "lat": "number",
+            "lon": "number",
+            "visitors_k": "number"
+          }
+        }
+      },
+      "params": [
+        {
+          "name": "pick",
+          "select": {
+            "type": "point",
+            "fields": [
+              "coastal"
+            ]
+          },
+          "bind": "legend"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "stroke": "#ffffff",
+        "strokeWidth": 0.8
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "visitors_k",
+          "type": "quantitative",
+          "title": "Visitors ('000)",
+          "scale": {
+            "range": [
+              15,
+              1400
+            ]
+          },
+          "legend": {
+            "format": ",.0f",
+            "symbolFillColor": "#9aa5ab",
+            "symbolStrokeWidth": 0
+          }
+        },
+        "color": {
+          "field": "coastal",
+          "type": "nominal",
+          "title": "Region type (click to filter)",
+          "scale": {
+            "domain": [
+              "Coastal",
+              "Inland"
+            ],
+            "range": [
+              "#0e6e8c",
+              "#c89b5a"
+            ]
+          }
+        },
+        "opacity": {
+          "condition": {
+            "param": "pick",
+            "value": 0.8
+          },
+          "value": 0.08
+        },
+        "order": {
+          "field": "visitors_k",
+          "sort": "descending"
+        },
+        "tooltip": [
+          {
+            "field": "region",
+            "title": "Region"
+          },
+          {
+            "field": "state",
+            "title": "State"
+          },
+          {
+            "field": "visitors_k",
+            "title": "Visitors ('000)",
+            "format": ",.0f"
+          }
+        ]
+      }
+    }
+  ]
+}
