@@ -1,0 +1,41 @@
+origin,origin_state,origin_lat,origin_lon,dest_region,dest_lat,dest_lon,trips_k
+Melbourne,VIC,-37.81,144.96,Phillip Island,-38.49,145.23,799.2
+Brisbane,QLD,-27.47,153.03,Sunshine Coast,-26.65,153.07,666.9
+Adelaide,SA,-34.93,138.6,Fleurieu Peninsula,-35.5,138.6,614.8
+Brisbane,QLD,-27.47,153.03,Gold Coast,-28.02,153.4,397.3
+Perth,WA,-31.95,115.86,Australia's South West,-33.9,115.3,378.6
+Brisbane,QLD,-27.47,153.03,North Coast NSW,-29.8,153.0,315.2
+Melbourne,VIC,-37.81,144.96,Great Ocean Road,-38.5,143.5,295.7
+Sydney,NSW,-33.87,151.21,South Coast,-35.9,150.1,225.0
+Brisbane,QLD,-27.47,153.03,Fraser Coast,-25.3,152.85,216.3
+Sydney,NSW,-33.87,151.21,North Coast NSW,-29.8,153.0,173.9
+Adelaide,SA,-34.93,138.6,Great Ocean Road,-38.5,143.5,171.4
+Melbourne,VIC,-37.81,144.96,South Coast,-35.9,150.1,153.7
+Adelaide,SA,-34.93,138.6,Phillip Island,-38.49,145.23,116.8
+Melbourne,VIC,-37.81,144.96,North Coast NSW,-29.8,153.0,115.6
+Sydney,NSW,-33.87,151.21,Phillip Island,-38.49,145.23,107.7
+Brisbane,QLD,-27.47,153.03,Whitsundays,-20.3,148.7,107.4
+Adelaide,SA,-34.93,138.6,East Coast,-41.9,148.2,104.6
+Sydney,NSW,-33.87,151.21,Gold Coast,-28.02,153.4,98.2
+Melbourne,VIC,-37.81,144.96,Gold Coast,-28.02,153.4,92.7
+Adelaide,SA,-34.93,138.6,South Coast,-35.9,150.1,88.4
+Sydney,NSW,-33.87,151.21,Fraser Coast,-25.3,152.85,85.2
+Perth,WA,-31.95,115.86,Australia's Coral Coast,-25.0,114.0,82.0
+Brisbane,QLD,-27.47,153.03,South Coast,-35.9,150.1,77.5
+Adelaide,SA,-34.93,138.6,Sunshine Coast,-26.65,153.07,68.6
+Melbourne,VIC,-37.81,144.96,Fleurieu Peninsula,-35.5,138.6,65.5
+Melbourne,VIC,-37.81,144.96,East Coast,-41.9,148.2,63.8
+Brisbane,QLD,-27.47,153.03,Great Ocean Road,-38.5,143.5,62.5
+Perth,WA,-31.95,115.86,Fleurieu Peninsula,-35.5,138.6,61.2
+Sydney,NSW,-33.87,151.21,Sunshine Coast,-26.65,153.07,61.1
+Sydney,NSW,-33.87,151.21,Tropical North Queensland,-16.9,145.77,58.0
+Melbourne,VIC,-37.81,144.96,Whitsundays,-20.3,148.7,56.3
+Adelaide,SA,-34.93,138.6,Fraser Coast,-25.3,152.85,55.5
+Adelaide,SA,-34.93,138.6,Whitsundays,-20.3,148.7,48.3
+Brisbane,QLD,-27.47,153.03,Fleurieu Peninsula,-35.5,138.6,47.8
+Adelaide,SA,-34.93,138.6,Gold Coast,-28.02,153.4,47.6
+Melbourne,VIC,-37.81,144.96,Australia's South West,-33.9,115.3,43.1
+Adelaide,SA,-34.93,138.6,Australia's Coral Coast,-25.0,114.0,41.6
+Sydney,NSW,-33.87,151.21,Great Ocean Road,-38.5,143.5,41.2
+Sydney,NSW,-33.87,151.21,East Coast,-41.9,148.2,40.6
+Brisbane,QLD,-27.47,153.03,Tropical North Queensland,-16.9,145.77,40.0

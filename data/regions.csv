@@ -1,0 +1,42 @@
+region,state,coastal,capital,lat,lon,visitors_k,nights_k,spend_m,dom_spend_m,intl_spend_m,jobs_share_2019,jobs_share_2024
+Sydney,NSW,Coastal,Yes,-33.87,151.21,15190,68157,26646,24646,2000,4.6,4.7
+Central Coast,NSW,Coastal,No,-33.43,151.34,2191,5886,1188,970,218,7.6,7.8
+Hunter,NSW,Coastal,No,-32.7,151.5,245,634,217,179,38,13.8,16.1
+North Coast NSW,NSW,Coastal,No,-29.8,153.0,1532,3871,1399,1082,317,16.8,18.7
+South Coast,NSW,Coastal,No,-35.9,150.1,3887,12431,4415,3706,709,15.0,17.0
+Blue Mountains,NSW,Inland,No,-33.7,150.3,1360,3521,979,719,260,15.4,15.8
+Snowy Mountains,NSW,Inland,No,-36.4,148.5,2623,7346,1456,1242,214,20.1,18.0
+Riverina,NSW,Inland,No,-35.1,147.4,590,1544,248,215,33,15.0,18.2
+Outback NSW,NSW,Inland,No,-31.9,143.0,1424,4576,1043,895,148,19.3,20.7
+Melbourne,VIC,Coastal,Yes,-37.81,144.96,12372,32609,11792,8701,3091,5.4,5.0
+Great Ocean Road,VIC,Coastal,No,-38.5,143.5,2250,9948,3084,2055,1029,6.5,8.4
+Phillip Island,VIC,Coastal,No,-38.49,145.23,365,1210,189,134,55,17.4,22.4
+Peninsula,VIC,Coastal,No,-38.35,145.0,3249,14580,4307,2815,1492,18.7,18.2
+Gippsland,VIC,Coastal,No,-37.9,147.2,3901,12598,2547,2362,185,12.8,11.5
+Goldfields,VIC,Inland,No,-36.9,144.0,3744,16814,3502,3218,284,14.1,12.5
+High Country,VIC,Inland,No,-36.8,146.9,2243,9394,2051,1689,362,21.9,22.4
+Spa Country,VIC,Inland,No,-37.35,144.15,1470,6414,2371,1616,755,17.4,17.5
+Brisbane,QLD,Coastal,Yes,-27.47,153.03,8309,35111,11329,9952,1377,3.5,3.5
+Gold Coast,QLD,Coastal,No,-28.02,153.4,3121,11315,3377,2371,1006,5.3,5.9
+Sunshine Coast,QLD,Coastal,No,-26.65,153.07,1430,5192,1950,1707,243,23.0,19.3
+Fraser Coast,QLD,Coastal,No,-25.3,152.85,2314,8312,1774,1387,387,12.9,13.2
+Whitsundays,QLD,Coastal,No,-20.3,148.7,2916,7024,1769,1264,505,6.0,7.4
+Tropical North Queensland,QLD,Coastal,No,-16.9,145.77,934,3641,716,584,132,11.9,10.0
+Outback Queensland,QLD,Inland,No,-23.4,144.3,2843,9827,3302,2603,699,14.7,15.6
+Southern Queensland Country,QLD,Inland,No,-27.5,151.0,1297,5677,984,676,308,21.1,22.1
+Adelaide,SA,Coastal,Yes,-34.93,138.6,4222,16387,5135,4429,706,3.6,3.5
+Kangaroo Island,SA,Coastal,No,-35.8,137.25,1313,5923,1434,1196,238,11.8,14.3
+Fleurieu Peninsula,SA,Coastal,No,-35.5,138.6,1989,7197,1576,1366,210,4.9,4.5
+Barossa,SA,Inland,No,-34.5,139.0,1166,4985,1424,1306,118,12.7,10.9
+Flinders Ranges and Outback,SA,Inland,No,-31.5,138.6,2329,7855,2999,2616,383,20.9,19.3
+Destination Perth,WA,Coastal,Yes,-31.95,115.86,5483,20809,3361,2379,982,3.5,3.4
+Australia's South West,WA,Coastal,No,-33.9,115.3,714,3029,528,385,143,11.3,12.9
+Australia's Coral Coast,WA,Coastal,No,-25.0,114.0,1278,3287,1305,983,322,6.6,8.5
+Australia's North West,WA,Coastal,No,-18.0,122.2,3660,10254,1591,1220,371,5.9,6.9
+Australia's Golden Outback,WA,Inland,No,-30.75,121.5,1955,7742,2352,1691,661,20.3,22.4
+Hobart and the South,TAS,Coastal,Yes,-42.88,147.33,2037,6354,1183,1091,92,5.5,5.0
+East Coast,TAS,Coastal,No,-41.9,148.2,1792,5550,1761,1391,370,21.0,21.4
+Launceston and the North,TAS,Coastal,No,-41.44,147.14,1543,5914,2076,1396,680,9.5,11.8
+Darwin,NT,Coastal,Yes,-12.46,130.84,987,4502,832,696,136,5.2,6.3
+Lasseter,NT,Inland,No,-24.5,132.0,302,987,341,246,95,14.2,12.9
+Canberra,ACT,Inland,Yes,-35.28,149.13,2453,6203,1459,1199,260,5.4,5.9

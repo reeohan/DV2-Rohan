@@ -1,0 +1,109 @@
+region,lat,month,trips_k
+Tropical North Queensland,-16.9,1,123.7
+Tropical North Queensland,-16.9,2,127.4
+Tropical North Queensland,-16.9,3,140.1
+Tropical North Queensland,-16.9,4,146.9
+Tropical North Queensland,-16.9,5,153.0
+Tropical North Queensland,-16.9,6,170.0
+Tropical North Queensland,-16.9,7,169.1
+Tropical North Queensland,-16.9,8,172.2
+Tropical North Queensland,-16.9,9,158.4
+Tropical North Queensland,-16.9,10,149.6
+Tropical North Queensland,-16.9,11,136.5
+Tropical North Queensland,-16.9,12,131.8
+Whitsundays,-20.3,1,275.4
+Whitsundays,-20.3,2,268.7
+Whitsundays,-20.3,3,268.5
+Whitsundays,-20.3,4,266.7
+Whitsundays,-20.3,5,296.9
+Whitsundays,-20.3,6,290.5
+Whitsundays,-20.3,7,292.6
+Whitsundays,-20.3,8,281.2
+Whitsundays,-20.3,9,274.4
+Whitsundays,-20.3,10,275.8
+Whitsundays,-20.3,11,283.7
+Whitsundays,-20.3,12,270.9
+Sunshine Coast,-26.65,1,246.5
+Sunshine Coast,-26.65,2,235.1
+Sunshine Coast,-26.65,3,226.1
+Sunshine Coast,-26.65,4,226.6
+Sunshine Coast,-26.65,5,205.3
+Sunshine Coast,-26.65,6,210.3
+Sunshine Coast,-26.65,7,206.2
+Sunshine Coast,-26.65,8,209.3
+Sunshine Coast,-26.65,9,206.6
+Sunshine Coast,-26.65,10,214.6
+Sunshine Coast,-26.65,11,232.9
+Sunshine Coast,-26.65,12,232.3
+Gold Coast,-28.02,1,226.2
+Gold Coast,-28.02,2,229.5
+Gold Coast,-28.02,3,223.6
+Gold Coast,-28.02,4,209.0
+Gold Coast,-28.02,5,195.8
+Gold Coast,-28.02,6,180.3
+Gold Coast,-28.02,7,180.3
+Gold Coast,-28.02,8,196.4
+Gold Coast,-28.02,9,190.3
+Gold Coast,-28.02,10,202.3
+Gold Coast,-28.02,11,218.3
+Gold Coast,-28.02,12,228.0
+North Coast NSW,-29.8,1,278.1
+North Coast NSW,-29.8,2,289.5
+North Coast NSW,-29.8,3,252.6
+North Coast NSW,-29.8,4,252.7
+North Coast NSW,-29.8,5,228.5
+North Coast NSW,-29.8,6,222.9
+North Coast NSW,-29.8,7,199.5
+North Coast NSW,-29.8,8,217.7
+North Coast NSW,-29.8,9,237.8
+North Coast NSW,-29.8,10,249.7
+North Coast NSW,-29.8,11,254.9
+North Coast NSW,-29.8,12,288.5
+South Coast,-35.9,1,365.5
+South Coast,-35.9,2,375.1
+South Coast,-35.9,3,322.2
+South Coast,-35.9,4,279.9
+South Coast,-35.9,5,258.3
+South Coast,-35.9,6,225.1
+South Coast,-35.9,7,220.7
+South Coast,-35.9,8,222.5
+South Coast,-35.9,9,250.1
+South Coast,-35.9,10,285.4
+South Coast,-35.9,11,336.6
+South Coast,-35.9,12,379.9
+Great Ocean Road,-38.5,1,288.5
+Great Ocean Road,-38.5,2,264.7
+Great Ocean Road,-38.5,3,249.3
+Great Ocean Road,-38.5,4,213.0
+Great Ocean Road,-38.5,5,162.9
+Great Ocean Road,-38.5,6,151.9
+Great Ocean Road,-38.5,7,128.8
+Great Ocean Road,-38.5,8,139.4
+Great Ocean Road,-38.5,9,162.7
+Great Ocean Road,-38.5,10,211.5
+Great Ocean Road,-38.5,11,237.0
+Great Ocean Road,-38.5,12,280.9
+Phillip Island,-38.49,1,55.2
+Phillip Island,-38.49,2,53.1
+Phillip Island,-38.49,3,47.3
+Phillip Island,-38.49,4,40.3
+Phillip Island,-38.49,5,34.2
+Phillip Island,-38.49,6,28.5
+Phillip Island,-38.49,7,24.6
+Phillip Island,-38.49,8,29.1
+Phillip Island,-38.49,9,32.5
+Phillip Island,-38.49,10,40.3
+Phillip Island,-38.49,11,47.0
+Phillip Island,-38.49,12,53.7
+East Coast,-41.9,1,215.8
+East Coast,-41.9,2,196.0
+East Coast,-41.9,3,176.6
+East Coast,-41.9,4,150.3
+East Coast,-41.9,5,118.0
+East Coast,-41.9,6,98.2
+East Coast,-41.9,7,80.6
+East Coast,-41.9,8,97.8
+East Coast,-41.9,9,120.7
+East Coast,-41.9,10,142.5
+East Coast,-41.9,11,173.8
+East Coast,-41.9,12,203.4
