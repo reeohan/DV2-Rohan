@@ -97,13 +97,27 @@
   </footer>
 
   <script>
-    // One shared theme so all 12 charts look like a set. Edit here, not in each spec.
+    // One shared theme so all charts look like a set. Edit here, not in each spec.
+    const SANS = "Source Sans 3, Helvetica Neue, Arial, sans-serif";
+    const SERIF = "Fraunces, Georgia, serif";
     const theme = {
-      font: "Helvetica Neue, Arial, sans-serif",
+      font: SANS,
       background: "#ffffff",
-      title: { anchor: "start", fontSize: 16, subtitleFontSize: 12, subtitleColor: "#56636b", offset: 12 },
-      axis: { labelColor: "#33424a", titleColor: "#33424a", gridColor: "#eef1f3", domainColor: "#9aa5ab", tickColor: "#9aa5ab" },
-      legend: { labelColor: "#33424a", titleColor: "#33424a" }
+      title: {
+        anchor: "start", font: SERIF, fontSize: 19, fontWeight: 600, color: "#1d2a31",
+        subtitleFont: SANS, subtitleFontSize: 14, subtitleColor: "#56636b", subtitlePadding: 6, offset: 18
+      },
+      axis: {
+        labelFont: SANS, labelFontSize: 12, labelColor: "#33424a",
+        titleFont: SANS, titleFontSize: 13, titleFontWeight: 600, titleColor: "#33424a",
+        gridColor: "#eef1f3", domainColor: "#9aa5ab", tickColor: "#9aa5ab"
+      },
+      legend: {
+        labelFont: SANS, labelFontSize: 12, labelColor: "#33424a",
+        titleFont: SANS, titleFontSize: 13, titleFontWeight: 600, titleColor: "#33424a"
+      },
+      header: { labelFont: SANS, labelFontSize: 12, titleFont: SANS, titleFontSize: 13 },
+      text: { font: SANS }
     };
 
     const charts = {
@@ -122,14 +136,17 @@
       c12: "specs/12_slope.vl.json"
     };
 
-    for (const [id, specUrl] of Object.entries(charts)) {
-      vegaEmbed("#" + id, specUrl, { config: theme, actions: { export: true, source: false, compiled: false, editor: true } })
-        .catch(err => {
-          document.getElementById(id).innerHTML =
-            `<p class="error">${specUrl} didn't load: ${err.message}. ` +
-            `If you opened this file by double-clicking it, run it through a local web server instead (see README).</p>`;
-        });
-    }
+    // Wait for the web fonts so Vega measures and draws chart text in the right typeface.
+    document.fonts.ready.then(() => {
+      for (const [id, specUrl] of Object.entries(charts)) {
+        vegaEmbed("#" + id, specUrl, { config: theme, renderer: "svg", actions: { export: true, source: false, compiled: false, editor: true } })
+          .catch(err => {
+            document.getElementById(id).innerHTML =
+              `<p class="error">${specUrl} didn't load: ${err.message}. ` +
+              `If you opened this file by double-clicking it, run it through a local web server instead (see README).</p>`;
+          });
+      }
+    });
   </script>
 </body>
 </html>
