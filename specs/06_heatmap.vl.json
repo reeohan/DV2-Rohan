@@ -1,0 +1,151 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Idiom: heatmap. Rect marks by quarter and region; diverging colour indexes each quarter to the region's own average, so small regions read as clearly as large. Rows sorted north to south.",
+  "title": {
+    "text": "The tropics and the south peak in opposite quarters",
+    "subtitle": "Visitation by quarter against each region's own average. Dotted cells are measured; the rest are placeholder. Regions ordered north (top) to south."
+  },
+  "width": {
+    "step": 62
+  },
+  "height": {
+    "step": 20
+  },
+  "data": {
+    "url": "data/seasonality_quarterly.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "quarter": "number",
+        "lat": "number",
+        "seasonal_index": "number"
+      }
+    }
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "stroke": "#fff",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "x": {
+          "field": "quarter_label",
+          "type": "ordinal",
+          "title": null,
+          "sort": [
+            "Jan-Mar",
+            "Apr-Jun",
+            "Jul-Sep",
+            "Oct-Dec"
+          ],
+          "axis": {
+            "labelAngle": 0,
+            "orient": "top",
+            "domain": false,
+            "ticks": false,
+            "labelFontWeight": "bold"
+          }
+        },
+        "y": {
+          "field": "region",
+          "type": "nominal",
+          "title": null,
+          "sort": {
+            "field": "lat",
+            "op": "max",
+            "order": "descending"
+          },
+          "axis": {
+            "domain": false,
+            "ticks": false
+          }
+        },
+        "color": {
+          "field": "seasonal_index",
+          "type": "quantitative",
+          "title": [
+            "vs region's",
+            "average"
+          ],
+          "scale": {
+            "scheme": "blueorange",
+            "domainMid": 1
+          },
+          "legend": {
+            "format": ".2f"
+          }
+        },
+        "opacity": {
+          "condition": {
+            "test": "datum.data_status === 'real'",
+            "value": 1
+          },
+          "value": 0.72
+        },
+        "tooltip": [
+          {
+            "field": "region"
+          },
+          {
+            "field": "quarter_label",
+            "title": "Quarter"
+          },
+          {
+            "field": "seasonal_index",
+            "title": "vs average",
+            "format": ".2f"
+          },
+          {
+            "field": "data_status",
+            "title": "Status"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.data_status === 'real'"
+        }
+      ],
+      "mark": {
+        "type": "point",
+        "shape": "circle",
+        "size": 14,
+        "filled": true,
+        "color": "#1d2a31",
+        "opacity": 0.55,
+        "yOffset": 7,
+        "xOffset": 24
+      },
+      "encoding": {
+        "x": {
+          "field": "quarter_label",
+          "type": "ordinal",
+          "sort": [
+            "Jan-Mar",
+            "Apr-Jun",
+            "Jul-Sep",
+            "Oct-Dec"
+          ]
+        },
+        "y": {
+          "field": "region",
+          "type": "nominal",
+          "sort": {
+            "field": "lat",
+            "op": "max",
+            "order": "descending"
+          }
+        }
+      }
+    }
+  ]
+}

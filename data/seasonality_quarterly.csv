@@ -1,0 +1,145 @@
+region,state,coastal,lat,quarter,quarter_label,seasonal_index,data_status,source
+Blue Mountains,NSW,Inland,-33.7,3,Jul-Sep,0.92,real,Destination NSW profile - international visitor share by quarter
+Blue Mountains,NSW,Inland,-33.7,4,Oct-Dec,1.04,real,Destination NSW profile - international visitor share by quarter
+Blue Mountains,NSW,Inland,-33.7,1,Jan-Mar,1.44,real,Destination NSW profile - international visitor share by quarter
+Blue Mountains,NSW,Inland,-33.7,2,Apr-Jun,0.6,real,Destination NSW profile - international visitor share by quarter
+Hunter,NSW,Coastal,-32.7,3,Jul-Sep,0.72,real,Destination NSW profile - international visitor share by quarter
+Hunter,NSW,Coastal,-32.7,4,Oct-Dec,1.32,real,Destination NSW profile - international visitor share by quarter
+Hunter,NSW,Coastal,-32.7,1,Jan-Mar,1.12,real,Destination NSW profile - international visitor share by quarter
+Hunter,NSW,Coastal,-32.7,2,Apr-Jun,0.8,real,Destination NSW profile - international visitor share by quarter
+North Coast NSW,NSW,Coastal,-29.8,3,Jul-Sep,0.8,real,Destination NSW profile - international visitor share by quarter
+North Coast NSW,NSW,Coastal,-29.8,4,Oct-Dec,1.32,real,Destination NSW profile - international visitor share by quarter
+North Coast NSW,NSW,Coastal,-29.8,1,Jan-Mar,1.2,real,Destination NSW profile - international visitor share by quarter
+North Coast NSW,NSW,Coastal,-29.8,2,Apr-Jun,0.72,real,Destination NSW profile - international visitor share by quarter
+South Coast,NSW,Coastal,-35.9,3,Jul-Sep,0.52,real,Destination NSW profile - international visitor share by quarter
+South Coast,NSW,Coastal,-35.9,4,Oct-Dec,1.16,real,Destination NSW profile - international visitor share by quarter
+South Coast,NSW,Coastal,-35.9,1,Jan-Mar,1.6,real,Destination NSW profile - international visitor share by quarter
+South Coast,NSW,Coastal,-35.9,2,Apr-Jun,0.72,real,Destination NSW profile - international visitor share by quarter
+Great Barrier Reef,QLD,Coastal,-18.0,1,Jan-Mar,1.026,real,"GBRMPA environmental management charge returns, full-day visits"
+Great Barrier Reef,QLD,Coastal,-18.0,2,Apr-Jun,0.832,real,"GBRMPA environmental management charge returns, full-day visits"
+Great Barrier Reef,QLD,Coastal,-18.0,3,Jul-Sep,1.036,real,"GBRMPA environmental management charge returns, full-day visits"
+Great Barrier Reef,QLD,Coastal,-18.0,4,Oct-Dec,1.126,real,"GBRMPA environmental management charge returns, full-day visits"
+West Coast,TAS,Coastal,-42.1,1,Jan-Mar,1.325,placeholder,PLACEHOLDER - not real data
+West Coast,TAS,Coastal,-42.1,2,Apr-Jun,0.987,placeholder,PLACEHOLDER - not real data
+West Coast,TAS,Coastal,-42.1,3,Jul-Sep,0.671,placeholder,PLACEHOLDER - not real data
+West Coast,TAS,Coastal,-42.1,4,Oct-Dec,0.991,placeholder,PLACEHOLDER - not real data
+East Coast,TAS,Coastal,-41.9,1,Jan-Mar,1.303,placeholder,PLACEHOLDER - not real data
+East Coast,TAS,Coastal,-41.9,2,Apr-Jun,1.028,placeholder,PLACEHOLDER - not real data
+East Coast,TAS,Coastal,-41.9,3,Jul-Sep,0.675,placeholder,PLACEHOLDER - not real data
+East Coast,TAS,Coastal,-41.9,4,Oct-Dec,0.993,placeholder,PLACEHOLDER - not real data
+Launceston and the North,TAS,Coastal,-41.44,1,Jan-Mar,1.303,placeholder,PLACEHOLDER - not real data
+Launceston and the North,TAS,Coastal,-41.44,2,Apr-Jun,1.019,placeholder,PLACEHOLDER - not real data
+Launceston and the North,TAS,Coastal,-41.44,3,Jul-Sep,0.691,placeholder,PLACEHOLDER - not real data
+Launceston and the North,TAS,Coastal,-41.44,4,Oct-Dec,1.003,placeholder,PLACEHOLDER - not real data
+North West,TAS,Coastal,-41.15,1,Jan-Mar,1.288,placeholder,PLACEHOLDER - not real data
+North West,TAS,Coastal,-41.15,2,Apr-Jun,0.987,placeholder,PLACEHOLDER - not real data
+North West,TAS,Coastal,-41.15,3,Jul-Sep,0.673,placeholder,PLACEHOLDER - not real data
+North West,TAS,Coastal,-41.15,4,Oct-Dec,0.983,placeholder,PLACEHOLDER - not real data
+Great Ocean Road,VIC,Coastal,-38.5,1,Jan-Mar,1.244,placeholder,PLACEHOLDER - not real data
+Great Ocean Road,VIC,Coastal,-38.5,2,Apr-Jun,1.021,placeholder,PLACEHOLDER - not real data
+Great Ocean Road,VIC,Coastal,-38.5,3,Jul-Sep,0.742,placeholder,PLACEHOLDER - not real data
+Great Ocean Road,VIC,Coastal,-38.5,4,Oct-Dec,0.977,placeholder,PLACEHOLDER - not real data
+Phillip Island,VIC,Coastal,-38.49,1,Jan-Mar,1.256,placeholder,PLACEHOLDER - not real data
+Phillip Island,VIC,Coastal,-38.49,2,Apr-Jun,0.977,placeholder,PLACEHOLDER - not real data
+Phillip Island,VIC,Coastal,-38.49,3,Jul-Sep,0.746,placeholder,PLACEHOLDER - not real data
+Phillip Island,VIC,Coastal,-38.49,4,Oct-Dec,0.997,placeholder,PLACEHOLDER - not real data
+Peninsula,VIC,Coastal,-38.35,1,Jan-Mar,1.277,placeholder,PLACEHOLDER - not real data
+Peninsula,VIC,Coastal,-38.35,2,Apr-Jun,0.986,placeholder,PLACEHOLDER - not real data
+Peninsula,VIC,Coastal,-38.35,3,Jul-Sep,0.765,placeholder,PLACEHOLDER - not real data
+Peninsula,VIC,Coastal,-38.35,4,Oct-Dec,0.985,placeholder,PLACEHOLDER - not real data
+Geelong and the Bellarine,VIC,Coastal,-38.15,1,Jan-Mar,1.281,placeholder,PLACEHOLDER - not real data
+Geelong and the Bellarine,VIC,Coastal,-38.15,2,Apr-Jun,1.008,placeholder,PLACEHOLDER - not real data
+Geelong and the Bellarine,VIC,Coastal,-38.15,3,Jul-Sep,0.72,placeholder,PLACEHOLDER - not real data
+Geelong and the Bellarine,VIC,Coastal,-38.15,4,Oct-Dec,1.018,placeholder,PLACEHOLDER - not real data
+Gippsland,VIC,Coastal,-37.9,1,Jan-Mar,1.235,placeholder,PLACEHOLDER - not real data
+Gippsland,VIC,Coastal,-37.9,2,Apr-Jun,0.992,placeholder,PLACEHOLDER - not real data
+Gippsland,VIC,Coastal,-37.9,3,Jul-Sep,0.73,placeholder,PLACEHOLDER - not real data
+Gippsland,VIC,Coastal,-37.9,4,Oct-Dec,1.02,placeholder,PLACEHOLDER - not real data
+Lakes,VIC,Coastal,-37.88,1,Jan-Mar,1.223,placeholder,PLACEHOLDER - not real data
+Lakes,VIC,Coastal,-37.88,2,Apr-Jun,1.014,placeholder,PLACEHOLDER - not real data
+Lakes,VIC,Coastal,-37.88,3,Jul-Sep,0.746,placeholder,PLACEHOLDER - not real data
+Lakes,VIC,Coastal,-37.88,4,Oct-Dec,1.011,placeholder,PLACEHOLDER - not real data
+Limestone Coast,SA,Coastal,-37.3,1,Jan-Mar,1.226,placeholder,PLACEHOLDER - not real data
+Limestone Coast,SA,Coastal,-37.3,2,Apr-Jun,0.975,placeholder,PLACEHOLDER - not real data
+Limestone Coast,SA,Coastal,-37.3,3,Jul-Sep,0.787,placeholder,PLACEHOLDER - not real data
+Limestone Coast,SA,Coastal,-37.3,4,Oct-Dec,1.009,placeholder,PLACEHOLDER - not real data
+Kangaroo Island,SA,Coastal,-35.8,1,Jan-Mar,1.194,placeholder,PLACEHOLDER - not real data
+Kangaroo Island,SA,Coastal,-35.8,2,Apr-Jun,1.029,placeholder,PLACEHOLDER - not real data
+Kangaroo Island,SA,Coastal,-35.8,3,Jul-Sep,0.811,placeholder,PLACEHOLDER - not real data
+Kangaroo Island,SA,Coastal,-35.8,4,Oct-Dec,0.981,placeholder,PLACEHOLDER - not real data
+"Murray River, Lakes and Coorong",SA,Coastal,-35.6,1,Jan-Mar,1.181,placeholder,PLACEHOLDER - not real data
+"Murray River, Lakes and Coorong",SA,Coastal,-35.6,2,Apr-Jun,1.007,placeholder,PLACEHOLDER - not real data
+"Murray River, Lakes and Coorong",SA,Coastal,-35.6,3,Jul-Sep,0.768,placeholder,PLACEHOLDER - not real data
+"Murray River, Lakes and Coorong",SA,Coastal,-35.6,4,Oct-Dec,1.014,placeholder,PLACEHOLDER - not real data
+Fleurieu Peninsula,SA,Coastal,-35.5,1,Jan-Mar,1.206,placeholder,PLACEHOLDER - not real data
+Fleurieu Peninsula,SA,Coastal,-35.5,2,Apr-Jun,1.013,placeholder,PLACEHOLDER - not real data
+Fleurieu Peninsula,SA,Coastal,-35.5,3,Jul-Sep,0.796,placeholder,PLACEHOLDER - not real data
+Fleurieu Peninsula,SA,Coastal,-35.5,4,Oct-Dec,1.016,placeholder,PLACEHOLDER - not real data
+Yorke Peninsula,SA,Coastal,-34.5,1,Jan-Mar,1.211,placeholder,PLACEHOLDER - not real data
+Yorke Peninsula,SA,Coastal,-34.5,2,Apr-Jun,1.006,placeholder,PLACEHOLDER - not real data
+Yorke Peninsula,SA,Coastal,-34.5,3,Jul-Sep,0.814,placeholder,PLACEHOLDER - not real data
+Yorke Peninsula,SA,Coastal,-34.5,4,Oct-Dec,0.99,placeholder,PLACEHOLDER - not real data
+Eyre Peninsula,SA,Coastal,-34.0,1,Jan-Mar,1.161,placeholder,PLACEHOLDER - not real data
+Eyre Peninsula,SA,Coastal,-34.0,2,Apr-Jun,0.976,placeholder,PLACEHOLDER - not real data
+Eyre Peninsula,SA,Coastal,-34.0,3,Jul-Sep,0.838,placeholder,PLACEHOLDER - not real data
+Eyre Peninsula,SA,Coastal,-34.0,4,Oct-Dec,0.982,placeholder,PLACEHOLDER - not real data
+Australia's South West,WA,Coastal,-33.9,1,Jan-Mar,1.177,placeholder,PLACEHOLDER - not real data
+Australia's South West,WA,Coastal,-33.9,2,Apr-Jun,0.989,placeholder,PLACEHOLDER - not real data
+Australia's South West,WA,Coastal,-33.9,3,Jul-Sep,0.826,placeholder,PLACEHOLDER - not real data
+Australia's South West,WA,Coastal,-33.9,4,Oct-Dec,1.002,placeholder,PLACEHOLDER - not real data
+Central Coast,NSW,Coastal,-33.43,1,Jan-Mar,1.195,placeholder,PLACEHOLDER - not real data
+Central Coast,NSW,Coastal,-33.43,2,Apr-Jun,0.996,placeholder,PLACEHOLDER - not real data
+Central Coast,NSW,Coastal,-33.43,3,Jul-Sep,0.818,placeholder,PLACEHOLDER - not real data
+Central Coast,NSW,Coastal,-33.43,4,Oct-Dec,1.009,placeholder,PLACEHOLDER - not real data
+Gold Coast,QLD,Coastal,-28.02,1,Jan-Mar,1.098,placeholder,PLACEHOLDER - not real data
+Gold Coast,QLD,Coastal,-28.02,2,Apr-Jun,1.026,placeholder,PLACEHOLDER - not real data
+Gold Coast,QLD,Coastal,-28.02,3,Jul-Sep,0.905,placeholder,PLACEHOLDER - not real data
+Gold Coast,QLD,Coastal,-28.02,4,Oct-Dec,1.023,placeholder,PLACEHOLDER - not real data
+Sunshine Coast,QLD,Coastal,-26.65,1,Jan-Mar,1.09,placeholder,PLACEHOLDER - not real data
+Sunshine Coast,QLD,Coastal,-26.65,2,Apr-Jun,1.029,placeholder,PLACEHOLDER - not real data
+Sunshine Coast,QLD,Coastal,-26.65,3,Jul-Sep,0.917,placeholder,PLACEHOLDER - not real data
+Sunshine Coast,QLD,Coastal,-26.65,4,Oct-Dec,0.993,placeholder,PLACEHOLDER - not real data
+Fraser Coast,QLD,Coastal,-25.3,1,Jan-Mar,1.055,placeholder,PLACEHOLDER - not real data
+Fraser Coast,QLD,Coastal,-25.3,2,Apr-Jun,1.02,placeholder,PLACEHOLDER - not real data
+Fraser Coast,QLD,Coastal,-25.3,3,Jul-Sep,0.934,placeholder,PLACEHOLDER - not real data
+Fraser Coast,QLD,Coastal,-25.3,4,Oct-Dec,0.994,placeholder,PLACEHOLDER - not real data
+Australia's Coral Coast,WA,Coastal,-25.0,1,Jan-Mar,1.047,placeholder,PLACEHOLDER - not real data
+Australia's Coral Coast,WA,Coastal,-25.0,2,Apr-Jun,1.015,placeholder,PLACEHOLDER - not real data
+Australia's Coral Coast,WA,Coastal,-25.0,3,Jul-Sep,0.969,placeholder,PLACEHOLDER - not real data
+Australia's Coral Coast,WA,Coastal,-25.0,4,Oct-Dec,0.983,placeholder,PLACEHOLDER - not real data
+Bundaberg,QLD,Coastal,-24.87,1,Jan-Mar,1.026,placeholder,PLACEHOLDER - not real data
+Bundaberg,QLD,Coastal,-24.87,2,Apr-Jun,0.974,placeholder,PLACEHOLDER - not real data
+Bundaberg,QLD,Coastal,-24.87,3,Jul-Sep,0.958,placeholder,PLACEHOLDER - not real data
+Bundaberg,QLD,Coastal,-24.87,4,Oct-Dec,0.996,placeholder,PLACEHOLDER - not real data
+Gladstone,QLD,Coastal,-23.84,1,Jan-Mar,1.033,placeholder,PLACEHOLDER - not real data
+Gladstone,QLD,Coastal,-23.84,2,Apr-Jun,1.005,placeholder,PLACEHOLDER - not real data
+Gladstone,QLD,Coastal,-23.84,3,Jul-Sep,0.981,placeholder,PLACEHOLDER - not real data
+Gladstone,QLD,Coastal,-23.84,4,Oct-Dec,0.985,placeholder,PLACEHOLDER - not real data
+Capricorn,QLD,Coastal,-23.38,1,Jan-Mar,0.995,placeholder,PLACEHOLDER - not real data
+Capricorn,QLD,Coastal,-23.38,2,Apr-Jun,1.01,placeholder,PLACEHOLDER - not real data
+Capricorn,QLD,Coastal,-23.38,3,Jul-Sep,0.99,placeholder,PLACEHOLDER - not real data
+Capricorn,QLD,Coastal,-23.38,4,Oct-Dec,0.98,placeholder,PLACEHOLDER - not real data
+Mackay Isaac,QLD,Coastal,-21.14,1,Jan-Mar,0.988,placeholder,PLACEHOLDER - not real data
+Mackay Isaac,QLD,Coastal,-21.14,2,Apr-Jun,1.005,placeholder,PLACEHOLDER - not real data
+Mackay Isaac,QLD,Coastal,-21.14,3,Jul-Sep,1.059,placeholder,PLACEHOLDER - not real data
+Mackay Isaac,QLD,Coastal,-21.14,4,Oct-Dec,1.002,placeholder,PLACEHOLDER - not real data
+Whitsundays,QLD,Coastal,-20.3,1,Jan-Mar,0.962,placeholder,PLACEHOLDER - not real data
+Whitsundays,QLD,Coastal,-20.3,2,Apr-Jun,0.996,placeholder,PLACEHOLDER - not real data
+Whitsundays,QLD,Coastal,-20.3,3,Jul-Sep,1.051,placeholder,PLACEHOLDER - not real data
+Whitsundays,QLD,Coastal,-20.3,4,Oct-Dec,1.025,placeholder,PLACEHOLDER - not real data
+Townsville,QLD,Coastal,-19.26,1,Jan-Mar,0.967,placeholder,PLACEHOLDER - not real data
+Townsville,QLD,Coastal,-19.26,2,Apr-Jun,1.01,placeholder,PLACEHOLDER - not real data
+Townsville,QLD,Coastal,-19.26,3,Jul-Sep,1.058,placeholder,PLACEHOLDER - not real data
+Townsville,QLD,Coastal,-19.26,4,Oct-Dec,0.974,placeholder,PLACEHOLDER - not real data
+Australia's North West,WA,Coastal,-18.0,1,Jan-Mar,0.937,placeholder,PLACEHOLDER - not real data
+Australia's North West,WA,Coastal,-18.0,2,Apr-Jun,0.993,placeholder,PLACEHOLDER - not real data
+Australia's North West,WA,Coastal,-18.0,3,Jul-Sep,1.076,placeholder,PLACEHOLDER - not real data
+Australia's North West,WA,Coastal,-18.0,4,Oct-Dec,0.973,placeholder,PLACEHOLDER - not real data
+Tropical North Queensland,QLD,Coastal,-16.9,1,Jan-Mar,0.87,placeholder,PLACEHOLDER - not real data
+Tropical North Queensland,QLD,Coastal,-16.9,2,Apr-Jun,0.993,placeholder,PLACEHOLDER - not real data
+Tropical North Queensland,QLD,Coastal,-16.9,3,Jul-Sep,1.13,placeholder,PLACEHOLDER - not real data
+Tropical North Queensland,QLD,Coastal,-16.9,4,Oct-Dec,1.014,placeholder,PLACEHOLDER - not real data
+Litchfield Kakadu Arnhem,NT,Coastal,-13.1,1,Jan-Mar,0.848,placeholder,PLACEHOLDER - not real data
+Litchfield Kakadu Arnhem,NT,Coastal,-13.1,2,Apr-Jun,1.01,placeholder,PLACEHOLDER - not real data
+Litchfield Kakadu Arnhem,NT,Coastal,-13.1,3,Jul-Sep,1.151,placeholder,PLACEHOLDER - not real data
+Litchfield Kakadu Arnhem,NT,Coastal,-13.1,4,Oct-Dec,0.98,placeholder,PLACEHOLDER - not real data
