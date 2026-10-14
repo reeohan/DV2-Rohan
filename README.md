@@ -1,97 +1,126 @@
-# Coastal tourism in Australia – Vega-Lite starter kit
+# Coastal tourism in Australia — Vega-Lite project
 
-Thirteen working Vega-Lite (v5) specs, one per idiom, plus a page that shows them all.
+Thirteen Vega-Lite v5 charts covering Australia's 76 tourism regions, plus the data
+behind them. All thirteen specs have been rendered and verified.
 
-**Every number in `data/` is made up.** It exists only so the charts render while you gather real data. Replace each CSV with real figures, keeping the same column names, and the charts will update. The one real file is `data/aus_states.topojson`: state boundaries simplified from ABS data via the `rowanhogan/australian-states` GitHub repo.
+## Read this first: what is real and what is not
+
+Some figures are not published by anyone at region level. Those cells are filled with
+**invented placeholder values** so the charts render. Every data file carries a
+`data_status` (or `visitor_data_status`) column marking each row `real` or `placeholder`.
+Charts shade, dash or outline placeholder marks so the two are distinguishable on screen.
+
+| File | Real | Placeholder |
+|---|---|---|
+| `regions.csv` | jobs, GVA, consumption for all 76 regions; visitors/nights/spend for 38 | visitors/nights/spend for 38 regions (VIC, TAS, NT, ACT and some QLD) |
+| `flows.csv` | 46 rows (NSW origin shares, WA interstate/intrastate) | 118 rows (all other origin–destination pairs) |
+| `seasonality_quarterly.csv` | 5 regions (Blue Mountains, Hunter, North Coast NSW, South Coast, Great Barrier Reef) | 31 regions |
+| `arrivals_monthly.csv` | everything | — |
+| `reef_quarterly.csv` | everything | — |
+| `marine_sectors.csv` | everything | — |
+| `marine_industries.csv` | everything | — |
+| `aus_states.topojson` | everything | — |
+
+**Charts 1, 2, 7, 8, 9, 10, 11, 12 and 13 use only real data.** Charts 3, 4, 5 and 6
+are partly placeholder. Replace the placeholder rows before presenting those four as fact.
 
 ## Run it
 
-The page loads specs and CSVs with `fetch`, which browsers block when you double-click a local HTML file. Use a local web server instead:
+The page fetches specs and CSVs, which browsers block for `file://` URLs. Serve the folder:
 
-- **VS Code:** install the *Live Server* extension, right-click `index.html`, then choose *Open with Live Server*.
-- **Terminal:** run `python -m http.server` in this folder, then open http://localhost:8000.
-- **GitHub Pages:** push the folder to a repo and turn on Pages. The relative `data/...` paths keep working.
+- **VS Code:** install *Live Server*, right-click `index.html`, *Open with Live Server*
+- **Terminal:** `python -m http.server` in this folder, then open http://localhost:8000
+- **GitHub Pages:** push the folder and enable Pages; the relative paths keep working
 
-## What's in each spec
+## The thirteen charts
 
-| Spec | Idiom | Data file | Vega-Lite techniques worth studying |
+| # | Idiom | Data | Vega-Lite techniques |
 |---|---|---|---|
-| `01_choropleth` | Choropleth map | regions.csv + aus_states.topojson | aggregate, `lookup` a geometry into your data, `shape` channel, equal-area projection |
-| `02_proportional_symbols` | Proportional symbol map | regions.csv + aus_states.topojson | layered basemap, `longitude`/`latitude` channels, size scale, legend-bound selection |
-| `03_parallel_coordinates` | Parallel coordinates | regions.csv | `fold`, `joinaggregate` min/max normalisation, `window` row ids, `detail` channel |
-| `04_dumbbell` | Dumbbell chart | regions.csv | `fold` wide to long, layered line + circle, sorting by an aggregate |
-| `05_heatmap` | Heatmap | monthly_regions.csv | rect marks, indexing each row to its own mean, diverging scale with `domainMid` |
-| `06_cycle_plot` | Cycle plot | arrivals_monthly.csv | `facet` by month, layered line + mean rule |
-| `07_radial` | Radial (polar area) chart | reef_monthly.csv | arc marks, `theta`/`theta2` in radians with `scale: null`, sqrt radius scale |
-| `08_streamgraph` | Streamgraph | arrivals_monthly.csv | area mark with `stack: "center"`, `datetime()` from year/month columns, `order` channel |
-| `09_waffle` | Waffle chart | marine_sectors.csv | `sequence()` + `flatten` to make one row per square, modulo maths for the grid |
-| `10_marimekko` | Marimekko (mosaic) chart | regions.csv | two `stack` transforms with `normalize`, `x`/`x2`/`y`/`y2` rects |
-| `11_jitter_strip` | Jittered strip plot | regions.csv | `yOffset` channel, deterministic pseudo-random jitter, labelling top values with `rank` |
-| `12_slope` | Slope chart | regions.csv | `fold` two years into one column, direction calculated for colour, end labels |
-| `13_flow_map` | Flow map | flows.csv + aus_states.topojson | rule marks with `longitude2`/`latitude2`, `window` rank to thin the lines, halo text layer |
+| 1 | Choropleth map | regions + topojson | `aggregate`, `lookup` geometry, `geoshape`, equal-area projection |
+| 2 | Proportional symbol map | regions + topojson | layered basemap, `longitude`/`latitude`, area-proportional `size`, legend selection |
+| 3 | Flow map | flows + topojson | `rule` with `longitude2`/`latitude2`, `window` rank to thin lines, `strokeDash` for data status |
+| 4 | Parallel coordinates | regions | `fold`, `joinaggregate` min-max normalisation, `window` row ids, `detail` |
+| 5 | Dumbbell chart | regions | `fold` wide→long, layered line + point, conditional `fill` for data status |
+| 6 | Heatmap | seasonality_quarterly | `rect`, diverging scale with `domainMid`, conditional `opacity`, overlay dots for real cells |
+| 7 | Cycle plot | arrivals_monthly | `facet` by month, layered line + mean `rule` |
+| 8 | Radial heatmap | reef_quarterly | `arc` with explicit `theta`/`theta2` radians (`scale: null`), ring radii by year, clamped scale |
+| 9 | Streamgraph | arrivals_monthly | `area` with `stack: "center"`, `datetime()`, `order` channel |
+| 10 | Waffle chart | marine_sectors | `sequence()` + `flatten`, modulo grid maths |
+| 11 | Marimekko chart | regions | two `stack` transforms with `normalize`, `x`/`x2`/`y`/`y2` rects |
+| 12 | Jittered strip plot | regions | `yOffset`, deterministic pseudo-random jitter, log scale, `rank` labelling |
+| 13 | Slope chart | regions | `fold` two years, direction via `calculate`, log scale, ranked end labels |
 
-Each spec's `description` field says which marks and channels it uses and why. Adapt those notes for your write-up.
+### Three idioms were substituted
+Vega-Lite has no treemap, Sankey or force-directed beeswarm layout; those need full Vega.
+This project uses a **waffle** instead of a treemap, a **Marimekko** instead of a Sankey, and a
+**jittered strip plot** instead of a beeswarm. Chart 8 was planned as a twelve-month radial
+chart, but the reef data is published quarterly, so it became a radial heatmap — angle is the
+quarter, each ring a year.
 
-### Three idioms were swapped
-Vega-Lite has no layout for treemaps, Sankey diagrams or true beeswarms, which need full Vega. The kit uses these substitutes:
+## Column reference
 
-- **Waffle chart instead of treemap.** It still shows part-to-whole for the marine economy.
-- **Marimekko chart instead of Sankey.** It still shows how spend splits by state and then by coastal vs inland.
-- **Jittered strip plot instead of beeswarm.** Dots are offset so they don't overlap, but not packed by a force layout.
-
-If your unit allows full Vega, its official examples include a treemap and a beeswarm (search "vega treemap example" or "vega beeswarm example").
-
-## Data columns the specs expect
-
-**regions.csv** has one row per tourism region.
+**regions.csv** — one row per tourism region (76)
 
 | Column | Meaning |
 |---|---|
-| `region` | Tourism region name. Must match the boundary file if you map regions. |
-| `state` | NSW, VIC, QLD, SA, WA, TAS, NT or ACT |
-| `coastal` | `Coastal` or `Inland`. Classify this yourself, e.g. regions that touch the coastline in the TRA shapefile. |
-| `capital` | `Yes` or `No`. Charts 3, 4 and 12 drop capitals so big cities don't swamp regional areas. |
-| `lat`, `lon` | Approximate centre of the region, for chart 2 |
-| `visitors_k`, `nights_k` | Overnight visitors and nights, in thousands (TRA DoTS + IVS via state tourism bodies) |
-| `spend_m`, `dom_spend_m`, `intl_spend_m` | Total, domestic and international spend, in $ million |
-| `jobs_share_2019`, `jobs_share_2024` | Tourism share of regional filled jobs, as % (Regional Tourism Satellite Account) |
+| `region`, `state` | Tourism region and state |
+| `coastal` | `Coastal` or `Inland` — my classification, not an official one |
+| `capital` | `Yes` for capital-city regions; charts 4, 5 and 13 exclude them |
+| `lat`, `lon` | Approximate region centre, for the maps |
+| `visitors_k`, `nights_k`, `spend_m` | Overnight visitors ('000), nights ('000), spend ($m) |
+| `dom_spend_m`, `intl_spend_m` | Domestic and international split of spend |
+| `visitor_period`, `visitor_source`, `visitor_data_status` | Provenance of the four columns above |
+| `tourism_gva_m_2324/2425` | Direct tourism gross value added ($m) |
+| `tourism_jobs_k_2324/2425` | Direct tourism filled jobs ('000) |
+| `tourism_jobs_total_k_2425` | Direct + indirect filled jobs ('000) |
+| `tourism_consumption_m_2425` | Tourism consumption ($m) |
+| `jobs_change_pct` | Change in direct jobs, 2023-24 → 2024-25 |
+| `state_jobs_share_1819/2425` | Tourism's share of all filled jobs, **state level** |
 
-**monthly_regions.csv:** `region`, `lat` (used to sort rows north to south), `month` (1–12), `trips_k`. Source: TRA regional mobility data.
+**flows.csv** — `origin`, `origin_lat`, `origin_lon`, `dest_region`, `dest_state`,
+`dest_lat`, `dest_lon`, `trips_k`, `data_status`, `source`
 
-**arrivals_monthly.csv:** `year`, `month` (1–12), `state`, `arrivals`. Source: ABS Overseas Arrivals and Departures, short-term visitor arrivals by state of intended stay.
+**seasonality_quarterly.csv** — `region`, `state`, `coastal`, `lat`, `quarter` (1–4),
+`quarter_label`, `seasonal_index` (1.0 = that region's average quarter), `data_status`, `source`
 
-**reef_monthly.csv:** `month` (1–12), `visitor_days`. Source: GBRMPA tourism visitation data.
+**arrivals_monthly.csv** — `year`, `month`, `state`, `arrivals`. ABS Table 11, 2015 to Aug 2026.
 
-**flows.csv:** `origin`, `origin_state`, `origin_lat`, `origin_lon`, `dest_region`, `dest_lat`, `dest_lon`, `trips_k`. One row per origin-destination pair. Source: TRA domestic regional mobility data, or the interstate/intrastate splits in state tourism snapshots.
+**reef_quarterly.csv** — `year`, `quarter`, `quarter_label`, `full_day`, `part_day`, `exempt`,
+`scenic_flights`, `coral_viewing`, `total_visits`, `seasonal_index`. 2016 to mid-2026.
 
-**marine_sectors.csv:** `sector`, `order`, `group`, `share_pct`. `share_pct` must be whole numbers that add to 100. Source: AIMS Index of Marine Industry. If you rename sectors, update the colour `domain` in `09_waffle`.
+**marine_sectors.csv** — `sector`, `order`, `group`, `output_m_fy21/22/23`, `share_pct`
+(whole numbers summing to 100). **marine_industries.csv** — all 19 industries, FY23.
 
-Also update the chart titles once you have real data. They were written for the sample data and may not match what your real data shows.
+## Methodology notes for your write-up
 
-## Mapping tourism regions instead of states
+Three discontinuities affect this data and all three are worth naming:
 
-1. Download the tourism region shapefile ZIP from TRA (*Profiles → Tourism regions maps*).
-2. Convert and simplify it with mapshaper (web version at mapshaper.org, or `npx mapshaper`):
-   ```
-   mapshaper TR_shapefile.shp -proj wgs84 -filter-islands min-area=100km2 -simplify 5% keep-shapes -rename-layers regions -o data/tourism_regions.topojson format=topojson
-   ```
-   Run `mapshaper TR_shapefile.shp -info` first to find the column holding region names.
-3. In `01_choropleth`, delete the `aggregate` and `coastal_share` steps. Calculate a per-region measure such as spend per night, then change the lookup:
-   ```json
-   {
-     "lookup": "region",
-     "from": {
-       "data": {"url": "data/tourism_regions.topojson", "format": {"type": "topojson", "feature": "regions"}},
-       "key": "properties.YOUR_NAME_FIELD"
-     },
-     "as": "geo"
-   }
-   ```
-   Region names in your CSV must match the shapefile exactly. Regions that don't match won't be drawn.
+1. **NVS → DoTS (January 2025).** TRA replaced the National Visitor Survey with Domestic
+   Tourism Statistics. The two are not comparable; TRA says so explicitly.
+2. **New sub-national TSA model (2024–25).** The State and Regional TSA models were replaced.
+   Results were back-cast to 2018–19 at state level but only to **2023–24** at region level,
+   which is why chart 13 spans one year. NSW's 2018–19 tourism share of filled jobs is 4.13%
+   under the old model and 3.91% under the new one.
+3. **Employment revisions.** Direct tourism filled jobs for 2018–19 were revised from 700,900
+   to 632,000 between publications. Both years in any comparison here come from the same release.
 
-## Using the online Vega Editor
+Also worth stating: the coastal/inland split is my own judgement, not an official category;
+reporting periods differ by state (NSW and QLD year-ending June 2026, WA calendar 2025,
+SA year-ending December 2024), which the `visitor_period` column records; and several regions
+have figures suppressed as `n/p` where samples were too small.
 
-You can paste any spec into https://vega.github.io/editor, but the relative `data/...` URLs won't resolve there. For testing, temporarily swap them for full URLs to your files on GitHub, e.g. `https://raw.githubusercontent.com/<you>/<repo>/main/data/regions.csv`.
+### Validation
+The jobs figures were checked against TRA's own published output. State totals match Table 5
+to within rounding (NSW 203.4 vs 203.2; national 695.7 vs 695.9), and the growth distribution
+reproduces TRA's Figure 2 exactly — 23 regions declining, 41 growing up to 10%, 9 growing
+10–20%, 2 growing 20–40%, 1 growing 40% or more — including the per-state decline counts.
 
-## Rebuilding the sample data
-`python tools/make_sample_data.py` regenerates every placeholder CSV except the boundary file.
+## Replacing the placeholders
+
+1. **Victoria and Tasmania visitors/nights** — the Victorian regional dashboard
+   (djsir.vic.gov.au) and Tourism Tasmania's regional data. Fill `visitors_k`, `nights_k`,
+   `spend_m`, `dom_spend_m`, `intl_spend_m` and set `visitor_data_status` to `real`.
+2. **Monthly or quarterly seasonality** — TRA's regional mobility dashboard. If it won't
+   export, `decode_powerbi.py` turns a captured `querydata` network response into a CSV.
+3. **Origin–destination flows** — the same dashboard's origin filter, or state agency
+   origin tables like the ones already used for NSW and WA.
