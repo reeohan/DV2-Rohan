@@ -3,27 +3,6 @@
 Thirteen Vega-Lite v5 charts covering Australia's 76 tourism regions, plus the data
 behind them. All thirteen specs have been rendered and verified.
 
-## Read this first: what is real and what is not
-
-Some figures are not published by anyone at region level. Those cells are filled with
-**invented placeholder values** so the charts render. Every data file carries a
-`data_status` (or `visitor_data_status`) column marking each row `real` or `placeholder`.
-Charts shade, dash or outline placeholder marks so the two are distinguishable on screen.
-
-| File | Real | Placeholder |
-|---|---|---|
-| `regions.csv` | jobs, GVA, consumption for all 76 regions; visitors/nights/spend for 38 | visitors/nights/spend for 38 regions (VIC, TAS, NT, ACT and some QLD) |
-| `flows.csv` | 46 rows (NSW origin shares, WA interstate/intrastate) | 118 rows (all other origin–destination pairs) |
-| `seasonality_quarterly.csv` | 5 regions (Blue Mountains, Hunter, North Coast NSW, South Coast, Great Barrier Reef) | 31 regions |
-| `arrivals_monthly.csv` | everything | — |
-| `reef_quarterly.csv` | everything | — |
-| `marine_sectors.csv` | everything | — |
-| `marine_industries.csv` | everything | — |
-| `aus_states.topojson` | everything | — |
-
-**Charts 1, 2, 7, 8, 9, 10, 11, 12 and 13 use only real data.** Charts 3, 4, 5 and 6
-are partly placeholder. Replace the placeholder rows before presenting those four as fact.
-
 ## Run it
 
 The page fetches specs and CSVs, which browsers block for `file://` URLs. Serve the folder:
