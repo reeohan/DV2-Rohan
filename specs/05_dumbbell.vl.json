@@ -1,13 +1,13 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Idiom: dumbbell (connected dot) chart. Two point marks per region joined by a line; horizontal position = spend, hue = visitor type. The gap between dots makes the domestic-vs-international difference easy to judge.",
+  "description": "Idiom: dumbbell chart. Two point marks per region joined by a line; horizontal position = spend, hue = visitor type. The gap shows the domestic-international difference.",
   "title": {
-    "text": "Domestic travellers drive most coastal spending",
-    "subtitle": "Overnight visitor spend by visitor type, regional coastal tourism regions ($ million)"
+    "text": "Domestic travellers drive coastal spending",
+    "subtitle": "Overnight visitor spend by type, regional coastal regions ($ million). Open circles mark placeholder rows."
   },
   "width": 500,
   "height": {
-    "step": 22
+    "step": 16
   },
   "data": {
     "url": "data/regions.csv",
@@ -21,7 +21,7 @@
   },
   "transform": [
     {
-      "filter": "datum.coastal === 'Coastal' && datum.capital === 'No'"
+      "filter": "datum.coastal === 'Coastal' && datum.capital === 'No' && isValid(datum.intl_spend_m)"
     },
     {
       "fold": [
@@ -29,12 +29,12 @@
         "intl_spend_m"
       ],
       "as": [
-        "visitor_key",
+        "k",
         "spend"
       ]
     },
     {
-      "calculate": "datum.visitor_key === 'dom_spend_m' ? 'Domestic' : 'International'",
+      "calculate": "datum.k === 'dom_spend_m' ? 'Domestic' : 'International'",
       "as": "Visitor type"
     }
   ],
@@ -69,7 +69,7 @@
       "mark": {
         "type": "line",
         "color": "#b9c2c7",
-        "strokeWidth": 2.5
+        "strokeWidth": 2
       },
       "encoding": {
         "detail": {
@@ -80,9 +80,9 @@
     },
     {
       "mark": {
-        "type": "circle",
-        "size": 110,
-        "opacity": 1
+        "type": "point",
+        "size": 80,
+        "strokeWidth": 1.6
       },
       "encoding": {
         "color": {
@@ -103,10 +103,28 @@
             "title": null
           }
         },
+        "fill": {
+          "condition": {
+            "test": "datum.visitor_data_status === 'real'",
+            "field": "Visitor type",
+            "type": "nominal",
+            "scale": {
+              "domain": [
+                "Domestic",
+                "International"
+              ],
+              "range": [
+                "#0e6e8c",
+                "#e9a23b"
+              ]
+            },
+            "legend": null
+          },
+          "value": "#ffffff"
+        },
         "tooltip": [
           {
-            "field": "region",
-            "title": "Region"
+            "field": "region"
           },
           {
             "field": "Visitor type"
@@ -114,7 +132,11 @@
           {
             "field": "spend",
             "title": "Spend ($m)",
-            "format": ",.0f"
+            "format": ",.1f"
+          },
+          {
+            "field": "visitor_data_status",
+            "title": "Status"
           }
         ]
       }
