@@ -165,7 +165,7 @@
     @media (max-width: 900px) {
       :root { --gutter: 1rem; }
       .section-head { grid-template-columns: 1fr; gap: 0.75rem; }
-      .grid { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: minmax(0, 1fr); }   /* minmax stops wide charts stretching the card past the screen */
       figure.half { grid-column: 1 / -1; }
       figure { padding: 1.25rem 1rem; }
     }
@@ -354,11 +354,24 @@
       caption.style.paddingRight = Math.max(0, width - measure) + "px";
     }
 
+    // Re-align when a card changes size (window resize, rotating a phone, the grid collapsing to one column).
+    const paddings = {};
+    const resizer = new ResizeObserver(entries => {
+      for (const { target } of entries) {
+        const id = target.querySelector("div[id]").id;
+        if (paddings[id]) alignCaption(id, paddings[id]);
+      }
+    });
+
     // Wait for the web fonts so Vega measures and draws chart text in the right typeface.
     document.fonts.ready.then(() => {
       for (const [id, specUrl] of Object.entries(charts)) {
         vegaEmbed("#" + id, specUrl, { config: theme, renderer: "svg", actions: { export: true, source: false, compiled: false, editor: true } })
-          .then(({ view }) => alignCaption(id, view.padding()))
+          .then(({ view }) => {
+            paddings[id] = view.padding();
+            alignCaption(id, paddings[id]);
+            resizer.observe(document.getElementById(id).closest("figure"));
+          })
           .catch(err => {
             document.getElementById(id).innerHTML =
               `<p class="error">${specUrl} didn't load: ${err.message}. ` +
