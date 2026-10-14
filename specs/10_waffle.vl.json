@@ -1,9 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Idiom: waffle chart (Vega-Lite has no treemap). 100 square marks, one per 1% of marine industry output; hue = sector, with tourism in blues and other industries in neutral tones. Counting squares gives an exact, easy part-to-whole reading.",
+  "description": "Idiom: waffle chart. 100 square marks, one per 1% of output, built with sequence() and flatten(); hue groups tourism against everything else. Counting squares gives an exact part-to-whole reading.",
   "title": {
-    "text": "Tourism is the biggest slice of Australia's marine economy",
-    "subtitle": "Marine industry output by sector. Each square = 1%"
+    "text": "Marine tourism is the second-largest slice of the marine economy",
+    "subtitle": "Australian marine industry output by sector, FY23. Each square = 1% of $228.8 billion (AIMS Index 2025)."
   },
   "width": 300,
   "height": 300,
@@ -13,25 +13,26 @@
       "type": "csv",
       "parse": {
         "order": "number",
-        "share_pct": "number"
+        "share_pct": "number",
+        "output_m_fy23": "number"
       }
     }
   },
   "transform": [
     {
-      "calculate": "sequence(0, datum.share_pct)",
-      "as": "square"
+      "calculate": "sequence(0,datum.share_pct)",
+      "as": "sq"
     },
     {
       "flatten": [
-        "square"
+        "sq"
       ]
     },
     {
       "window": [
         {
           "op": "row_number",
-          "as": "idx"
+          "as": "i"
         }
       ],
       "sort": [
@@ -39,22 +40,22 @@
           "field": "order"
         },
         {
-          "field": "square"
+          "field": "sq"
         }
       ]
     },
     {
-      "calculate": "(datum.idx - 1) % 10",
+      "calculate": "(datum.i-1)%10",
       "as": "col"
     },
     {
-      "calculate": "floor((datum.idx - 1) / 10)",
+      "calculate": "floor((datum.i-1)/10)",
       "as": "row"
     }
   ],
   "mark": {
     "type": "rect",
-    "stroke": "#ffffff",
+    "stroke": "#fff",
     "strokeWidth": 3,
     "cornerRadius": 2
   },
@@ -78,37 +79,39 @@
       },
       "scale": {
         "domain": [
-          "Domestic marine tourism",
-          "International marine tourism",
-          "Natural gas",
+          "Natural gas, offshore oil exploration & extraction",
+          "Marine tourism & recreational activities",
+          "Marine safety & environment management",
           "Water transport",
-          "Ship and boat building",
-          "Fishing and aquaculture",
-          "Everything else"
+          "Marine infrastructure services",
+          "Fishing"
         ],
         "range": [
-          "#0e6e8c",
-          "#5fb3cc",
           "#8c8c8c",
-          "#a9a9a9",
-          "#bfbfbf",
-          "#d2d2d2",
-          "#e3e3e3"
+          "#0e6e8c",
+          "#c6c6c6",
+          "#b0b0b0",
+          "#d8d8d8",
+          "#e8e8e8"
         ]
       },
       "legend": {
         "orient": "right",
-        "labelLimit": 220
+        "labelLimit": 250
       }
     },
     "tooltip": [
       {
-        "field": "sector",
-        "title": "Sector"
+        "field": "sector"
+      },
+      {
+        "field": "output_m_fy23",
+        "title": "Output ($m)",
+        "format": ","
       },
       {
         "field": "share_pct",
-        "title": "Share of output (%)"
+        "title": "Share (%)"
       }
     ]
   },
