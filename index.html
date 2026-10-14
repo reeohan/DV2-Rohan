@@ -215,10 +215,64 @@
       figure.half { grid-column: 1 / -1; }
       figure { padding: 1.25rem 1rem; }
     }
+    /* ---------- Conclusion: a lit panel that closes the argument ---------- */
+    .conclusion {
+      background: linear-gradient(180deg, var(--card-top), var(--card) 14rem);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 18px 40px -24px rgba(0, 0, 0, 0.8);
+      padding: 2.5rem;
+    }
+    .conclusion > p:first-child {
+      font-family: var(--serif);
+      font-optical-sizing: auto;
+      font-weight: 400;
+      font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+      line-height: 1.4;
+      color: #fff;
+      margin: 0 0 2rem;
+      max-width: 42rem;
+    }
+    .findings {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 2rem;
+      margin: 0 0 2.25rem;
+    }
+    .findings h3 {
+      font-family: var(--sans);
+      font-size: 0.8125rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--aqua);
+      margin: 0 0 0.75rem; padding-top: 0.9rem;
+      border-top: 2px solid rgba(62, 230, 196, 0.35);
+    }
+    .findings .stat {
+      font-family: var(--serif);
+      font-optical-sizing: auto; font-weight: 600;
+      font-size: 2.5rem; line-height: 1; letter-spacing: -0.02em;
+      color: #fff; display: block; margin-bottom: 0.5rem;
+    }
+    .findings p { margin: 0; color: var(--soft); font-size: 1rem; line-height: 1.6; }
+    .closing {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;
+      padding-top: 2rem; border-top: 1px solid var(--line);
+    }
+    .closing h3 {
+      font-family: var(--sans); font-size: 0.8125rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--coral); margin: 0 0 0.75rem;
+    }
+    .closing p { margin: 0; color: var(--soft); font-size: 1rem; line-height: 1.65; }
+    .closing p + p { margin-top: 0.75rem; }
+    @media (max-width: 900px) {
+      .conclusion { padding: 1.5rem 1.25rem; }
+      .findings, .closing { grid-template-columns: 1fr; gap: 1.5rem; }
+      .findings .stat { font-size: 2.1rem; }
+    }
   </style>
 </head>
-<body>
-  <header>
+<body>  <header>
     <div class="wrap">
       <p class="eyebrow">Rohan Suresh 34470883</p>
       <h1>Coastal tourism in Australia</h1>
@@ -365,15 +419,49 @@
 
     <section>
       <div class="section-head">
-        <div><span class="section-num">Takeaways</span><h2>What the coast tells us</h2></div>
-        <p>Australian tourism is coastal tourism. Most visitors are Australians making short trips to a nearby coast. They travel in seasons that run in opposite directions in the tropics and the south. Together they support almost nine in ten tourism jobs, so a bad season on the coast is a bad season for the whole industry.</p>
+        <div><span class="section-num">Conclusion</span><h2>A shoreline economy</h2></div>
+        <p>Three measures, taken together, describe an industry that lives almost entirely within sight of the water.</p>
+      </div>
+      <div class="conclusion">
+        <p>Australian tourism is coastal tourism. Most of its visitors are Australians taking short trips to a nearby stretch of coast, arriving on seasonal calendars that run in opposite directions in the tropics and the south.</p>
+
+        <div class="findings">
+          <div>
+            <h3>Concentration</h3>
+            <span class="stat">87%</span>
+            <p>of Australia's 696,000 direct tourism jobs sit in coastal regions, and the five largest tourism employers in the country are all on the coast.</p>
+          </div>
+          <div>
+            <h3>Proximity</h3>
+            <span class="stat">82%</span>
+            <p>of measured overnight spending comes from domestic travellers, most of them moving within their own state rather than across the country.</p>
+          </div>
+          <div>
+            <h3>Divergence</h3>
+            <span class="stat">2&times;</span>
+            <p>is roughly the swing between a region's busiest and quietest quarter &mdash; and the tropics and the south reach those extremes in opposite months.</p>
+          </div>
+        </div>
+
+        <div class="closing">
+          <div>
+            <h3>What complicates it</h3>
+            <p>Scale and momentum are not the same thing. Although coastal regions hold almost nine in ten tourism jobs, the median coastal region grew more slowly than the median inland one over the latest year, 1.8% against 2.6%.</p>
+            <p>Western Australia's coast lost ground while Queensland's gained, so the headline concentration conceals sharply different local trajectories. A region being coastal explains where the industry is, not whether it is growing.</p>
+          </div>
+          <div>
+            <h3>What to treat with caution</h3>
+            <p>Three methodology breaks sit underneath this data: the move from the National Visitor Survey to Domestic Tourism Statistics in 2025, a new sub-national satellite account model in 2024&ndash;25 that was only back-cast one year at region level, and a downward revision of tourism employment for 2018&ndash;19 from 700,900 to 632,000.</p>
+            <p>The coastal and inland split is also my own classification rather than an official category, reporting periods differ between states, and charts 3, 4, 5 and 6 contain placeholder values where no source publishes a regional figure.</p>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
     <div class="wrap">
-      <p><strong>Author:</strong> Rohan &middot; FIT3179 Data Visualisation, Monash University &middot; <strong>Last updated:</strong> 14 October 2026</p>
+      <p><strong>Author:</strong> Rohan &middot; FIT3179 Data Visualisation, Monash University &middot; <strong>Last updated:</strong> 15 October 2026</p>
       <p><strong>Data:</strong> Tourism Research Australia (State and Regional Tourism Satellite Accounts 2024&ndash;25; Domestic Tourism Statistics; International Visitor Survey), Australian Bureau of Statistics (Overseas Arrivals and Departures, Table 11), Great Barrier Reef Marine Park Authority (environmental management charge returns), Australian Institute of Marine Science (Index of Marine Industry 2025), and the state tourism agencies of NSW, Victoria, Queensland, South Australia, Western Australia and Tasmania. State boundaries: ABS, via the rowanhogan/australian-states repository. Coastal and inland region classification by the author.</p>
     </div>
   </footer>
