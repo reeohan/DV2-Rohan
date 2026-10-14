@@ -1,9 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Idiom: Marimekko (mosaic) chart (Vega-Lite has no Sankey). Rect marks: column WIDTH = each state's share of national tourism spend, segment HEIGHT = coastal vs inland share within that state, hue = region type. Every rectangle's area is its share of the national total.",
+  "description": "Idiom: Marimekko (mosaic). Rect marks: column WIDTH = each state's share of national tourism jobs, segment HEIGHT = coastal vs inland within that state, so every rectangle's area is its share of the national total. Two stack transforms with normalize.",
   "title": {
-    "text": "Coastal regions take the lion's share in almost every state",
-    "subtitle": "Column width: state's share of national overnight spend. Column split: coastal vs inland regions."
+    "text": "Coastal regions dominate in almost every state",
+    "subtitle": "Column width: state's share of national direct tourism jobs. Column split: coastal vs inland regions (RTSA 2024-25)."
   },
   "width": 620,
   "height": 340,
@@ -12,7 +12,7 @@
     "format": {
       "type": "csv",
       "parse": {
-        "spend_m": "number"
+        "tourism_jobs_k_2425": "number"
       }
     }
   },
@@ -21,8 +21,8 @@
       "aggregate": [
         {
           "op": "sum",
-          "field": "spend_m",
-          "as": "spend"
+          "field": "tourism_jobs_k_2425",
+          "as": "jobs"
         }
       ],
       "groupby": [
@@ -34,7 +34,7 @@
       "joinaggregate": [
         {
           "op": "sum",
-          "field": "spend",
+          "field": "jobs",
           "as": "state_total"
         }
       ],
@@ -46,13 +46,13 @@
       "joinaggregate": [
         {
           "op": "sum",
-          "field": "spend",
-          "as": "national_total"
+          "field": "jobs",
+          "as": "nat_total"
         }
       ]
     },
     {
-      "stack": "spend",
+      "stack": "jobs",
       "groupby": [],
       "as": [
         "sx1",
@@ -92,7 +92,7 @@
       ]
     },
     {
-      "stack": "spend",
+      "stack": "jobs",
       "groupby": [
         "state"
       ],
@@ -109,11 +109,11 @@
       ]
     },
     {
-      "calculate": "datum.spend / datum.state_total",
-      "as": "share_of_state"
+      "calculate": "datum.jobs/datum.state_total",
+      "as": "share_state"
     },
     {
-      "calculate": "datum.state_total / datum.national_total",
+      "calculate": "datum.state_total/datum.nat_total",
       "as": "state_share"
     }
   ],
@@ -121,14 +121,14 @@
     {
       "mark": {
         "type": "rect",
-        "stroke": "#ffffff",
+        "stroke": "#fff",
         "strokeWidth": 2
       },
       "encoding": {
         "x": {
           "field": "x1",
           "type": "quantitative",
-          "title": "Share of national overnight spend",
+          "title": "Share of national tourism jobs",
           "axis": {
             "format": ".0%",
             "grid": false
@@ -140,7 +140,7 @@
         "y": {
           "field": "y1",
           "type": "quantitative",
-          "title": "Share of state spend",
+          "title": "Share of state tourism jobs",
           "axis": {
             "format": ".0%",
             "grid": false
@@ -169,27 +169,20 @@
         },
         "tooltip": [
           {
-            "field": "state",
-            "title": "State"
+            "field": "state"
           },
           {
-            "field": "coastal",
-            "title": "Region type"
+            "field": "coastal"
           },
           {
-            "field": "spend",
-            "title": "Spend ($m)",
-            "format": ",.0f"
+            "field": "jobs",
+            "title": "Jobs ('000)",
+            "format": ",.1f"
           },
           {
-            "field": "share_of_state",
+            "field": "share_state",
             "title": "Share of state",
             "format": ".0%"
-          },
-          {
-            "field": "state_share",
-            "title": "State share of national",
-            "format": ".1%"
           }
         ]
       }
@@ -211,7 +204,7 @@
             {
               "op": "max",
               "field": "state_share",
-              "as": "state_share"
+              "as": "ss"
             }
           ],
           "groupby": [
@@ -219,11 +212,11 @@
           ]
         },
         {
-          "calculate": "(datum.x1 + datum.x2) / 2",
+          "calculate": "(datum.x1+datum.x2)/2",
           "as": "xc"
         },
         {
-          "filter": "datum.state_share >= 0.02"
+          "filter": "datum.ss>=0.02"
         }
       ],
       "mark": {
@@ -232,7 +225,7 @@
         "dy": 4,
         "fontWeight": "bold",
         "fontSize": 11,
-        "color": "#ffffff"
+        "color": "#fff"
       },
       "encoding": {
         "x": {
