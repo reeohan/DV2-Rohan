@@ -1,0 +1,144 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Idiom: radial heatmap. Arc marks: angle = quarter (explicit radians, scale null), ring = year, colour = visits against that year's average. A polar layout suits cyclic data because Q4 sits beside Q1.",
+  "title": {
+    "text": "The reef's quietest quarter is April to June",
+    "subtitle": "Great Barrier Reef full-day visitor days, indexed to each year's average. Ring = year, 2016 inner to 2026 outer; scale clamped, so 2020's lockdown quarters sit beyond it."
+  },
+  "width": 420,
+  "height": 420,
+  "data": {
+    "url": "data/reef_quarterly.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "year": "number",
+        "quarter": "number",
+        "full_day": "number",
+        "seasonal_index": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "calculate": "(datum.quarter-1)/4*2*PI",
+      "as": "a1"
+    },
+    {
+      "calculate": "datum.quarter/4*2*PI",
+      "as": "a2"
+    },
+    {
+      "calculate": "datum.year-2016",
+      "as": "ring"
+    },
+    {
+      "calculate": "48+datum.ring*14",
+      "as": "r1"
+    },
+    {
+      "calculate": "48+datum.ring*14+12.5",
+      "as": "r2"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "arc",
+        "stroke": "#fff",
+        "strokeWidth": 1.4
+      },
+      "encoding": {
+        "theta": {
+          "field": "a1",
+          "type": "quantitative",
+          "scale": null
+        },
+        "theta2": {
+          "field": "a2"
+        },
+        "radius": {
+          "field": "r1",
+          "type": "quantitative",
+          "scale": null
+        },
+        "radius2": {
+          "field": "r2"
+        },
+        "color": {
+          "field": "seasonal_index",
+          "type": "quantitative",
+          "title": [
+            "vs that",
+            "year's average"
+          ],
+          "scale": {
+            "scheme": "blueorange",
+            "domain": [
+              0.7,
+              1.3
+            ],
+            "domainMid": 1,
+            "clamp": true
+          },
+          "legend": {
+            "format": ".2f"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "year"
+          },
+          {
+            "field": "quarter_label",
+            "title": "Quarter"
+          },
+          {
+            "field": "full_day",
+            "title": "Full-day visits",
+            "format": ","
+          },
+          {
+            "field": "seasonal_index",
+            "title": "vs average",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.quarter==1 && datum.year%2==0"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 9,
+        "color": "#33424a",
+        "align": "center",
+        "baseline": "middle"
+      },
+      "encoding": {
+        "theta": {
+          "datum": 0,
+          "type": "quantitative",
+          "scale": null
+        },
+        "radius": {
+          "field": "r1",
+          "type": "quantitative",
+          "scale": null
+        },
+        "text": {
+          "field": "year"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}
