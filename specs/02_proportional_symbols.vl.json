@@ -26,8 +26,8 @@
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#eef1f3",
-        "stroke": "#fff",
+        "fill": "#18304a",
+        "stroke": "#0c1a28",
         "strokeWidth": 1
       }
     },
@@ -57,7 +57,7 @@
       ],
       "mark": {
         "type": "circle",
-        "stroke": "#fff",
+        "stroke": "#0c1a28",
         "strokeWidth": 0.8
       },
       "encoding": {
@@ -81,7 +81,7 @@
           },
           "legend": {
             "format": ",.0f",
-            "symbolFillColor": "#9aa5ab",
+            "symbolFillColor": "#8ea3b6",
             "symbolStrokeWidth": 0
           }
         },
@@ -95,8 +95,8 @@
               "Inland"
             ],
             "range": [
-              "#0e6e8c",
-              "#c89b5a"
+              "#3ee6c4",
+              "#ff7b5c"
             ]
           }
         },

@@ -52,7 +52,7 @@
         "domain": false,
         "ticks": false,
         "grid": true,
-        "gridColor": "#eef1f3"
+        "gridColor": "#1c3044"
       }
     },
     "x": {
@@ -68,7 +68,7 @@
     {
       "mark": {
         "type": "line",
-        "color": "#b9c2c7",
+        "color": "#3a5268",
         "strokeWidth": 2
       },
       "encoding": {
@@ -94,8 +94,8 @@
               "International"
             ],
             "range": [
-              "#0e6e8c",
-              "#e9a23b"
+              "#3ee6c4",
+              "#ff7b5c"
             ]
           },
           "legend": {
@@ -114,13 +114,13 @@
                 "International"
               ],
               "range": [
-                "#0e6e8c",
-                "#e9a23b"
+                "#3ee6c4",
+                "#ff7b5c"
               ]
             },
             "legend": null
           },
-          "value": "#ffffff"
+          "value": "#0c1a28"
         },
         "tooltip": [
           {

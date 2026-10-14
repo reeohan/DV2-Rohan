@@ -83,7 +83,7 @@
         "type": "circle",
         "size": 95,
         "opacity": 0.82,
-        "stroke": "#fff",
+        "stroke": "#0c1a28",
         "strokeWidth": 0.8
       },
       "encoding": {
@@ -97,8 +97,8 @@
               "Inland"
             ],
             "range": [
-              "#0e6e8c",
-              "#c89b5a"
+              "#3ee6c4",
+              "#ff7b5c"
             ]
           }
         },
@@ -128,7 +128,7 @@
         "align": "left",
         "dx": 8,
         "fontSize": 10,
-        "color": "#33424a"
+        "color": "#f4f7fa"
       },
       "encoding": {
         "text": {

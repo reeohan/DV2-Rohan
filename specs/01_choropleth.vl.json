@@ -67,7 +67,7 @@
   },
   "mark": {
     "type": "geoshape",
-    "stroke": "#fff",
+    "stroke": "#0c1a28",
     "strokeWidth": 1
   },
   "encoding": {
@@ -83,11 +83,18 @@
         "tourism jobs"
       ],
       "scale": {
-        "scheme": "blues",
         "domain": [
           0,
           1
-        ]
+        ],
+        "range": [
+          "#1a3550",
+          "#1d6a7a",
+          "#22a99c",
+          "#3ee6c4",
+          "#d2fff3"
+        ],
+        "interpolate": "lab"
       },
       "legend": {
         "format": ".0%",

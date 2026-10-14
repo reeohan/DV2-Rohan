@@ -45,7 +45,7 @@
     {
       "mark": {
         "type": "arc",
-        "stroke": "#fff",
+        "stroke": "#0c1a28",
         "strokeWidth": 1.4
       },
       "encoding": {
@@ -73,13 +73,18 @@
             "year's average"
           ],
           "scale": {
-            "scheme": "blueorange",
             "domain": [
               0.7,
               1.3
             ],
             "domainMid": 1,
-            "clamp": true
+            "clamp": true,
+            "range": [
+              "#4c8dff",
+              "#1e3449",
+              "#ff9a4d"
+            ],
+            "interpolate": "lab"
           },
           "legend": {
             "format": ".2f"
@@ -115,7 +120,7 @@
       "mark": {
         "type": "text",
         "fontSize": 9,
-        "color": "#33424a",
+        "color": "#c9d6e2",
         "align": "center",
         "baseline": "middle"
       },

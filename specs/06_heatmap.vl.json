@@ -31,7 +31,7 @@
     {
       "mark": {
         "type": "rect",
-        "stroke": "#fff",
+        "stroke": "#0c1a28",
         "strokeWidth": 1.5
       },
       "encoding": {
@@ -75,8 +75,13 @@
             "average"
           ],
           "scale": {
-            "scheme": "blueorange",
-            "domainMid": 1
+            "domainMid": 1,
+            "range": [
+              "#4c8dff",
+              "#1e3449",
+              "#ff9a4d"
+            ],
+            "interpolate": "lab"
           },
           "legend": {
             "format": ".2f"
@@ -87,7 +92,7 @@
             "test": "datum.data_status === 'real'",
             "value": 1
           },
-          "value": 0.72
+          "value": 0.85
         },
         "tooltip": [
           {
@@ -120,8 +125,8 @@
         "shape": "circle",
         "size": 14,
         "filled": true,
-        "color": "#1d2a31",
-        "opacity": 0.55,
+        "color": "#ffffff",
+        "opacity": 0.85,
         "yOffset": 7,
         "xOffset": 24
       },

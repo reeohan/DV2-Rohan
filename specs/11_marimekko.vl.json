@@ -121,7 +121,7 @@
     {
       "mark": {
         "type": "rect",
-        "stroke": "#fff",
+        "stroke": "#0c1a28",
         "strokeWidth": 2
       },
       "encoding": {
@@ -159,8 +159,8 @@
               "Inland"
             ],
             "range": [
-              "#0e6e8c",
-              "#c89b5a"
+              "#3ee6c4",
+              "#ff7b5c"
             ]
           },
           "legend": {
@@ -225,7 +225,7 @@
         "dy": 4,
         "fontWeight": "bold",
         "fontSize": 11,
-        "color": "#fff"
+        "color": "#06121d"
       },
       "encoding": {
         "x": {

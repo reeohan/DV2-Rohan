@@ -94,7 +94,16 @@
           "NT",
           "ACT"
         ],
-        "scheme": "tableau10"
+        "range": [
+          "#4cc9f0",
+          "#b388ff",
+          "#ffb347",
+          "#ff5d8f",
+          "#72e0a0",
+          "#f7f06d",
+          "#ff8552",
+          "#a0aec0"
+        ]
       }
     },
     "order": {

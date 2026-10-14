@@ -111,7 +111,7 @@
     {
       "mark": {
         "type": "rule",
-        "color": "#c7cdd1"
+        "color": "#2e4760"
       },
       "encoding": {
         "detail": {
@@ -151,7 +151,26 @@
           "type": "nominal",
           "title": "State (click)",
           "scale": {
-            "scheme": "tableau10"
+            "domain": [
+              "NSW",
+              "VIC",
+              "QLD",
+              "WA",
+              "SA",
+              "TAS",
+              "NT",
+              "ACT"
+            ],
+            "range": [
+              "#4cc9f0",
+              "#b388ff",
+              "#ffb347",
+              "#ff5d8f",
+              "#72e0a0",
+              "#f7f06d",
+              "#ff8552",
+              "#a0aec0"
+            ]
           }
         },
         "opacity": {
@@ -185,7 +204,7 @@
         "dx": -6,
         "align": "right",
         "baseline": "bottom",
-        "color": "#56636b",
+        "color": "#8ea3b6",
         "fontSize": 10
       },
       "encoding": {
@@ -205,7 +224,7 @@
         "dx": -6,
         "align": "right",
         "baseline": "top",
-        "color": "#56636b",
+        "color": "#8ea3b6",
         "fontSize": 10
       },
       "encoding": {

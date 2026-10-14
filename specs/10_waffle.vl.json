@@ -58,7 +58,7 @@
   ],
   "mark": {
     "type": "rect",
-    "stroke": "#fff",
+    "stroke": "#0c1a28",
     "strokeWidth": 3,
     "cornerRadius": 2
   },
@@ -90,12 +90,12 @@
           "Fishing"
         ],
         "range": [
-          "#8c8c8c",
-          "#0e6e8c",
-          "#c6c6c6",
-          "#b0b0b0",
-          "#d8d8d8",
-          "#e8e8e8"
+          "#6f8aa3",
+          "#3ee6c4",
+          "#3d556d",
+          "#4c657e",
+          "#31475d",
+          "#283b4f"
         ]
       },
       "legend": {

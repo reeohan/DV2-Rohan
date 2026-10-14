@@ -54,7 +54,7 @@
       {
         "mark": {
           "type": "rule",
-          "color": "#c89b5a",
+          "color": "#ff7b5c",
           "strokeWidth": 2
         },
         "encoding": {
@@ -68,11 +68,11 @@
       {
         "mark": {
           "type": "line",
-          "color": "#0e6e8c",
+          "color": "#3ee6c4",
           "strokeWidth": 2,
           "point": {
             "size": 16,
-            "color": "#0e6e8c"
+            "color": "#3ee6c4"
           }
         },
         "encoding": {
@@ -107,8 +107,8 @@
   },
   "config": {
     "view": {
-      "stroke": "#e3e7ea",
-      "fill": "#fafbfc"
+      "stroke": "#1f3549",
+      "fill": "#0f2236"
     }
   }
 }
