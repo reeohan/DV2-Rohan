@@ -1,9 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Idiom: parallel coordinates. One line mark per coastal region; each vertical axis is a different measure, normalised to 0-1 so they can share a vertical position channel. Hue = state; clicking the legend highlights a state.",
+  "description": "Idiom: parallel coordinates. One line per region; each axis a different measure, min-max normalised so they share a vertical position channel.",
   "title": {
-    "text": "Coastal regions have very different visitor profiles",
-    "subtitle": "Each line is a regional coastal tourism region (capital cities excluded). Axes run from lowest to highest value."
+    "text": "No two coastal regions look alike",
+    "subtitle": "Regional coastal tourism regions across five measures (capitals excluded). Axes run lowest to highest."
   },
   "width": 680,
   "height": 320,
@@ -14,7 +14,8 @@
       "parse": {
         "visitors_k": "number",
         "nights_k": "number",
-        "spend_m": "number"
+        "spend_m": "number",
+        "tourism_jobs_k_2425": "number"
       }
     }
   },
@@ -31,22 +32,22 @@
       "as": "Nights (000s)"
     },
     {
-      "calculate": "datum.nights_k / datum.visitors_k",
+      "calculate": "datum.nights_k/datum.visitors_k",
       "as": "Avg stay (nights)"
     },
     {
-      "calculate": "datum.spend_m * 1000 / datum.nights_k",
+      "calculate": "datum.spend_m*1000/datum.nights_k",
       "as": "Spend per night ($)"
     },
     {
-      "calculate": "datum.spend_m * 1000 / datum.visitors_k",
-      "as": "Spend per visitor ($)"
+      "calculate": "datum.tourism_jobs_k_2425",
+      "as": "Tourism jobs (000s)"
     },
     {
       "window": [
         {
           "op": "row_number",
-          "as": "line_id"
+          "as": "id"
         }
       ]
     },
@@ -56,7 +57,7 @@
         "Nights (000s)",
         "Avg stay (nights)",
         "Spend per night ($)",
-        "Spend per visitor ($)"
+        "Tourism jobs (000s)"
       ],
       "as": [
         "measure",
@@ -68,12 +69,12 @@
         {
           "op": "min",
           "field": "value",
-          "as": "min"
+          "as": "mn"
         },
         {
           "op": "max",
           "field": "value",
-          "as": "max"
+          "as": "mx"
         }
       ],
       "groupby": [
@@ -81,7 +82,7 @@
       ]
     },
     {
-      "calculate": "(datum.value - datum.min) / (datum.max - datum.min)",
+      "calculate": "(datum.value-datum.mn)/(datum.mx-datum.mn)",
       "as": "norm"
     }
   ],
@@ -94,7 +95,7 @@
         "Nights (000s)",
         "Avg stay (nights)",
         "Spend per night ($)",
-        "Spend per visitor ($)"
+        "Tourism jobs (000s)"
       ],
       "axis": {
         "title": null,
@@ -121,7 +122,7 @@
     {
       "params": [
         {
-          "name": "pickState",
+          "name": "ps",
           "select": {
             "type": "point",
             "fields": [
@@ -133,7 +134,7 @@
       ],
       "mark": {
         "type": "line",
-        "strokeWidth": 2
+        "strokeWidth": 1.8
       },
       "encoding": {
         "y": {
@@ -142,7 +143,7 @@
           "axis": null
         },
         "detail": {
-          "field": "line_id",
+          "field": "id",
           "type": "nominal"
         },
         "color": {
@@ -155,24 +156,25 @@
         },
         "opacity": {
           "condition": {
-            "param": "pickState",
-            "value": 0.85
+            "param": "ps",
+            "value": 0.8
           },
-          "value": 0.1
+          "value": 0.08
         },
         "tooltip": [
           {
-            "field": "region",
-            "title": "Region"
+            "field": "region"
           },
           {
-            "field": "measure",
-            "title": "Measure"
+            "field": "measure"
           },
           {
             "field": "value",
-            "title": "Value",
-            "format": ",.0f"
+            "format": ",.1f"
+          },
+          {
+            "field": "visitor_data_status",
+            "title": "Visitor data"
           }
         ]
       }
@@ -192,7 +194,7 @@
         },
         "text": {
           "aggregate": "max",
-          "field": "max",
+          "field": "mx",
           "format": ",.0f"
         }
       }
@@ -212,7 +214,7 @@
         },
         "text": {
           "aggregate": "min",
-          "field": "min",
+          "field": "mn",
           "format": ",.0f"
         }
       }
