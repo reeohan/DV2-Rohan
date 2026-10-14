@@ -1,41 +1,165 @@
-origin,origin_state,origin_lat,origin_lon,dest_region,dest_lat,dest_lon,trips_k
-Melbourne,VIC,-37.81,144.96,Phillip Island,-38.49,145.23,799.2
-Brisbane,QLD,-27.47,153.03,Sunshine Coast,-26.65,153.07,666.9
-Adelaide,SA,-34.93,138.6,Fleurieu Peninsula,-35.5,138.6,614.8
-Brisbane,QLD,-27.47,153.03,Gold Coast,-28.02,153.4,397.3
-Perth,WA,-31.95,115.86,Australia's South West,-33.9,115.3,378.6
-Brisbane,QLD,-27.47,153.03,North Coast NSW,-29.8,153.0,315.2
-Melbourne,VIC,-37.81,144.96,Great Ocean Road,-38.5,143.5,295.7
-Sydney,NSW,-33.87,151.21,South Coast,-35.9,150.1,225.0
-Brisbane,QLD,-27.47,153.03,Fraser Coast,-25.3,152.85,216.3
-Sydney,NSW,-33.87,151.21,North Coast NSW,-29.8,153.0,173.9
-Adelaide,SA,-34.93,138.6,Great Ocean Road,-38.5,143.5,171.4
-Melbourne,VIC,-37.81,144.96,South Coast,-35.9,150.1,153.7
-Adelaide,SA,-34.93,138.6,Phillip Island,-38.49,145.23,116.8
-Melbourne,VIC,-37.81,144.96,North Coast NSW,-29.8,153.0,115.6
-Sydney,NSW,-33.87,151.21,Phillip Island,-38.49,145.23,107.7
-Brisbane,QLD,-27.47,153.03,Whitsundays,-20.3,148.7,107.4
-Adelaide,SA,-34.93,138.6,East Coast,-41.9,148.2,104.6
-Sydney,NSW,-33.87,151.21,Gold Coast,-28.02,153.4,98.2
-Melbourne,VIC,-37.81,144.96,Gold Coast,-28.02,153.4,92.7
-Adelaide,SA,-34.93,138.6,South Coast,-35.9,150.1,88.4
-Sydney,NSW,-33.87,151.21,Fraser Coast,-25.3,152.85,85.2
-Perth,WA,-31.95,115.86,Australia's Coral Coast,-25.0,114.0,82.0
-Brisbane,QLD,-27.47,153.03,South Coast,-35.9,150.1,77.5
-Adelaide,SA,-34.93,138.6,Sunshine Coast,-26.65,153.07,68.6
-Melbourne,VIC,-37.81,144.96,Fleurieu Peninsula,-35.5,138.6,65.5
-Melbourne,VIC,-37.81,144.96,East Coast,-41.9,148.2,63.8
-Brisbane,QLD,-27.47,153.03,Great Ocean Road,-38.5,143.5,62.5
-Perth,WA,-31.95,115.86,Fleurieu Peninsula,-35.5,138.6,61.2
-Sydney,NSW,-33.87,151.21,Sunshine Coast,-26.65,153.07,61.1
-Sydney,NSW,-33.87,151.21,Tropical North Queensland,-16.9,145.77,58.0
-Melbourne,VIC,-37.81,144.96,Whitsundays,-20.3,148.7,56.3
-Adelaide,SA,-34.93,138.6,Fraser Coast,-25.3,152.85,55.5
-Adelaide,SA,-34.93,138.6,Whitsundays,-20.3,148.7,48.3
-Brisbane,QLD,-27.47,153.03,Fleurieu Peninsula,-35.5,138.6,47.8
-Adelaide,SA,-34.93,138.6,Gold Coast,-28.02,153.4,47.6
-Melbourne,VIC,-37.81,144.96,Australia's South West,-33.9,115.3,43.1
-Adelaide,SA,-34.93,138.6,Australia's Coral Coast,-25.0,114.0,41.6
-Sydney,NSW,-33.87,151.21,Great Ocean Road,-38.5,143.5,41.2
-Sydney,NSW,-33.87,151.21,East Coast,-41.9,148.2,40.6
-Brisbane,QLD,-27.47,153.03,Tropical North Queensland,-16.9,145.77,40.0
+origin,origin_lat,origin_lon,dest_region,dest_state,dest_lat,dest_lon,trips_k,data_status,source
+Within WA,-27.0,121.0,Australia's North West,WA,-18.0,122.2,395.0,real,Tourism WA regional factsheet 2025
+Interstate,-30.0,140.0,Australia's North West,WA,-18.0,122.2,96.0,real,Tourism WA regional factsheet 2025
+Within WA,-27.0,121.0,Australia's South West,WA,-33.9,115.3,2583.0,real,Tourism WA regional factsheet 2025
+Interstate,-30.0,140.0,Australia's South West,WA,-33.9,115.3,177.0,real,Tourism WA regional factsheet 2025
+Rest of NSW,-32.5,148.0,Blue Mountains,NSW,-33.7,150.3,224.1,real,Destination NSW visitor profile (origin share x overnight visitors)
+Greater Sydney,-33.87,151.21,Blue Mountains,NSW,-33.7,150.3,837.5,real,Destination NSW visitor profile (origin share x overnight visitors)
+Rest of NSW,-32.5,148.0,Capital Country,NSW,-34.6,149.6,614.5,real,Destination NSW visitor profile (origin share x overnight visitors)
+Greater Sydney,-33.87,151.21,Capital Country,NSW,-34.6,149.6,995.9,real,Destination NSW visitor profile (origin share x overnight visitors)
+Victoria,-37.02,144.5,Capital Country,NSW,-34.6,149.6,148.3,real,Destination NSW visitor profile (origin share x overnight visitors)
+ACT,-35.28,149.13,Capital Country,NSW,-34.6,149.6,148.3,real,Destination NSW visitor profile (origin share x overnight visitors)
+Queensland,-23.0,144.0,Capital Country,NSW,-34.6,149.6,148.3,real,Destination NSW visitor profile (origin share x overnight visitors)
+Rest of NSW,-32.5,148.0,Central Coast,NSW,-33.43,151.34,638.7,real,Destination NSW visitor profile (origin share x overnight visitors)
+Greater Sydney,-33.87,151.21,Central Coast,NSW,-33.43,151.34,1686.1,real,Destination NSW visitor profile (origin share x overnight visitors)
+Rest of NSW,-32.5,148.0,Central NSW,NSW,-33.3,148.7,1107.8,real,Destination NSW visitor profile (origin share x overnight visitors)
+Greater Sydney,-33.87,151.21,Central NSW,NSW,-33.3,148.7,1306.6,real,Destination NSW visitor profile (origin share x overnight visitors)
+Queensland,-23.0,144.0,Central NSW,NSW,-33.3,148.7,170.4,real,Destination NSW visitor profile (origin share x overnight visitors)
+Victoria,-37.02,144.5,Central NSW,NSW,-33.3,148.7,142.0,real,Destination NSW visitor profile (origin share x overnight visitors)
+ACT,-35.28,149.13,Central NSW,NSW,-33.3,148.7,85.2,real,Destination NSW visitor profile (origin share x overnight visitors)
+Within WA,-27.0,121.0,Destination Perth,WA,-31.95,115.86,5109.0,real,Tourism WA regional factsheet 2025
+Interstate,-30.0,140.0,Destination Perth,WA,-31.95,115.86,1019.0,real,Tourism WA regional factsheet 2025
+Rest of NSW,-32.5,148.0,Hunter,NSW,-32.7,151.5,1764.4,real,Destination NSW visitor profile (origin share x overnight visitors)
+Greater Sydney,-33.87,151.21,Hunter,NSW,-32.7,151.5,2994.2,real,Destination NSW visitor profile (origin share x overnight visitors)
+Queensland,-23.0,144.0,Hunter,NSW,-32.7,151.5,267.3,real,Destination NSW visitor profile (origin share x overnight visitors)
+Victoria,-37.02,144.5,Hunter,NSW,-32.7,151.5,160.4,real,Destination NSW visitor profile (origin share x overnight visitors)
+Rest of NSW,-32.5,148.0,New England North West,NSW,-30.3,150.9,727.2,real,Destination NSW visitor profile (origin share x overnight visitors)
+Greater Sydney,-33.87,151.21,New England North West,NSW,-30.3,150.9,554.1,real,Destination NSW visitor profile (origin share x overnight visitors)
+Queensland,-23.0,144.0,New England North West,NSW,-30.3,150.9,346.3,real,Destination NSW visitor profile (origin share x overnight visitors)
+Rest of NSW,-32.5,148.0,North Coast NSW,NSW,-29.8,153.0,2229.6,real,Destination NSW visitor profile (origin share x overnight visitors)
+Greater Sydney,-33.87,151.21,North Coast NSW,NSW,-29.8,153.0,2027.0,real,Destination NSW visitor profile (origin share x overnight visitors)
+Queensland,-23.0,144.0,North Coast NSW,NSW,-29.8,153.0,1959.4,real,Destination NSW visitor profile (origin share x overnight visitors)
+Victoria,-37.02,144.5,North Coast NSW,NSW,-29.8,153.0,337.8,real,Destination NSW visitor profile (origin share x overnight visitors)
+Rest of NSW,-32.5,148.0,Outback NSW,NSW,-31.9,143.0,96.2,real,Destination NSW visitor profile (origin share x overnight visitors)
+Rest of NSW,-32.5,148.0,Riverina,NSW,-35.1,147.4,504.3,real,Destination NSW visitor profile (origin share x overnight visitors)
+Greater Sydney,-33.87,151.21,Riverina,NSW,-35.1,147.4,504.3,real,Destination NSW visitor profile (origin share x overnight visitors)
+Victoria,-37.02,144.5,Riverina,NSW,-35.1,147.4,290.4,real,Destination NSW visitor profile (origin share x overnight visitors)
+ACT,-35.28,149.13,Riverina,NSW,-35.1,147.4,91.7,real,Destination NSW visitor profile (origin share x overnight visitors)
+Rest of NSW,-32.5,148.0,Snowy Mountains,NSW,-36.4,148.5,160.3,real,Destination NSW visitor profile (origin share x overnight visitors)
+Greater Sydney,-33.87,151.21,Snowy Mountains,NSW,-36.4,148.5,302.1,real,Destination NSW visitor profile (origin share x overnight visitors)
+Rest of NSW,-32.5,148.0,South Coast,NSW,-35.9,150.1,1235.3,real,Destination NSW visitor profile (origin share x overnight visitors)
+Greater Sydney,-33.87,151.21,South Coast,NSW,-35.9,150.1,2882.4,real,Destination NSW visitor profile (origin share x overnight visitors)
+ACT,-35.28,149.13,South Coast,NSW,-35.9,150.1,514.7,real,Destination NSW visitor profile (origin share x overnight visitors)
+Victoria,-37.02,144.5,South Coast,NSW,-35.9,150.1,360.3,real,Destination NSW visitor profile (origin share x overnight visitors)
+Rest of NSW,-32.5,148.0,The Murray,NSW,-35.3,144.8,290.8,real,Destination NSW visitor profile (origin share x overnight visitors)
+Greater Sydney,-33.87,151.21,The Murray,NSW,-35.3,144.8,163.6,real,Destination NSW visitor profile (origin share x overnight visitors)
+Victoria,-37.02,144.5,The Murray,NSW,-35.3,144.8,1036.1,real,Destination NSW visitor profile (origin share x overnight visitors)
+ACT,-35.28,149.13,The Murray,NSW,-35.3,144.8,109.1,real,Destination NSW visitor profile (origin share x overnight visitors)
+South Australia,-34.0,137.0,Adelaide,SA,-34.93,138.6,2402.2,placeholder,PLACEHOLDER - not real data
+Victoria,-37.02,144.5,Adelaide,SA,-34.93,138.6,172.4,placeholder,PLACEHOLDER - not real data
+Western Australia,-27.0,121.0,Australia's Coral Coast,WA,-25.0,114.0,498.0,placeholder,PLACEHOLDER - not real data
+South Australia,-34.0,137.0,Australia's Coral Coast,WA,-25.0,114.0,78.2,placeholder,PLACEHOLDER - not real data
+Victoria,-37.02,144.5,Australia's Coral Coast,WA,-25.0,114.0,54.9,placeholder,PLACEHOLDER - not real data
+Greater Sydney,-33.87,151.21,Australia's Coral Coast,WA,-25.0,114.0,44.8,placeholder,PLACEHOLDER - not real data
+Queensland,-23.0,144.0,Brisbane,QLD,-27.47,153.03,7800.1,placeholder,PLACEHOLDER - not real data
+Greater Sydney,-33.87,151.21,Brisbane,QLD,-27.47,153.03,595.4,placeholder,PLACEHOLDER - not real data
+Queensland,-23.0,144.0,Bundaberg,QLD,-24.87,152.35,498.2,placeholder,PLACEHOLDER - not real data
+Greater Sydney,-33.87,151.21,Bundaberg,QLD,-24.87,152.35,117.5,placeholder,PLACEHOLDER - not real data
+Victoria,-37.02,144.5,Bundaberg,QLD,-24.87,152.35,58.7,placeholder,PLACEHOLDER - not real data
+South Australia,-34.0,137.0,Bundaberg,QLD,-24.87,152.35,48.4,placeholder,PLACEHOLDER - not real data
+Queensland,-23.0,144.0,Capricorn,QLD,-23.38,150.51,344.2,placeholder,PLACEHOLDER - not real data
+Greater Sydney,-33.87,151.21,Capricorn,QLD,-23.38,150.51,125.1,placeholder,PLACEHOLDER - not real data
+Victoria,-37.02,144.5,Capricorn,QLD,-23.38,150.51,72.5,placeholder,PLACEHOLDER - not real data
+South Australia,-34.0,137.0,Capricorn,QLD,-23.38,150.51,65.5,placeholder,PLACEHOLDER - not real data
+South Australia,-34.0,137.0,Darwin,NT,-12.46,130.84,285.8,placeholder,PLACEHOLDER - not real data
+Western Australia,-27.0,121.0,Darwin,NT,-12.46,130.84,271.8,placeholder,PLACEHOLDER - not real data
+Queensland,-23.0,144.0,Darwin,NT,-12.46,130.84,238.8,placeholder,PLACEHOLDER - not real data
+Victoria,-37.02,144.5,Darwin,NT,-12.46,130.84,211.7,placeholder,PLACEHOLDER - not real data
+Victoria,-37.02,144.5,East Coast,TAS,-41.9,148.2,180.4,placeholder,PLACEHOLDER - not real data
+Greater Sydney,-33.87,151.21,East Coast,TAS,-41.9,148.2,95.5,placeholder,PLACEHOLDER - not real data
+South Australia,-34.0,137.0,East Coast,TAS,-41.9,148.2,61.2,placeholder,PLACEHOLDER - not real data
+Queensland,-23.0,144.0,East Coast,TAS,-41.9,148.2,42.9,placeholder,PLACEHOLDER - not real data
+South Australia,-34.0,137.0,Eyre Peninsula,SA,-34.0,135.5,231.5,placeholder,PLACEHOLDER - not real data
+Victoria,-37.02,144.5,Eyre Peninsula,SA,-34.0,135.5,56.3,placeholder,PLACEHOLDER - not real data
+Greater Sydney,-33.87,151.21,Eyre Peninsula,SA,-34.0,135.5,30.6,placeholder,PLACEHOLDER - not real data
+Queensland,-23.0,144.0,Eyre Peninsula,SA,-34.0,135.5,23.7,placeholder,PLACEHOLDER - not real data
+South Australia,-34.0,137.0,Fleurieu Peninsula,SA,-35.5,138.6,474.0,placeholder,PLACEHOLDER - not real data
+Victoria,-37.02,144.5,Fleurieu Peninsula,SA,-35.5,138.6,56.7,placeholder,PLACEHOLDER - not real data
+Queensland,-23.0,144.0,Fraser Coast,QLD,-25.3,152.85,515.7,placeholder,PLACEHOLDER - not real data
+Greater Sydney,-33.87,151.21,Fraser Coast,QLD,-25.3,152.85,105.0,placeholder,PLACEHOLDER - not real data
+Victoria,-37.02,144.5,Fraser Coast,QLD,-25.3,152.85,50.3,placeholder,PLACEHOLDER - not real data
+South Australia,-34.0,137.0,Fraser Coast,QLD,-25.3,152.85,40.5,placeholder,PLACEHOLDER - not real data
+Victoria,-37.02,144.5,Geelong and the Bellarine,VIC,-38.15,144.36,1306.5,placeholder,PLACEHOLDER - not real data
+South Australia,-34.0,137.0,Geelong and the Bellarine,VIC,-38.15,144.36,175.4,placeholder,PLACEHOLDER - not real data
+Greater Sydney,-33.87,151.21,Geelong and the Bellarine,VIC,-38.15,144.36,134.8,placeholder,PLACEHOLDER - not real data
+Victoria,-37.02,144.5,Gippsland,VIC,-37.9,147.2,442.2,placeholder,PLACEHOLDER - not real data
+Greater Sydney,-33.87,151.21,Gippsland,VIC,-37.9,147.2,160.9,placeholder,PLACEHOLDER - not real data
+South Australia,-34.0,137.0,Gippsland,VIC,-37.9,147.2,87.4,placeholder,PLACEHOLDER - not real data
+Queensland,-23.0,144.0,Gippsland,VIC,-37.9,147.2,60.0,placeholder,PLACEHOLDER - not real data
+Queensland,-23.0,144.0,Gladstone,QLD,-23.84,151.26,250.3,placeholder,PLACEHOLDER - not real data
+Greater Sydney,-33.87,151.21,Gladstone,QLD,-23.84,151.26,79.4,placeholder,PLACEHOLDER - not real data
+Victoria,-37.02,144.5,Gladstone,QLD,-23.84,151.26,43.7,placeholder,PLACEHOLDER - not real data
+South Australia,-34.0,137.0,Gladstone,QLD,-23.84,151.26,38.1,placeholder,PLACEHOLDER - not real data
+Queensland,-23.0,144.0,Gold Coast,QLD,-28.02,153.4,3723.9,placeholder,PLACEHOLDER - not real data
+Greater Sydney,-33.87,151.21,Gold Coast,QLD,-28.02,153.4,526.3,placeholder,PLACEHOLDER - not real data
+Victoria,-37.02,144.5,Great Ocean Road,VIC,-38.5,143.5,1166.1,placeholder,PLACEHOLDER - not real data
+South Australia,-34.0,137.0,Great Ocean Road,VIC,-38.5,143.5,296.1,placeholder,PLACEHOLDER - not real data
+Greater Sydney,-33.87,151.21,Great Ocean Road,VIC,-38.5,143.5,177.0,placeholder,PLACEHOLDER - not real data
+Queensland,-23.0,144.0,Great Ocean Road,VIC,-38.5,143.5,90.2,placeholder,PLACEHOLDER - not real data
+Victoria,-37.02,144.5,Hobart and the South,TAS,-42.88,147.33,1069.6,placeholder,PLACEHOLDER - not real data
+Greater Sydney,-33.87,151.21,Hobart and the South,TAS,-42.88,147.33,514.4,placeholder,PLACEHOLDER - not real data
+South Australia,-34.0,137.0,Hobart and the South,TAS,-42.88,147.33,398.0,placeholder,PLACEHOLDER - not real data
+Queensland,-23.0,144.0,Hobart and the South,TAS,-42.88,147.33,248.2,placeholder,PLACEHOLDER - not real data
+South Australia,-34.0,137.0,Kangaroo Island,SA,-35.8,137.25,161.3,placeholder,PLACEHOLDER - not real data
+Victoria,-37.02,144.5,Kangaroo Island,SA,-35.8,137.25,28.7,placeholder,PLACEHOLDER - not real data
+Greater Sydney,-33.87,151.21,Kangaroo Island,SA,-35.8,137.25,13.0,placeholder,PLACEHOLDER - not real data
+Victoria,-37.02,144.5,Lakes,VIC,-37.88,147.98,200.4,placeholder,PLACEHOLDER - not real data
+Greater Sydney,-33.87,151.21,Lakes,VIC,-37.88,147.98,110.1,placeholder,PLACEHOLDER - not real data
+South Australia,-34.0,137.0,Lakes,VIC,-37.88,147.98,47.7,placeholder,PLACEHOLDER - not real data
+Queensland,-23.0,144.0,Lakes,VIC,-37.88,147.98,38.1,placeholder,PLACEHOLDER - not real data
+Victoria,-37.02,144.5,Launceston and the North,TAS,-41.44,147.14,470.1,placeholder,PLACEHOLDER - not real data
+Greater Sydney,-33.87,151.21,Launceston and the North,TAS,-41.44,147.14,194.0,placeholder,PLACEHOLDER - not real data
+South Australia,-34.0,137.0,Launceston and the North,TAS,-41.44,147.14,143.2,placeholder,PLACEHOLDER - not real data
+Queensland,-23.0,144.0,Launceston and the North,TAS,-41.44,147.14,87.9,placeholder,PLACEHOLDER - not real data
+South Australia,-34.0,137.0,Limestone Coast,SA,-37.3,140.4,324.2,placeholder,PLACEHOLDER - not real data
+Victoria,-37.02,144.5,Limestone Coast,SA,-37.3,140.4,201.2,placeholder,PLACEHOLDER - not real data
+Greater Sydney,-33.87,151.21,Limestone Coast,SA,-37.3,140.4,62.4,placeholder,PLACEHOLDER - not real data
+Queensland,-23.0,144.0,Limestone Coast,SA,-37.3,140.4,38.2,placeholder,PLACEHOLDER - not real data
+South Australia,-34.0,137.0,Litchfield Kakadu Arnhem,NT,-13.1,131.8,35.6,placeholder,PLACEHOLDER - not real data
+Western Australia,-27.0,121.0,Litchfield Kakadu Arnhem,NT,-13.1,131.8,31.7,placeholder,PLACEHOLDER - not real data
+Queensland,-23.0,144.0,Litchfield Kakadu Arnhem,NT,-13.1,131.8,30.0,placeholder,PLACEHOLDER - not real data
+Victoria,-37.02,144.5,Litchfield Kakadu Arnhem,NT,-13.1,131.8,26.3,placeholder,PLACEHOLDER - not real data
+Queensland,-23.0,144.0,Mackay Isaac,QLD,-21.14,149.19,372.1,placeholder,PLACEHOLDER - not real data
+Greater Sydney,-33.87,151.21,Mackay Isaac,QLD,-21.14,149.19,174.6,placeholder,PLACEHOLDER - not real data
+Victoria,-37.02,144.5,Mackay Isaac,QLD,-21.14,149.19,115.3,placeholder,PLACEHOLDER - not real data
+South Australia,-34.0,137.0,Mackay Isaac,QLD,-21.14,149.19,113.5,placeholder,PLACEHOLDER - not real data
+Victoria,-37.02,144.5,Melbourne,VIC,-37.81,144.96,22758.4,placeholder,PLACEHOLDER - not real data
+South Australia,-34.0,137.0,Melbourne,VIC,-37.81,144.96,1633.1,placeholder,PLACEHOLDER - not real data
+Greater Sydney,-33.87,151.21,Melbourne,VIC,-37.81,144.96,1517.3,placeholder,PLACEHOLDER - not real data
+South Australia,-34.0,137.0,"Murray River, Lakes and Coorong",SA,-35.6,139.3,239.8,placeholder,PLACEHOLDER - not real data
+Victoria,-37.02,144.5,"Murray River, Lakes and Coorong",SA,-35.6,139.3,42.8,placeholder,PLACEHOLDER - not real data
+Greater Sydney,-33.87,151.21,"Murray River, Lakes and Coorong",SA,-35.6,139.3,17.2,placeholder,PLACEHOLDER - not real data
+Victoria,-37.02,144.5,North West,TAS,-41.15,145.9,389.0,placeholder,PLACEHOLDER - not real data
+Greater Sydney,-33.87,151.21,North West,TAS,-41.15,145.9,120.6,placeholder,PLACEHOLDER - not real data
+South Australia,-34.0,137.0,North West,TAS,-41.15,145.9,110.8,placeholder,PLACEHOLDER - not real data
+Queensland,-23.0,144.0,North West,TAS,-41.15,145.9,56.8,placeholder,PLACEHOLDER - not real data
+Victoria,-37.02,144.5,Peninsula,VIC,-38.35,145.0,1356.1,placeholder,PLACEHOLDER - not real data
+South Australia,-34.0,137.0,Peninsula,VIC,-38.35,145.0,145.2,placeholder,PLACEHOLDER - not real data
+Greater Sydney,-33.87,151.21,Peninsula,VIC,-38.35,145.0,135.3,placeholder,PLACEHOLDER - not real data
+Victoria,-37.02,144.5,Phillip Island,VIC,-38.49,145.23,463.1,placeholder,PLACEHOLDER - not real data
+South Australia,-34.0,137.0,Phillip Island,VIC,-38.49,145.23,54.0,placeholder,PLACEHOLDER - not real data
+Greater Sydney,-33.87,151.21,Phillip Island,VIC,-38.49,145.23,53.7,placeholder,PLACEHOLDER - not real data
+Queensland,-23.0,144.0,Sunshine Coast,QLD,-26.65,153.07,2968.6,placeholder,PLACEHOLDER - not real data
+Greater Sydney,-33.87,151.21,Sunshine Coast,QLD,-26.65,153.07,371.2,placeholder,PLACEHOLDER - not real data
+Greater Sydney,-33.87,151.21,Sydney,NSW,-33.87,151.21,21971.3,placeholder,PLACEHOLDER - not real data
+Queensland,-23.0,144.0,Sydney,NSW,-33.87,151.21,1677.2,placeholder,PLACEHOLDER - not real data
+Victoria,-37.02,144.5,Sydney,NSW,-33.87,151.21,1464.9,placeholder,PLACEHOLDER - not real data
+Queensland,-23.0,144.0,Townsville,QLD,-19.26,146.82,333.8,placeholder,PLACEHOLDER - not real data
+Greater Sydney,-33.87,151.21,Townsville,QLD,-19.26,146.82,191.6,placeholder,PLACEHOLDER - not real data
+South Australia,-34.0,137.0,Townsville,QLD,-19.26,146.82,154.4,placeholder,PLACEHOLDER - not real data
+Victoria,-37.02,144.5,Townsville,QLD,-19.26,146.82,143.1,placeholder,PLACEHOLDER - not real data
+Queensland,-23.0,144.0,Tropical North Queensland,QLD,-16.9,145.77,649.3,placeholder,PLACEHOLDER - not real data
+Greater Sydney,-33.87,151.21,Tropical North Queensland,QLD,-16.9,145.77,404.1,placeholder,PLACEHOLDER - not real data
+South Australia,-34.0,137.0,Tropical North Queensland,QLD,-16.9,145.77,356.7,placeholder,PLACEHOLDER - not real data
+Victoria,-37.02,144.5,Tropical North Queensland,QLD,-16.9,145.77,319.0,placeholder,PLACEHOLDER - not real data
+Victoria,-37.02,144.5,West Coast,TAS,-42.1,145.3,30.4,placeholder,PLACEHOLDER - not real data
+South Australia,-34.0,137.0,West Coast,TAS,-42.1,145.3,10.7,placeholder,PLACEHOLDER - not real data
+Greater Sydney,-33.87,151.21,West Coast,TAS,-42.1,145.3,10.2,placeholder,PLACEHOLDER - not real data
+Queensland,-23.0,144.0,West Coast,TAS,-42.1,145.3,5.1,placeholder,PLACEHOLDER - not real data
+Queensland,-23.0,144.0,Whitsundays,QLD,-20.3,148.7,294.9,placeholder,PLACEHOLDER - not real data
+Greater Sydney,-33.87,151.21,Whitsundays,QLD,-20.3,148.7,147.8,placeholder,PLACEHOLDER - not real data
+South Australia,-34.0,137.0,Whitsundays,QLD,-20.3,148.7,102.5,placeholder,PLACEHOLDER - not real data
+Victoria,-37.02,144.5,Whitsundays,QLD,-20.3,148.7,101.4,placeholder,PLACEHOLDER - not real data
+South Australia,-34.0,137.0,Yorke Peninsula,SA,-34.5,137.6,388.6,placeholder,PLACEHOLDER - not real data
+Victoria,-37.02,144.5,Yorke Peninsula,SA,-34.5,137.6,51.6,placeholder,PLACEHOLDER - not real data
+Greater Sydney,-33.87,151.21,Yorke Peninsula,SA,-34.5,137.6,25.0,placeholder,PLACEHOLDER - not real data

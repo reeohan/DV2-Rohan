@@ -1,0 +1,211 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Idiom: flow map. Rule marks drawn between two geographic points using longitude2/latitude2; width encodes trips, hue encodes origin. Only each origin's six largest flows are drawn.",
+  "title": {
+    "text": "Where coastal visitors travel from",
+    "subtitle": "Domestic overnight trips from origin to coastal region. Solid lines are measured; dashed are placeholder."
+  },
+  "width": 560,
+  "height": 470,
+  "projection": {
+    "type": "equalEarth",
+    "rotate": [
+      -134,
+      0,
+      0
+    ]
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/aus_states.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "states"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#eef1f3",
+        "stroke": "#fff",
+        "strokeWidth": 1
+      }
+    },
+    {
+      "data": {
+        "url": "data/flows.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "origin_lat": "number",
+            "origin_lon": "number",
+            "dest_lat": "number",
+            "dest_lon": "number",
+            "trips_k": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "window": [
+            {
+              "op": "rank",
+              "as": "rk"
+            }
+          ],
+          "groupby": [
+            "origin"
+          ],
+          "sort": [
+            {
+              "field": "trips_k",
+              "order": "descending"
+            }
+          ]
+        },
+        {
+          "filter": "datum.rk<=6"
+        }
+      ],
+      "params": [
+        {
+          "name": "po",
+          "select": {
+            "type": "point",
+            "fields": [
+              "origin"
+            ]
+          },
+          "bind": "legend"
+        }
+      ],
+      "mark": {
+        "type": "rule",
+        "strokeCap": "round"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "origin_lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "origin_lat",
+          "type": "quantitative"
+        },
+        "longitude2": {
+          "field": "dest_lon"
+        },
+        "latitude2": {
+          "field": "dest_lat"
+        },
+        "strokeWidth": {
+          "field": "trips_k",
+          "type": "quantitative",
+          "title": "Trips ('000)",
+          "scale": {
+            "range": [
+              0.6,
+              7
+            ]
+          },
+          "legend": {
+            "format": ",.0f"
+          }
+        },
+        "color": {
+          "field": "origin",
+          "type": "nominal",
+          "title": "Travelling from (click)",
+          "scale": {
+            "scheme": "tableau10"
+          }
+        },
+        "strokeDash": {
+          "field": "data_status",
+          "type": "nominal",
+          "title": "Data",
+          "scale": {
+            "domain": [
+              "real",
+              "placeholder"
+            ],
+            "range": [
+              [
+                1,
+                0
+              ],
+              [
+                4,
+                3
+              ]
+            ]
+          }
+        },
+        "opacity": {
+          "condition": {
+            "param": "po",
+            "value": 0.6
+          },
+          "value": 0.06
+        },
+        "tooltip": [
+          {
+            "field": "origin",
+            "title": "From"
+          },
+          {
+            "field": "dest_region",
+            "title": "To"
+          },
+          {
+            "field": "trips_k",
+            "title": "Trips ('000)",
+            "format": ",.1f"
+          },
+          {
+            "field": "data_status",
+            "title": "Status"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/regions.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "lat": "number",
+            "lon": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.coastal === 'Coastal'"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "size": 22,
+        "color": "#1d2a31",
+        "opacity": 0.75
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "region"
+          }
+        ]
+      }
+    }
+  ]
+}
