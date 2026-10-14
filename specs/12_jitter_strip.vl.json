@@ -1,20 +1,20 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Idiom: jittered strip plot (a beeswarm-style layout; a true beeswarm needs Vega's force transform). Point marks: x = tourism's share of regional jobs, y = coastal vs inland, with a fixed pseudo-random vertical offset so dots don't overlap. The most tourism-dependent regions are labelled.",
+  "description": "Idiom: jittered strip plot (beeswarm-style; a true beeswarm needs Vega's force transform). Point marks with a deterministic pseudo-random yOffset so dots don't overlap. Log scale keeps the capitals from flattening everything else.",
   "title": {
-    "text": "Some coastal economies lean heavily on tourism",
-    "subtitle": "Tourism's share of all jobs in each tourism region, latest year"
+    "text": "Coastal regions hold 87% of Australia's tourism jobs",
+    "subtitle": "Direct tourism filled jobs by region, 2024-25, log scale. Labels mark the five largest."
   },
   "width": 620,
   "height": {
-    "step": 110
+    "step": 120
   },
   "data": {
     "url": "data/regions.csv",
     "format": {
       "type": "csv",
       "parse": {
-        "jobs_share_2024": "number"
+        "tourism_jobs_k_2425": "number"
       }
     }
   },
@@ -23,24 +23,24 @@
       "window": [
         {
           "op": "row_number",
-          "as": "idx"
+          "as": "i"
         }
       ]
     },
     {
-      "calculate": "((datum.idx * 9301 + 49297) % 233280) / 233280 - 0.5",
-      "as": "jitter"
+      "calculate": "((datum.i*9301+49297)%233280)/233280-0.5",
+      "as": "jit"
     },
     {
       "window": [
         {
           "op": "rank",
-          "as": "dependence_rank"
+          "as": "rk"
         }
       ],
       "sort": [
         {
-          "field": "jobs_share_2024",
+          "field": "tourism_jobs_k_2425",
           "order": "descending"
         }
       ]
@@ -48,11 +48,11 @@
   ],
   "encoding": {
     "x": {
-      "field": "jobs_share_2024",
+      "field": "tourism_jobs_k_2425",
       "type": "quantitative",
-      "title": "Tourism share of regional jobs (%)",
+      "title": "Direct tourism filled jobs ('000)",
       "scale": {
-        "zero": true
+        "type": "log"
       }
     },
     "y": {
@@ -67,7 +67,7 @@
       }
     },
     "yOffset": {
-      "field": "jitter",
+      "field": "jit",
       "type": "quantitative",
       "scale": {
         "domain": [
@@ -81,9 +81,9 @@
     {
       "mark": {
         "type": "circle",
-        "size": 90,
-        "opacity": 0.8,
-        "stroke": "#ffffff",
+        "size": 95,
+        "opacity": 0.82,
+        "stroke": "#fff",
         "strokeWidth": 0.8
       },
       "encoding": {
@@ -104,16 +104,15 @@
         },
         "tooltip": [
           {
-            "field": "region",
-            "title": "Region"
+            "field": "region"
           },
           {
-            "field": "state",
-            "title": "State"
+            "field": "state"
           },
           {
-            "field": "jobs_share_2024",
-            "title": "Tourism share of jobs (%)"
+            "field": "tourism_jobs_k_2425",
+            "title": "Jobs ('000)",
+            "format": ",.2f"
           }
         ]
       }
@@ -121,7 +120,7 @@
     {
       "transform": [
         {
-          "filter": "datum.dependence_rank <= 4"
+          "filter": "datum.rk<=5"
         }
       ],
       "mark": {
