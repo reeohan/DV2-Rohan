@@ -2,8 +2,11 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Idiom: slope chart. Line marks joining two time points; vertical position = tourism jobs on a log scale, slope = change, hue = direction. Regional coastal regions only. Reproduces TRA's published growth distribution exactly.",
   "title": {
-    "text": "Queensland's coast grew while Western Australia's fell",
-    "subtitle": "Direct tourism filled jobs, 2023-24 to 2024-25, regional coastal regions (log scale). Twelve largest labelled."
+    "text": "Queensland's coast grew, WA's fell",
+    "subtitle": [
+      "Direct tourism jobs, 2023-24 to 2024-25.",
+      "Regional coastal regions, log scale; 12 largest labelled."
+    ]
   },
   "width": 300,
   "height": 470,

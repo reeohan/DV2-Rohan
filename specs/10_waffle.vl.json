@@ -2,8 +2,11 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Idiom: waffle chart. 100 square marks, one per 1% of output, built with sequence() and flatten(); hue groups tourism against everything else. Counting squares gives an exact part-to-whole reading.",
   "title": {
-    "text": "Marine tourism is the second-largest slice of the marine economy",
-    "subtitle": "Australian marine industry output by sector, FY23. Each square = 1% of $228.8 billion (AIMS Index 2025)."
+    "text": "Tourism is the sea's second-biggest earner",
+    "subtitle": [
+      "Marine industry output by sector, FY23 (AIMS 2025).",
+      "Each square = 1% of $228.8 billion."
+    ]
   },
   "width": 300,
   "height": 300,
