@@ -332,10 +332,33 @@
       c13: "specs/13_slope.vl.json"
     };
 
+    // Line each story caption up with its chart: same left edge, same width as the drawn SVG
+    // (so the divider spans the chart), with the text wrapped at the caption's reading measure.
+    function alignCaption(id, pad = { left: 0, right: 0 }) {
+      const chart = document.getElementById(id);
+      const svg = chart.querySelector("svg");
+      const caption = chart.closest("figure").querySelector("figcaption");
+      if (!svg || !caption) return;
+      const figure = caption.parentElement;
+      const contentLeft = figure.getBoundingClientRect().left + figure.clientLeft +
+        parseFloat(getComputedStyle(figure).paddingLeft);
+      const svgBox = svg.getBoundingClientRect();
+      const visible = chart.getBoundingClientRect();
+      // Inset by Vega's own padding so the text starts flush with the chart title.
+      const left = Math.max(0, Math.round(svgBox.left + pad.left - contentLeft));
+      const width = Math.round(Math.min(svgBox.right - pad.right, visible.right) - Math.max(svgBox.left + pad.left, visible.left));
+      const measure = parseFloat(getComputedStyle(caption).getPropertyValue("--measure")) *
+        parseFloat(getComputedStyle(document.documentElement).fontSize);
+      caption.style.marginLeft = left + "px";
+      caption.style.width = width + "px";
+      caption.style.paddingRight = Math.max(0, width - measure) + "px";
+    }
+
     // Wait for the web fonts so Vega measures and draws chart text in the right typeface.
     document.fonts.ready.then(() => {
       for (const [id, specUrl] of Object.entries(charts)) {
         vegaEmbed("#" + id, specUrl, { config: theme, renderer: "svg", actions: { export: true, source: false, compiled: false, editor: true } })
+          .then(({ view }) => alignCaption(id, view.padding()))
           .catch(err => {
             document.getElementById(id).innerHTML =
               `<p class="error">${specUrl} didn't load: ${err.message}. ` +
