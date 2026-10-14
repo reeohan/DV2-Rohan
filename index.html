@@ -134,10 +134,12 @@
     }
     figure.half { grid-column: span 1; }
     figure > div { max-width: 100%; overflow-x: auto; }
-    /* Story caption: left edge and width follow the rendered chart (set in the script below),
-       with the text itself capped at a comfortable reading measure. */
+    /* Story caption: left edge and width follow the rendered chart (set in the script below).
+       Each holds two short paragraphs, capped at about 10 words a line; wide charts show them side by side. */
     figcaption {
-      --measure: 46rem;
+      --col-max: 21rem;
+      --col-min: 17rem;
+      --col-gap: 2.5rem;
       align-self: flex-start;
       width: 100%;
       max-width: 100%;
@@ -148,6 +150,18 @@
       line-height: 1.65;
       color: var(--ink);
       text-align: left;
+    }
+    figcaption p { margin: 0; }
+    figcaption p + p { margin-top: 0.75rem; }
+    figcaption.two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: calc(var(--col-gap) / 2);
+    }
+    figcaption.two-col p + p {
+      margin-top: 0;
+      padding-left: calc(var(--col-gap) / 2);
+      border-left: 1px solid var(--line);
     }
     .error { color: #9b2c2c; font-size: 0.9375rem; }
 
@@ -184,7 +198,7 @@
   </header>
 
   <main class="wrap">
-    <!-- STORY PARAGRAPHS: each chart's <figcaption> holds its story text and is meant to be edited freely. -->
+    <!-- STORY PARAGRAPHS: each chart's <figcaption> holds its story as two <p> blocks (shown side by side on wide charts); edit freely. -->
     <section>
       <div class="section-head">
         <div><span class="section-num">Part 01</span><h2>Comparing coastal regions</h2></div>
@@ -194,27 +208,42 @@
         <!-- DATA STATUS: all real -->
         <figure>
           <div id="c01"></div>
-          <figcaption>Start with the big picture. In every state except the landlocked ACT, most tourism jobs sit in coastal regions. Tasmania is entirely coastal, and Western Australia (96%) and Queensland (94%) are close behind. Even Victoria, the least coastal of the large states, has 83% of its tourism jobs by the sea. Darker states depend most on their coast. Hover over a state for its exact share.</figcaption>
+          <figcaption>
+            <p>Start with the big picture. In every state except the landlocked ACT, most tourism jobs sit in coastal regions. Tasmania is entirely coastal, and Western Australia (96%) and Queensland (94%) are close behind.</p>
+            <p>Even Victoria, the least coastal of the large states, has 83% of its tourism jobs by the sea. Darker states depend most on their coast. Hover over a state for its exact share.</p>
+          </figcaption>
         </figure>
         <!-- DATA STATUS: all real -->
         <figure>
           <div id="c02"></div>
-          <figcaption>Zoom in from states to regions and the coast becomes a chain of circles running down the east side of the country. The capital cities are the largest, but the Gold Coast (36,600 jobs) employs more people in tourism than Adelaide does. Beyond it, North Coast NSW, the Hunter, the Sunshine Coast, the NSW South Coast and Tropical North Queensland each support 15,000 to 20,000 jobs. Click a legend entry to show only coastal or only inland regions.</figcaption>
+          <figcaption>
+            <p>Zoom in from states to regions and the coast becomes a chain of circles running down the east side of the country. The capital cities are the largest, but the Gold Coast (36,600 jobs) employs more people in tourism than Adelaide does.</p>
+            <p>Beyond it, North Coast NSW, the Hunter, the Sunshine Coast, the NSW South Coast and Tropical North Queensland each support 15,000 to 20,000 jobs. Click a legend entry to show only coastal or only inland regions.</p>
+          </figcaption>
         </figure>
         <!-- DATA STATUS: part placeholder. Solid lines are measured, dashed lines are invented (flows.csv data_status). -->
         <figure>
           <div id="c03"></div>
-          <figcaption>Where do those visitors come from? Mostly from close by. The heaviest measured flows are short trips within a state: 5.1 million trips from elsewhere in WA to Perth, and almost 3 million each from Greater Sydney to the Hunter and to the NSW South Coast. The main cross-border flow is Queenslanders heading south to North Coast NSW, with about 2 million trips. Thicker lines carry more trips; solid lines are measured figures.</figcaption>
+          <figcaption>
+            <p>Where do those visitors come from? Mostly from close by. The heaviest measured flows are short trips within a state: 5.1 million trips from elsewhere in WA to Perth, and almost 3 million each from Greater Sydney to the Hunter and to the NSW South Coast.</p>
+            <p>The main cross-border flow is Queenslanders heading south to North Coast NSW, with about 2 million trips. Thicker lines carry more trips; solid lines are measured figures.</p>
+          </figcaption>
         </figure>
         <!-- DATA STATUS: part placeholder. VIC, TAS, NT, ACT and some QLD visitor figures are invented (regions.csv visitor_data_status). -->
         <figure>
           <div id="c04"></div>
-          <figcaption>Coastal regions are not all the same kind of destination. Follow a line from left to right. Regions with the most visitors, like North Coast NSW, tend to earn less per night. Tropical North Queensland and the Whitsundays earn about $300 per night, almost three times as much as South Australia's Murray River. Australia's North West stands out on its own: visitors there stay over seven nights on average. Click a state in the legend to isolate its regions.</figcaption>
+          <figcaption>
+            <p>Coastal regions are not all the same kind of destination. Follow a line from left to right. Regions with the most visitors, like North Coast NSW, tend to earn less per night.</p>
+            <p>Tropical North Queensland and the Whitsundays earn about $300 per night, almost three times as much as South Australia's Murray River. Australia's North West stands out on its own: visitors there stay over seven nights on average. Click a state in the legend to isolate its regions.</p>
+          </figcaption>
         </figure>
         <!-- DATA STATUS: part placeholder. Open circles mark regions with invented visitor figures. -->
         <figure>
           <div id="c05"></div>
-          <figcaption>Who pays for coastal tourism? Australians do. In the regions with measured data, domestic travellers account for 87% of overnight spending, so on most rows the gap between the two dots is wide. The gap narrows only where international visitors gather: the Gold Coast ($1.45 billion of international spend) and Tropical North Queensland ($1.25 billion, about a third of its total), both of which depend on the reef and the beaches.</figcaption>
+          <figcaption>
+            <p>Who pays for coastal tourism? Australians do. In the regions with measured data, domestic travellers account for 87% of overnight spending, so on most rows the gap between the two dots is wide.</p>
+            <p>The gap narrows only where international visitors gather: the Gold Coast ($1.45 billion of international spend) and Tropical North Queensland ($1.25 billion, about a third of its total), both of which depend on the reef and the beaches.</p>
+          </figcaption>
         </figure>
       </div>
     </section>
@@ -228,22 +257,34 @@
         <!-- DATA STATUS: part placeholder. Only dotted cells are measured; 31 of 36 regions are invented (seasonality_quarterly.csv data_status). -->
         <figure>
           <div id="c06"></div>
-          <figcaption>Knowing where visitors go is only half the story; timing matters too. Rows run from north at the top to south at the bottom, and colour shows each quarter against that region's own average. The dotted, measured cells show the split clearly. In July to September the Great Barrier Reef is slightly above its average, while the NSW South Coast falls to about half of its average. In summer the pattern flips, and the South Coast reaches 160% of its average from January to March.</figcaption>
+          <figcaption>
+            <p>Knowing where visitors go is only half the story; timing matters too. Rows run from north at the top to south at the bottom, and colour shows each quarter against that region's own average. The dotted, measured cells show the split clearly.</p>
+            <p>In July to September the Great Barrier Reef is slightly above its average, while the NSW South Coast falls to about half of its average. In summer the pattern flips, and the South Coast reaches 160% of its average from January to March.</p>
+          </figcaption>
         </figure>
         <!-- DATA STATUS: all real -->
         <figure>
           <div id="c07"></div>
-          <figcaption>Nationally, the seasonal rhythm came back before the volume did. Each small panel is one month, with a line running from 2022 to 2025. Every panel climbs as borders reopened, yet December is the peak every year and passed one million arrivals in 2025. Even so, total arrivals in 2025 (8.9 million) were still about 6% below 2019.</figcaption>
+          <figcaption>
+            <p>Nationally, the seasonal rhythm came back before the volume did. Each small panel is one month, with a line running from 2022 to 2025.</p>
+            <p>Every panel climbs as borders reopened, yet December is the peak every year and passed one million arrivals in 2025. Even so, total arrivals in 2025 (8.9 million) were still about 6% below 2019.</p>
+          </figcaption>
         </figure>
         <!-- DATA STATUS: all real -->
         <figure>
           <div id="c08"></div>
-          <figcaption>The reef keeps its own seasons. Each ring is a year, from 2016 at the centre to 2026 on the outside, and each wedge is a quarter. In almost every normal year, April to June is blue, about 20% below that year's average, while October to December glows orange as the busiest quarter. The 2020 ring breaks the pattern because lockdowns emptied the reef from April onwards.</figcaption>
+          <figcaption>
+            <p>The reef keeps its own seasons. Each ring is a year, from 2016 at the centre to 2026 on the outside, and each wedge is a quarter.</p>
+            <p>In almost every normal year, April to June is blue, about 20% below that year's average, while October to December glows orange as the busiest quarter. The 2020 ring breaks the pattern because lockdowns emptied the reef from April onwards.</p>
+          </figcaption>
         </figure>
         <!-- DATA STATUS: all real -->
         <figure>
           <div id="c09"></div>
-          <figcaption>The longer view puts those seasons in context. Arrivals pulsed every summer from 2015 to 2019, then almost vanished: just 246,000 people arrived in 2021, compared with 9.5 million in 2019. The recovery has followed the old shape. New South Wales (38% of 2025 arrivals), Victoria (25%) and Queensland (21%) still take most of the stream. Click a state in the legend to highlight it.</figcaption>
+          <figcaption>
+            <p>The longer view puts those seasons in context. Arrivals pulsed every summer from 2015 to 2019, then almost vanished: just 246,000 people arrived in 2021, compared with 9.5 million in 2019.</p>
+            <p>The recovery has followed the old shape. New South Wales (38% of 2025 arrivals), Victoria (25%) and Queensland (21%) still take most of the stream. Click a state in the legend to highlight it.</p>
+          </figcaption>
         </figure>
       </div>
     </section>
@@ -257,22 +298,34 @@
         <!-- DATA STATUS: all real -->
         <figure class="half">
           <div id="c10"></div>
-          <figcaption>Why does this matter? Measured against everything else Australia earns from the sea, tourism is the second-largest slice. Marine tourism and recreation produced $55.7 billion in FY23, 24 of these 100 squares. Only offshore gas and oil is larger.</figcaption>
+          <figcaption>
+            <p>Why does this matter? Measured against everything else Australia earns from the sea, tourism is the second-largest slice.</p>
+            <p>Marine tourism and recreation produced $55.7 billion in FY23, 24 of these 100 squares. Only offshore gas and oil is larger.</p>
+          </figcaption>
         </figure>
         <!-- DATA STATUS: all real -->
         <figure class="half">
           <div id="c13"></div>
-          <figcaption>Those jobs are not equally secure. Between 2023&ndash;24 and 2024&ndash;25, 18 of 31 regional coastal regions added tourism jobs. Queensland's coast grew strongly, with Bundaberg, Gladstone and the Fraser Coast each up more than 13%. Western Australia's coast went the other way: the North West fell 11% and the South West fell 10%.</figcaption>
+          <figcaption>
+            <p>Those jobs are not equally secure. Between 2023&ndash;24 and 2024&ndash;25, 18 of 31 regional coastal regions added tourism jobs.</p>
+            <p>Queensland's coast grew strongly, with Bundaberg, Gladstone and the Fraser Coast each up more than 13%. Western Australia's coast went the other way: the North West fell 11% and the South West fell 10%.</p>
+          </figcaption>
         </figure>
         <!-- DATA STATUS: all real -->
         <figure>
           <div id="c11"></div>
-          <figcaption>Put each state's coast and inland side by side. Column width is each state's share of the nation's 696,000 direct tourism jobs. NSW (29%), Victoria (27%) and Queensland (23%) are the widest columns. Within almost every column, the coastal block takes up most of the height, so most of the chart's total area is coastal.</figcaption>
+          <figcaption>
+            <p>Put each state's coast and inland side by side. Column width is each state's share of the nation's 696,000 direct tourism jobs.</p>
+            <p>NSW (29%), Victoria (27%) and Queensland (23%) are the widest columns. Within almost every column, the coastal block takes up most of the height, so most of the chart's total area is coastal.</p>
+          </figcaption>
         </figure>
         <!-- DATA STATUS: all real -->
         <figure>
           <div id="c12"></div>
-          <figcaption>The final count: coastal regions hold 87% of Australia's tourism jobs. Each dot is one region, on a log scale so the capitals don't squash the rest. The five largest are Melbourne, Sydney, Brisbane, Perth and the Gold Coast, and all five are on the coast. The Gold Coast is the only one that isn't a capital city.</figcaption>
+          <figcaption>
+            <p>The final count: coastal regions hold 87% of Australia's tourism jobs. Each dot is one region, on a log scale so the capitals don't squash the rest.</p>
+            <p>The five largest are Melbourne, Sydney, Brisbane, Perth and the Gold Coast, and all five are on the coast. The Gold Coast is the only one that isn't a capital city.</p>
+          </figcaption>
         </figure>
       </div>
     </section>
@@ -333,7 +386,8 @@
     };
 
     // Line each story caption up with its chart: same left edge, same width as the drawn SVG
-    // (so the divider spans the chart), with the text wrapped at the caption's reading measure.
+    // (so the divider spans the chart). Its two paragraphs sit side by side when the chart is
+    // wide enough for both, otherwise stacked, never wider than --col-max (about 10 words a line).
     function alignCaption(id, pad = { left: 0, right: 0 }) {
       const chart = document.getElementById(id);
       const svg = chart.querySelector("svg");
@@ -347,11 +401,15 @@
       // Inset by Vega's own padding so the text starts flush with the chart title.
       const left = Math.max(0, Math.round(svgBox.left + pad.left - contentLeft));
       const width = Math.round(Math.min(svgBox.right - pad.right, visible.right) - Math.max(svgBox.left + pad.left, visible.left));
-      const measure = parseFloat(getComputedStyle(caption).getPropertyValue("--measure")) *
-        parseFloat(getComputedStyle(document.documentElement).fontSize);
+      const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
+      const size = name => parseFloat(getComputedStyle(caption).getPropertyValue(name)) * rem;
+      const colMax = size("--col-max"), colMin = size("--col-min"), gap = size("--col-gap");
+      const twoCols = width >= 2 * colMin + gap;
+      const textWidth = twoCols ? Math.min(width, 2 * colMax + gap) : Math.min(width, colMax);
       caption.style.marginLeft = left + "px";
       caption.style.width = width + "px";
-      caption.style.paddingRight = Math.max(0, width - measure) + "px";
+      caption.classList.toggle("two-col", twoCols);
+      caption.style.paddingRight = Math.max(0, width - textWidth) + "px";
     }
 
     // Re-align when a card changes size (window resize, rotating a phone, the grid collapsing to one column).
