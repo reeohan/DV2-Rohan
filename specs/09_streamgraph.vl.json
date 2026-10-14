@@ -1,11 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Idiom: streamgraph. Area marks stacked around a central baseline (stack: center); thickness = arrivals, hue = state of stay. Shows the yearly pulse, the 2020 collapse and the recovery at a glance. Click a legend entry to isolate a state.",
+  "description": "Idiom: streamgraph. Area marks stacked around a central baseline; thickness = arrivals, hue = state of stay. Shows the yearly pulse, the 2020 collapse and the recovery.",
   "title": {
-    "text": "Where international visitors stayed, month by month",
-    "subtitle": "Short-term visitor arrivals by state or territory of intended stay"
+    "text": "Two years missing, then the wave returns",
+    "subtitle": "Short-term visitor arrivals by state or territory of intended stay, 2015-2026 (ABS)"
   },
-  "width": 720,
+  "width": 700,
   "height": 320,
   "data": {
     "url": "data/arrivals_monthly.csv",
@@ -20,17 +20,17 @@
   },
   "transform": [
     {
-      "calculate": "datetime(datum.year, datum.month - 1, 1)",
+      "calculate": "datetime(datum.year,datum.month-1,1)",
       "as": "date"
     },
     {
-      "calculate": "indexof(['NSW', 'VIC', 'QLD', 'WA', 'SA', 'TAS', 'NT', 'ACT'], datum.state)",
-      "as": "state_order"
+      "calculate": "indexof(['NSW','VIC','QLD','WA','SA','TAS','NT','ACT'],datum.state)",
+      "as": "so"
     }
   ],
   "params": [
     {
-      "name": "pickState",
+      "name": "ps",
       "select": {
         "type": "point",
         "fields": [
@@ -97,12 +97,17 @@
         "scheme": "tableau10"
       }
     },
+    "order": {
+      "field": "so",
+      "type": "quantitative",
+      "sort": "descending"
+    },
     "opacity": {
       "condition": {
-        "param": "pickState",
+        "param": "ps",
         "value": 0.9
       },
-      "value": 0.15
+      "value": 0.12
     },
     "tooltip": [
       {
@@ -112,20 +117,13 @@
         "title": "Month"
       },
       {
-        "field": "state",
-        "title": "State"
+        "field": "state"
       },
       {
         "field": "arrivals",
-        "title": "Arrivals",
         "format": ","
       }
-    ],
-    "order": {
-      "field": "state_order",
-      "type": "quantitative",
-      "sort": "descending"
-    }
+    ]
   },
   "config": {
     "view": {
