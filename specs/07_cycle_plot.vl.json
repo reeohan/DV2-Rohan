@@ -1,9 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Idiom: cycle plot. Faceted by month; inside each panel a line mark shows that month across years, and a rule marks the month's average. Reading across panels shows seasonality; reading within a panel shows the multi-year trend.",
+  "description": "Idiom: cycle plot. Faceted by month; inside each panel a line runs across years and a rule marks that month's mean. Reading across panels shows seasonality; within a panel, trend.",
   "title": {
-    "text": "Seasonality and recovery in international arrivals",
-    "subtitle": "Short-term visitor arrivals to Australia, 2022-2025. Each mini-line runs from 2022 (left) to 2025 (right); the flat line is that month's average."
+    "text": "Seasonality returned before the numbers did",
+    "subtitle": "Short-term visitor arrivals to Australia, 2022-2026. Each mini-line runs 2022 (left) to 2026 (right); the flat line is that month's mean."
   },
   "data": {
     "url": "data/arrivals_monthly.csv",
@@ -18,7 +18,7 @@
   },
   "transform": [
     {
-      "filter": "datum.year >= 2022"
+      "filter": "datum.year>=2022 && datum.year<=2025"
     },
     {
       "aggregate": [
@@ -40,7 +40,7 @@
       "type": "ordinal",
       "title": null,
       "header": {
-        "labelExpr": "['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][datum.value - 1]",
+        "labelExpr": "['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][datum.value-1]",
         "labelOrient": "bottom",
         "labelFontWeight": "bold"
       }
@@ -48,8 +48,8 @@
   },
   "spacing": 4,
   "spec": {
-    "width": 46,
-    "height": 260,
+    "width": 44,
+    "height": 250,
     "layer": [
       {
         "mark": {
@@ -71,7 +71,7 @@
           "color": "#0e6e8c",
           "strokeWidth": 2,
           "point": {
-            "size": 18,
+            "size": 16,
             "color": "#0e6e8c"
           }
         },
@@ -91,16 +91,13 @@
           },
           "tooltip": [
             {
-              "field": "year",
-              "title": "Year"
+              "field": "year"
             },
             {
-              "field": "month",
-              "title": "Month"
+              "field": "month"
             },
             {
               "field": "arrivals",
-              "title": "Arrivals",
               "format": ","
             }
           ]
