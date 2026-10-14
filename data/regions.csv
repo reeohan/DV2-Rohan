@@ -1,42 +1,77 @@
-region,state,coastal,capital,lat,lon,visitors_k,nights_k,spend_m,dom_spend_m,intl_spend_m,jobs_share_2019,jobs_share_2024
-Sydney,NSW,Coastal,Yes,-33.87,151.21,15190,68157,26646,24646,2000,4.6,4.7
-Central Coast,NSW,Coastal,No,-33.43,151.34,2191,5886,1188,970,218,7.6,7.8
-Hunter,NSW,Coastal,No,-32.7,151.5,245,634,217,179,38,13.8,16.1
-North Coast NSW,NSW,Coastal,No,-29.8,153.0,1532,3871,1399,1082,317,16.8,18.7
-South Coast,NSW,Coastal,No,-35.9,150.1,3887,12431,4415,3706,709,15.0,17.0
-Blue Mountains,NSW,Inland,No,-33.7,150.3,1360,3521,979,719,260,15.4,15.8
-Snowy Mountains,NSW,Inland,No,-36.4,148.5,2623,7346,1456,1242,214,20.1,18.0
-Riverina,NSW,Inland,No,-35.1,147.4,590,1544,248,215,33,15.0,18.2
-Outback NSW,NSW,Inland,No,-31.9,143.0,1424,4576,1043,895,148,19.3,20.7
-Melbourne,VIC,Coastal,Yes,-37.81,144.96,12372,32609,11792,8701,3091,5.4,5.0
-Great Ocean Road,VIC,Coastal,No,-38.5,143.5,2250,9948,3084,2055,1029,6.5,8.4
-Phillip Island,VIC,Coastal,No,-38.49,145.23,365,1210,189,134,55,17.4,22.4
-Peninsula,VIC,Coastal,No,-38.35,145.0,3249,14580,4307,2815,1492,18.7,18.2
-Gippsland,VIC,Coastal,No,-37.9,147.2,3901,12598,2547,2362,185,12.8,11.5
-Goldfields,VIC,Inland,No,-36.9,144.0,3744,16814,3502,3218,284,14.1,12.5
-High Country,VIC,Inland,No,-36.8,146.9,2243,9394,2051,1689,362,21.9,22.4
-Spa Country,VIC,Inland,No,-37.35,144.15,1470,6414,2371,1616,755,17.4,17.5
-Brisbane,QLD,Coastal,Yes,-27.47,153.03,8309,35111,11329,9952,1377,3.5,3.5
-Gold Coast,QLD,Coastal,No,-28.02,153.4,3121,11315,3377,2371,1006,5.3,5.9
-Sunshine Coast,QLD,Coastal,No,-26.65,153.07,1430,5192,1950,1707,243,23.0,19.3
-Fraser Coast,QLD,Coastal,No,-25.3,152.85,2314,8312,1774,1387,387,12.9,13.2
-Whitsundays,QLD,Coastal,No,-20.3,148.7,2916,7024,1769,1264,505,6.0,7.4
-Tropical North Queensland,QLD,Coastal,No,-16.9,145.77,934,3641,716,584,132,11.9,10.0
-Outback Queensland,QLD,Inland,No,-23.4,144.3,2843,9827,3302,2603,699,14.7,15.6
-Southern Queensland Country,QLD,Inland,No,-27.5,151.0,1297,5677,984,676,308,21.1,22.1
-Adelaide,SA,Coastal,Yes,-34.93,138.6,4222,16387,5135,4429,706,3.6,3.5
-Kangaroo Island,SA,Coastal,No,-35.8,137.25,1313,5923,1434,1196,238,11.8,14.3
-Fleurieu Peninsula,SA,Coastal,No,-35.5,138.6,1989,7197,1576,1366,210,4.9,4.5
-Barossa,SA,Inland,No,-34.5,139.0,1166,4985,1424,1306,118,12.7,10.9
-Flinders Ranges and Outback,SA,Inland,No,-31.5,138.6,2329,7855,2999,2616,383,20.9,19.3
-Destination Perth,WA,Coastal,Yes,-31.95,115.86,5483,20809,3361,2379,982,3.5,3.4
-Australia's South West,WA,Coastal,No,-33.9,115.3,714,3029,528,385,143,11.3,12.9
-Australia's Coral Coast,WA,Coastal,No,-25.0,114.0,1278,3287,1305,983,322,6.6,8.5
-Australia's North West,WA,Coastal,No,-18.0,122.2,3660,10254,1591,1220,371,5.9,6.9
-Australia's Golden Outback,WA,Inland,No,-30.75,121.5,1955,7742,2352,1691,661,20.3,22.4
-Hobart and the South,TAS,Coastal,Yes,-42.88,147.33,2037,6354,1183,1091,92,5.5,5.0
-East Coast,TAS,Coastal,No,-41.9,148.2,1792,5550,1761,1391,370,21.0,21.4
-Launceston and the North,TAS,Coastal,No,-41.44,147.14,1543,5914,2076,1396,680,9.5,11.8
-Darwin,NT,Coastal,Yes,-12.46,130.84,987,4502,832,696,136,5.2,6.3
-Lasseter,NT,Inland,No,-24.5,132.0,302,987,341,246,95,14.2,12.9
-Canberra,ACT,Inland,Yes,-35.28,149.13,2453,6203,1459,1199,260,5.4,5.9
+region,state,coastal,capital,lat,lon,visitors_k,nights_k,spend_m,dom_spend_m,intl_spend_m,visitor_period,visitor_source,visitor_data_status,tourism_gva_m_2324,tourism_gva_m_2425,tourism_jobs_k_2324,tourism_jobs_k_2425,tourism_jobs_total_k_2425,tourism_consumption_m_2425,jobs_change_pct
+Canberra,ACT,Inland,Yes,-35.28,149.13,4104.9,16315.8,3234.3,3034.7,199.6,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,1298.8,1295.8,11.398,10.502,17.591,3701.2,-7.9
+Blue Mountains,NSW,Inland,No,-33.7,150.3,1179.6,2700.0,933.7,887.5,46.2,Year ending June 2026,Destination NSW visitor profile,real,304.5,311.3,3.537,3.45,4.838,1064.6,-2.5
+Capital Country,NSW,Inland,No,-34.6,149.6,2118.9,5300.0,1066.2,1025.3,40.9,Year ending June 2026,Destination NSW visitor profile,real,401.9,428.3,4.123,4.29,7.551,1500.5,4.1
+Central Coast,NSW,Coastal,No,-33.43,151.34,2554.7,7100.0,1446.8,1366.4,80.4,Year ending June 2026,Destination NSW visitor profile,real,617.8,635.5,6.869,6.873,11.373,2169.2,0.1
+Central NSW,NSW,Inland,No,-33.3,148.7,2840.5,9200.0,,1461.5,,Year ending March 2026,Destination NSW visitor profile,real,672.6,694.3,7.433,7.27,12.772,2496.2,-2.2
+Hunter,NSW,Coastal,No,-32.7,151.5,5346.8,16500.0,4209.7,3958.7,251.0,Year ending June 2026,Destination NSW visitor profile,real,1889.3,1939.9,18.548,18.45,30.937,6280.7,-0.5
+New England North West,NSW,Inland,No,-30.3,150.9,1731.5,5500.0,727.1,675.7,51.4,Year ending June 2026,Destination NSW visitor profile,real,334.3,347.3,3.692,3.755,7.944,1297.1,1.7
+North Coast NSW,NSW,Coastal,No,-29.8,153.0,6756.5,24900.0,4655.8,4371.9,283.9,Year ending June 2026,Destination NSW visitor profile,real,1931.4,2043.7,18.81,19.96,30.352,6485.9,6.1
+Outback NSW,NSW,Inland,No,-31.9,143.0,234.6,803.1,166.9,154.6,12.3,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,61.8,69.0,0.605,0.646,1.294,232.1,6.8
+Riverina,NSW,Inland,No,-35.1,147.4,1528.2,4900.0,705.2,643.7,61.5,Year ending June 2026,Destination NSW visitor profile,real,269.4,263.4,2.997,2.921,6.673,954.1,-2.5
+Snowy Mountains,NSW,Inland,No,-36.4,148.5,616.5,2100.0,,558.0,,Year ending June 2026,Destination NSW visitor profile,real,221.8,229.2,1.853,1.916,3.151,733.0,3.4
+South Coast,NSW,Coastal,No,-35.9,150.1,5147.2,17700.0,3526.2,3238.4,287.8,Year ending June 2026,Destination NSW visitor profile,real,1591.8,1595.9,14.978,15.268,22.571,5013.6,1.9
+Sydney,NSW,Coastal,Yes,-33.87,151.21,32463.1,111834.4,20968.7,17649.2,3319.5,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,11892.6,12802.7,108.908,114.616,200.427,36360.9,5.2
+The Murray,NSW,Inland,No,-35.3,144.8,1817.8,5100.0,,720.0,,Year ending June 2026,Destination NSW visitor profile,real,344.3,377.6,3.309,3.815,6.916,1336.5,15.3
+Alice Springs,NT,Inland,No,-23.7,133.88,305.3,936.7,228.8,194.6,34.2,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,117.4,128.3,0.748,0.769,1.181,362.0,2.8
+Barkly,NT,Inland,No,-19.65,135.75,57.1,214.0,38.5,36.4,2.1,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,13.5,20.7,0.129,0.222,0.299,57.8,72.1
+Darwin,NT,Coastal,Yes,-12.46,130.84,1517.5,5458.3,1120.4,894.7,225.7,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,452.2,499.5,3.053,3.219,5.231,1421.9,5.4
+Katherine Daly,NT,Inland,No,-14.47,132.26,138.3,464.6,105.1,90.8,14.3,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,36.3,42.0,0.333,0.387,0.628,123.2,16.2
+Lasseter,NT,Inland,No,-24.5,132.0,425.2,1561.3,283.0,265.4,17.6,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,145.7,163.3,1.014,1.091,1.225,423.1,7.6
+Litchfield Kakadu Arnhem,NT,Coastal,No,-13.1,131.8,186.5,696.1,135.1,114.0,21.1,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,56.9,67.0,0.448,0.546,0.744,191.1,21.9
+MacDonnell,NT,Inland,No,-23.9,132.5,43.8,138.8,27.9,24.4,3.5,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,10.2,12.2,0.112,0.137,0.213,42.7,22.3
+Brisbane,QLD,Coastal,Yes,-27.47,153.03,11072.0,61015.8,13021.1,8821.2,4199.9,Year ending June 2026,TEQ DoTS dashboard + intl snapshot,real,6208.6,6279.6,58.449,60.535,103.909,18811.2,3.6
+Bundaberg,QLD,Coastal,No,-24.87,152.35,922.3,2935.9,574.9,537.2,37.7,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,236.5,261.6,2.41,2.767,5.016,856.4,14.8
+Capricorn,QLD,Coastal,No,-23.38,150.51,785.2,2565.4,565.6,422.3,143.3,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,272.4,287.2,2.658,2.928,5.043,926.3,10.2
+Fraser Coast,QLD,Coastal,No,-25.3,152.85,905.0,2893.6,518.7,475.5,43.2,Year ending June 2026,TEQ DoTS dashboard + intl snapshot,real,272.4,291.1,2.925,3.312,4.767,920.0,13.2
+Gladstone,QLD,Coastal,No,-23.84,151.26,529.4,1781.9,349.5,307.8,41.7,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,165.8,175.1,1.636,1.863,3.377,566.9,13.9
+Gold Coast,QLD,Coastal,No,-28.02,153.4,5787.0,25966.2,6881.7,5433.1,1448.6,Year ending June 2026,TEQ DoTS dashboard + intl snapshot,real,3569.3,3721.6,34.892,36.611,52.906,10326.1,4.9
+Mackay Isaac,QLD,Coastal,No,-21.14,149.19,1019.0,3884.0,,817.0,,Year ending June 2026,TEQ DoTS dashboard + intl snapshot,real,363.0,389.1,3.657,3.979,7.734,1359.1,8.8
+Outback Queensland,QLD,Inland,No,-23.4,144.3,597.0,2490.1,,378.4,,Year ending June 2026,TEQ DoTS dashboard + intl snapshot,real,133.1,142.0,1.301,1.368,3.605,465.3,5.1
+Queensland Country,QLD,Inland,No,-27.5,151.0,2998.0,10080.2,1548.3,1422.8,125.5,Year ending June 2026,TEQ DoTS dashboard + intl snapshot,real,612.5,658.2,7.187,7.838,15.698,2343.2,9.1
+Sunshine Coast,QLD,Coastal,No,-26.65,153.07,4571.0,16856.2,4004.5,3541.7,462.8,Year ending June 2026,TEQ DoTS dashboard + intl snapshot,real,1561.9,1614.2,16.236,16.816,25.062,4973.0,3.6
+Townsville,QLD,Coastal,No,-19.26,146.82,1103.0,5271.6,1339.5,1216.5,123.0,Year ending June 2026,TEQ DoTS dashboard + intl snapshot,real,471.2,474.0,4.371,4.296,7.748,1437.0,-1.7
+Tropical North Queensland,QLD,Coastal,No,-16.9,145.77,2358.0,13267.6,3974.5,2721.4,1253.1,Year ending June 2026,TEQ DoTS dashboard + intl snapshot,real,1654.6,1707.6,14.146,14.634,20.59,4736.2,3.4
+Whitsundays,QLD,Coastal,No,-20.3,148.7,855.0,3813.6,1182.5,909.5,273.0,Year ending June 2026,TEQ DoTS dashboard + intl snapshot,real,446.8,451.4,3.97,4.009,5.309,1280.7,1.0
+Adelaide,SA,Coastal,Yes,-34.93,138.6,3422.0,21909.0,4638.0,3544.0,1094.0,Year ending December 2023,SATC regional profile (NVS era),real,2413.1,2491.6,24.203,24.626,43.625,7424.2,1.7
+Adelaide Hills,SA,Inland,No,-34.92,138.75,200.0,766.0,108.0,91.0,17.0,Year ending December 2024,SATC regional profile (NVS era),real,98.1,96.9,1.272,1.282,2.234,319.8,0.8
+Barossa,SA,Inland,No,-34.5,139.0,244.0,837.0,172.0,161.0,11.0,Year ending December 2024,SATC regional profile (NVS era),real,100.9,104.3,1.336,1.369,2.702,366.3,2.5
+Clare Valley,SA,Inland,No,-33.83,138.61,223.0,464.0,112.0,109.0,3.0,Year ending December 2024,SATC regional profile (NVS era),real,35.6,36.1,0.387,0.401,0.794,130.3,3.6
+Eyre Peninsula,SA,Coastal,No,-34.0,135.5,455.0,1664.0,392.0,376.0,16.0,Year ending December 2024,SATC regional profile (NVS era),real,156.5,151.2,1.667,1.642,2.924,537.7,-1.5
+Fleurieu Peninsula,SA,Coastal,No,-35.5,138.6,727.0,2193.0,331.0,313.0,18.0,Year ending December 2024,SATC regional profile (NVS era),real,224.5,229.3,2.329,2.372,3.749,723.5,1.8
+Flinders Ranges and Outback,SA,Inland,No,-31.5,138.6,699.0,3271.0,461.0,437.0,24.0,Year ending December 2024,SATC regional profile (NVS era),real,124.8,121.0,1.537,1.482,2.554,435.4,-3.6
+Kangaroo Island,SA,Coastal,No,-35.8,137.25,274.0,959.0,197.0,,,Year ending December 2024,SATC destination management plan snapshot,real,53.7,55.4,0.489,0.532,0.733,146.0,8.8
+Limestone Coast,SA,Coastal,No,-37.3,140.4,807.0,2262.0,457.0,441.0,16.0,Year ending December 2024,SATC regional profile (NVS era),real,160.6,168.9,1.836,1.923,3.84,594.1,4.7
+"Murray River, Lakes and Coorong",SA,Coastal,No,-35.6,139.3,397.0,1128.0,127.0,109.0,18.0,Year ending December 2024,SATC regional profile (NVS era),real,128.9,124.0,1.145,1.078,2.12,452.0,-5.9
+Riverland,SA,Inland,No,-34.2,140.6,463.0,1381.0,201.0,186.0,15.0,Year ending December 2024,SATC regional profile (NVS era),real,93.7,93.9,0.94,0.94,1.983,343.8,0.0
+Yorke Peninsula,SA,Coastal,No,-34.5,137.6,620.0,2172.0,265.0,244.0,21.0,Year ending December 2024,SATC regional profile (NVS era),real,146.8,153.2,1.46,1.509,2.592,528.3,3.4
+East Coast,TAS,Coastal,No,-41.9,148.2,491.4,1746.6,321.3,299.5,21.8,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,160.6,160.8,1.7,1.657,2.048,461.1,-2.5
+Hobart and the South,TAS,Coastal,Yes,-42.88,147.33,2895.9,10775.4,2242.6,2014.1,228.5,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,904.9,935.3,11.092,10.942,16.478,2712.9,-1.4
+Launceston and the North,TAS,Coastal,No,-41.44,147.14,1154.0,4550.4,836.1,597.1,239.0,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,367.9,363.6,4.536,4.479,7.445,1157.3,-1.3
+North West,TAS,Coastal,No,-41.15,145.9,871.3,3487.5,532.4,453.5,78.9,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,336.8,324.4,3.625,3.54,5.615,984.0,-2.3
+West Coast,TAS,Coastal,No,-42.1,145.3,73.1,279.8,54.4,38.5,15.9,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,28.4,31.1,0.288,0.331,0.439,86.7,14.9
+Ballarat,VIC,Inland,No,-37.56,143.85,1066.9,4241.0,760.8,534.9,225.9,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,237.0,276.9,3.406,3.843,6.378,993.7,12.8
+Bendigo Loddon,VIC,Inland,No,-36.76,144.28,1068.4,3570.0,860.3,741.6,118.7,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,284.4,285.6,3.727,3.75,6.657,1010.6,0.6
+Central Highlands,VIC,Inland,No,-37.5,143.9,251.3,768.5,175.4,159.4,16.0,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,82.8,86.8,1.091,1.149,1.866,281.4,5.3
+Central Murray,VIC,Inland,No,-35.9,144.3,812.4,3230.6,523.9,488.8,35.1,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,190.5,197.5,2.601,2.615,4.683,730.8,0.5
+Geelong and the Bellarine,VIC,Coastal,No,-38.15,144.36,2128.4,6717.3,1520.0,1138.0,382.0,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,619.5,661.3,7.75,7.881,13.1,2145.0,1.7
+Gippsland,VIC,Coastal,No,-37.9,147.2,955.9,3270.2,754.9,637.4,117.5,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,293.9,291.2,4.04,3.809,7.389,1049.5,-5.7
+Goulburn,VIC,Inland,No,-36.6,145.4,1185.2,4640.8,914.1,664.8,249.3,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,312.8,332.5,4.132,4.172,6.913,1264.5,1.0
+Great Ocean Road,VIC,Coastal,No,-38.5,143.5,2203.9,7518.5,1643.6,1223.2,420.4,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,673.3,661.6,8.862,8.719,13.173,2121.0,-1.6
+High Country,VIC,Inland,No,-36.8,146.9,1584.1,5114.1,1048.1,894.6,153.5,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,457.8,454.8,5.589,5.126,7.958,1545.7,-8.3
+Lakes,VIC,Coastal,No,-37.88,147.98,505.7,1801.8,361.8,269.6,92.2,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,139.6,146.2,1.789,1.815,2.892,475.3,1.5
+Macedon,VIC,Inland,No,-37.4,144.6,237.8,865.8,159.2,129.7,29.5,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,69.8,78.3,0.831,0.937,1.648,273.9,12.8
+Mallee,VIC,Inland,No,-35.3,142.2,816.8,2645.3,653.7,614.2,39.5,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,195.4,218.8,2.315,2.484,4.959,754.4,7.3
+Melbourne,VIC,Coastal,Yes,-37.81,144.96,33511.8,118872.3,21745.6,17704.8,4040.8,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,10643.1,11464.4,119.585,123.593,212.916,33445.0,3.4
+Murray East,VIC,Inland,No,-36.1,146.4,233.3,805.1,175.3,168.1,7.2,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,59.6,61.6,0.916,0.865,1.81,239.3,-5.6
+Peninsula,VIC,Coastal,No,-38.35,145.0,2147.4,8167.4,1351.1,992.4,358.7,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,644.5,675.3,8.681,8.976,13.635,2266.5,3.4
+Phillip Island,VIC,Coastal,No,-38.49,145.23,753.0,2781.3,478.8,403.7,75.1,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,259.1,265.5,2.967,2.902,3.838,840.2,-2.2
+Spa Country,VIC,Inland,No,-37.35,144.15,239.0,732.1,178.5,149.1,29.4,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,70.3,73.1,0.929,0.941,1.352,248.7,1.3
+Western Grampians,VIC,Inland,No,-37.2,142.5,307.4,1089.4,220.3,181.4,38.9,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,70.7,74.9,0.939,0.996,1.958,295.7,6.1
+Wimmera,VIC,Inland,No,-36.3,142.0,146.9,576.3,90.7,66.4,24.3,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,42.0,42.4,0.504,0.517,1.237,159.0,2.6
+Yarra Valley and Dandenong Ranges,VIC,Inland,No,-37.7,145.5,1377.4,4822.3,1051.7,825.5,226.2,PLACEHOLDER,PLACEHOLDER - not real data,placeholder,331.7,338.9,4.468,4.493,7.777,1262.6,0.6
+Australia's Coral Coast,WA,Coastal,No,-25.0,114.0,899.0,3843.0,659.0,581.0,78.0,Calendar year 2025,Tourism WA factsheet 2025,real,287.8,276.1,2.712,2.567,4.132,887.3,-5.3
+Australia's Golden Outback,WA,Inland,No,-30.75,121.5,736.0,3570.0,613.0,546.0,67.0,Calendar year 2025,Tourism WA factsheet 2025,real,271.1,244.1,2.695,2.454,4.963,775.8,-8.9
+Australia's North West,WA,Coastal,No,-18.0,122.2,539.0,3852.0,1032.0,948.0,84.0,Calendar year 2025,Tourism WA factsheet 2025,real,482.6,429.1,4.148,3.692,5.836,1382.1,-11.0
+Australia's South West,WA,Coastal,No,-33.9,115.3,2910.0,10973.0,2497.0,2304.0,193.0,Calendar year 2025,Tourism WA factsheet 2025,real,1124.0,999.9,11.354,10.242,15.984,3329.8,-9.8
+Destination Perth,WA,Coastal,Yes,-31.95,115.86,7135.0,55021.0,9754.0,6773.0,2981.0,Calendar year 2025,Tourism WA factsheet 2025,real,4944.8,4816.7,49.291,46.201,75.839,14710.1,-6.3

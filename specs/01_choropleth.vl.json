@@ -1,9 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Idiom: choropleth map. Area marks (state shapes) + colour lightness channel. The metric is a ratio (share of spend), not a raw total, so large states don't dominate just because they're big.",
+  "description": "Idiom: choropleth map. Area marks (state shapes) + colour lightness. Metric is a ratio, so large states don't dominate on size alone.",
   "title": {
-    "text": "How much of each state's tourism spend happens on the coast",
-    "subtitle": "Share of overnight visitor spend in coastal tourism regions"
+    "text": "Coastal regions hold most of the tourism economy",
+    "subtitle": "Share of each state's direct tourism jobs located in coastal tourism regions (RTSA 2024-25)"
   },
   "width": 520,
   "height": 440,
@@ -12,26 +12,26 @@
     "format": {
       "type": "csv",
       "parse": {
-        "spend_m": "number"
+        "tourism_jobs_k_2425": "number"
       }
     }
   },
   "transform": [
     {
-      "calculate": "datum.coastal === 'Coastal' ? datum.spend_m : 0",
-      "as": "coastal_spend_m"
+      "calculate": "datum.coastal === 'Coastal' ? datum.tourism_jobs_k_2425 : 0",
+      "as": "cj"
     },
     {
       "aggregate": [
         {
           "op": "sum",
-          "field": "coastal_spend_m",
-          "as": "coastal_spend_m"
+          "field": "cj",
+          "as": "coastal_jobs"
         },
         {
           "op": "sum",
-          "field": "spend_m",
-          "as": "total_spend_m"
+          "field": "tourism_jobs_k_2425",
+          "as": "total_jobs"
         }
       ],
       "groupby": [
@@ -39,7 +39,7 @@
       ]
     },
     {
-      "calculate": "datum.coastal_spend_m / datum.total_spend_m",
+      "calculate": "datum.coastal_jobs/datum.total_jobs",
       "as": "coastal_share"
     },
     {
@@ -67,7 +67,7 @@
   },
   "mark": {
     "type": "geoshape",
-    "stroke": "#ffffff",
+    "stroke": "#fff",
     "strokeWidth": 1
   },
   "encoding": {
@@ -78,7 +78,10 @@
     "color": {
       "field": "coastal_share",
       "type": "quantitative",
-      "title": "Coastal share of spend",
+      "title": [
+        "Coastal share of",
+        "tourism jobs"
+      ],
       "scale": {
         "scheme": "blues",
         "domain": [
@@ -90,28 +93,21 @@
         "format": ".0%",
         "orient": "bottom-left",
         "direction": "horizontal",
-        "gradientLength": 180
+        "gradientLength": 150
       }
     },
     "tooltip": [
       {
-        "field": "state",
-        "title": "State"
+        "field": "state"
       },
       {
         "field": "coastal_share",
-        "title": "Coastal share",
         "format": ".0%"
       },
       {
-        "field": "coastal_spend_m",
-        "title": "Coastal spend ($m)",
-        "format": ",.0f"
-      },
-      {
-        "field": "total_spend_m",
-        "title": "Total spend ($m)",
-        "format": ",.0f"
+        "field": "coastal_jobs",
+        "title": "Coastal jobs ('000)",
+        "format": ",.1f"
       }
     ]
   }
