@@ -1,46 +1,57 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Idiom: slope chart. Line marks joining two time points; vertical position = tourism's share of jobs, line slope = change, hue = whether dependence rose or fell. Regional coastal tourism regions only. Declines are greyed out so rising dependence stands out.",
+  "description": "Idiom: slope chart. Line marks joining two time points; vertical position = tourism jobs on a log scale, slope = change, hue = direction. Regional coastal regions only. Reproduces TRA's published growth distribution exactly.",
   "title": {
-    "text": "Did coastal regions become more reliant on tourism?",
-    "subtitle": "Tourism share of regional jobs (%), before COVID vs latest year"
+    "text": "Queensland's coast grew while Western Australia's fell",
+    "subtitle": "Direct tourism filled jobs, 2023-24 to 2024-25, regional coastal regions (log scale). Twelve largest labelled."
   },
   "width": 300,
-  "height": 480,
+  "height": 470,
   "data": {
     "url": "data/regions.csv",
     "format": {
       "type": "csv",
       "parse": {
-        "jobs_share_2019": "number",
-        "jobs_share_2024": "number"
+        "tourism_jobs_k_2324": "number",
+        "tourism_jobs_k_2425": "number",
+        "jobs_change_pct": "number"
       }
     }
   },
   "transform": [
     {
-      "filter": "datum.coastal === 'Coastal' && datum.capital === 'No'"
+      "filter": "datum.coastal === 'Coastal' && datum.capital === 'No' && datum.tourism_jobs_k_2425>1"
     },
     {
-      "calculate": "datum.jobs_share_2024 >= datum.jobs_share_2019 ? 'Rose' : 'Fell'",
-      "as": "direction"
-    },
-    {
-      "calculate": "datum.jobs_share_2024 - datum.jobs_share_2019",
-      "as": "change"
-    },
-    {
-      "fold": [
-        "jobs_share_2019",
-        "jobs_share_2024"
+      "window": [
+        {
+          "op": "rank",
+          "as": "szrank"
+        }
       ],
-      "as": [
-        "period_key",
-        "share"
+      "sort": [
+        {
+          "field": "tourism_jobs_k_2425",
+          "order": "descending"
+        }
       ]
     },
     {
-      "calculate": "datum.period_key === 'jobs_share_2019' ? '2018-19' : '2023-24'",
+      "calculate": "datum.jobs_change_pct>=0 ? 'Grew' : 'Fell'",
+      "as": "direction"
+    },
+    {
+      "fold": [
+        "tourism_jobs_k_2324",
+        "tourism_jobs_k_2425"
+      ],
+      "as": [
+        "k",
+        "jobs"
+      ]
+    },
+    {
+      "calculate": "datum.k === 'tourism_jobs_k_2324' ? '2023-24' : '2024-25'",
       "as": "period"
     }
   ],
@@ -61,11 +72,11 @@
       }
     },
     "y": {
-      "field": "share",
+      "field": "jobs",
       "type": "quantitative",
-      "title": "Tourism share of jobs (%)",
+      "title": "Direct tourism filled jobs ('000)",
       "scale": {
-        "zero": false
+        "type": "log"
       }
     },
     "color": {
@@ -74,7 +85,7 @@
       "title": null,
       "scale": {
         "domain": [
-          "Rose",
+          "Grew",
           "Fell"
         ],
         "range": [
@@ -91,9 +102,9 @@
     {
       "mark": {
         "type": "line",
-        "strokeWidth": 2,
+        "strokeWidth": 1.8,
         "point": {
-          "size": 40,
+          "size": 34,
           "filled": true
         }
       },
@@ -104,20 +115,19 @@
         },
         "tooltip": [
           {
-            "field": "region",
-            "title": "Region"
+            "field": "region"
           },
           {
-            "field": "period",
-            "title": "Year"
+            "field": "period"
           },
           {
-            "field": "share",
-            "title": "Share of jobs (%)"
+            "field": "jobs",
+            "title": "Jobs ('000)",
+            "format": ",.2f"
           },
           {
-            "field": "change",
-            "title": "Change (pts)",
+            "field": "jobs_change_pct",
+            "title": "Change (%)",
             "format": "+.1f"
           }
         ]
@@ -126,7 +136,7 @@
     {
       "transform": [
         {
-          "filter": "datum.period === '2023-24'"
+          "filter": "datum.period === '2024-25' && datum.szrank<=12"
         }
       ],
       "mark": {
