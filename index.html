@@ -134,15 +134,20 @@
     }
     figure.half { grid-column: span 1; }
     figure > div { max-width: 100%; overflow-x: auto; }
+    /* Story caption: left edge and width follow the rendered chart (set in the script below),
+       with the text itself capped at a comfortable reading measure. */
     figcaption {
-      align-self: stretch;
-      max-width: 44rem;
-      margin: 1.25rem auto 0;
+      --measure: 46rem;
+      align-self: flex-start;
+      width: 100%;
+      max-width: 100%;
+      margin: 1.25rem 0 0;
       padding-top: 1rem;
       border-top: 1px solid var(--line);
       font-size: 1.0625rem;
       line-height: 1.65;
       color: var(--ink);
+      text-align: left;
     }
     .error { color: #9b2c2c; font-size: 0.9375rem; }
 
