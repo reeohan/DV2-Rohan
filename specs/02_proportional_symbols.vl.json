@@ -1,12 +1,12 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Idiom: proportional symbol map. Point marks placed by longitude/latitude; circle AREA encodes visitors (size scales area, not radius); hue separates coastal from inland.",
+  "description": "Idiom: proportional symbol map. Point marks by lon/lat; circle AREA encodes jobs; hue = coastal/inland. Legend-bound selection filters.",
   "title": {
-    "text": "Where overnight visitors go",
-    "subtitle": "Circle area shows overnight visitors to each tourism region"
+    "text": "Where tourism employment sits",
+    "subtitle": "Direct tourism filled jobs by tourism region, 2024-25. Circle area is proportional to jobs."
   },
   "width": 560,
-  "height": 460,
+  "height": 470,
   "projection": {
     "type": "equalEarth",
     "rotate": [
@@ -26,8 +26,8 @@
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#e9eef1",
-        "stroke": "#ffffff",
+        "fill": "#eef1f3",
+        "stroke": "#fff",
         "strokeWidth": 1
       }
     },
@@ -39,7 +39,7 @@
           "parse": {
             "lat": "number",
             "lon": "number",
-            "visitors_k": "number"
+            "tourism_jobs_k_2425": "number"
           }
         }
       },
@@ -57,7 +57,7 @@
       ],
       "mark": {
         "type": "circle",
-        "stroke": "#ffffff",
+        "stroke": "#fff",
         "strokeWidth": 0.8
       },
       "encoding": {
@@ -70,13 +70,13 @@
           "type": "quantitative"
         },
         "size": {
-          "field": "visitors_k",
+          "field": "tourism_jobs_k_2425",
           "type": "quantitative",
-          "title": "Visitors ('000)",
+          "title": "Tourism jobs ('000)",
           "scale": {
             "range": [
-              15,
-              1400
+              12,
+              1300
             ]
           },
           "legend": {
@@ -88,7 +88,7 @@
         "color": {
           "field": "coastal",
           "type": "nominal",
-          "title": "Region type (click to filter)",
+          "title": "Region type (click)",
           "scale": {
             "domain": [
               "Coastal",
@@ -103,27 +103,25 @@
         "opacity": {
           "condition": {
             "param": "pick",
-            "value": 0.8
+            "value": 0.82
           },
-          "value": 0.08
+          "value": 0.07
         },
         "order": {
-          "field": "visitors_k",
+          "field": "tourism_jobs_k_2425",
           "sort": "descending"
         },
         "tooltip": [
           {
-            "field": "region",
-            "title": "Region"
+            "field": "region"
           },
           {
-            "field": "state",
-            "title": "State"
+            "field": "state"
           },
           {
-            "field": "visitors_k",
-            "title": "Visitors ('000)",
-            "format": ",.0f"
+            "field": "tourism_jobs_k_2425",
+            "title": "Jobs ('000)",
+            "format": ",.2f"
           }
         ]
       }
