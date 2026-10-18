@@ -1,15 +1,15 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Idiom: slope chart. Line marks joining two time points; vertical position = tourism jobs on a log scale, slope = change, hue = direction. Regional coastal regions only. Reproduces TRA's published growth distribution exactly.",
+  "description": "Idiom: slope chart. Line marks joining two time points; vertical position = tourism jobs indexed to 2023-24 = 100 on a linear scale, so slope = percentage change regardless of region size; hue = direction. Six regional coastal regions spanning the growth range.",
   "title": {
     "text": "Queensland's coast grew, WA's fell",
     "subtitle": [
-      "Direct tourism jobs, 2023-24 to 2024-25.",
-      "Regional coastal regions, log scale; 12 largest labelled."
+      "Direct tourism jobs, 2023-24 to 2024-25, indexed (2023-24 = 100).",
+      "Six regional coastal regions from the top to the bottom of the range."
     ]
   },
   "width": 300,
-  "height": 470,
+  "height": 420,
   "data": {
     "url": "data/regions.csv",
     "format": {
@@ -23,25 +23,25 @@
   },
   "transform": [
     {
-      "filter": "datum.coastal === 'Coastal' && datum.capital === 'No' && datum.tourism_jobs_k_2425>1"
-    },
-    {
-      "window": [
-        {
-          "op": "rank",
-          "as": "szrank"
-        }
-      ],
-      "sort": [
-        {
-          "field": "tourism_jobs_k_2425",
-          "order": "descending"
-        }
-      ]
+      "filter": {
+        "field": "region",
+        "oneOf": [
+          "Bundaberg",
+          "Mackay Isaac",
+          "Gold Coast",
+          "Hunter",
+          "Australia's South West",
+          "Australia's North West"
+        ]
+      }
     },
     {
       "calculate": "datum.jobs_change_pct>=0 ? 'Grew' : 'Fell'",
       "as": "direction"
+    },
+    {
+      "calculate": "datum.tourism_jobs_k_2324",
+      "as": "base"
     },
     {
       "fold": [
@@ -56,6 +56,10 @@
     {
       "calculate": "datum.k === 'tourism_jobs_k_2324' ? '2023-24' : '2024-25'",
       "as": "period"
+    },
+    {
+      "calculate": "datum.jobs/datum.base*100",
+      "as": "idx"
     }
   ],
   "encoding": {
@@ -72,14 +76,6 @@
         "domain": false,
         "ticks": false,
         "labelFontWeight": "bold"
-      }
-    },
-    "y": {
-      "field": "jobs",
-      "type": "quantitative",
-      "title": "Direct tourism filled jobs ('000)",
-      "scale": {
-        "type": "log"
       }
     },
     "color": {
@@ -104,14 +100,56 @@
   "layer": [
     {
       "mark": {
+        "type": "rule",
+        "strokeDash": [
+          4,
+          4
+        ],
+        "color": "#8ea3b6",
+        "opacity": 0.6
+      },
+      "encoding": {
+        "y": {
+          "datum": 100
+        },
+        "color": {
+          "value": "#8ea3b6"
+        }
+      }
+    },
+    {
+      "mark": {
         "type": "line",
-        "strokeWidth": 1.8,
+        "strokeWidth": 3,
         "point": {
-          "size": 34,
+          "size": 70,
           "filled": true
         }
       },
       "encoding": {
+        "y": {
+          "field": "idx",
+          "type": "quantitative",
+          "title": "Tourism jobs (2023-24 = 100)",
+          "scale": {
+            "domain": [
+              86,
+              118
+            ],
+            "zero": false,
+            "nice": false
+          },
+          "axis": {
+            "values": [
+              90,
+              95,
+              100,
+              105,
+              110,
+              115
+            ]
+          }
+        },
         "detail": {
           "field": "region",
           "type": "nominal"
@@ -139,18 +177,31 @@
     {
       "transform": [
         {
-          "filter": "datum.period === '2024-25' && datum.szrank<=12"
+          "filter": "datum.period === '2024-25'"
+        },
+        {
+          "calculate": "datum.region === \"Australia's South West\" ? datum.idx + 0.7 : datum.region === \"Australia's North West\" ? datum.idx - 0.7 : datum.idx",
+          "as": "labelY"
+        },
+        {
+          "calculate": "datum.region + '  ' + format(datum.jobs_change_pct, '+.1f') + '%'",
+          "as": "label"
         }
       ],
       "mark": {
         "type": "text",
         "align": "left",
-        "dx": 8,
-        "fontSize": 10
+        "dx": 10,
+        "fontSize": 11
       },
       "encoding": {
+        "y": {
+          "field": "labelY",
+          "type": "quantitative",
+          "title": "Tourism jobs (2023-24 = 100)"
+        },
         "text": {
-          "field": "region"
+          "field": "label"
         }
       }
     }
