@@ -1,9 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Idiom: parallel coordinates. One line per region; each axis a different measure, min-max normalised so they share a vertical position channel.",
+  "description": "Idiom: parallel coordinates. One line per region; each axis a different measure, min-max normalised so they share a vertical position channel. Six contrasting regional coastal regions only, so each line can be followed.",
   "title": {
     "text": "No two coastal regions look alike",
-    "subtitle": "Regional coastal tourism regions across five measures (capitals excluded). Axes run lowest to highest."
+    "subtitle": "Six contrasting regional coastal regions across five measures. Axes run lowest to highest among the six."
   },
   "width": 680,
   "height": 320,
@@ -21,7 +21,17 @@
   },
   "transform": [
     {
-      "filter": "datum.coastal === 'Coastal' && datum.capital === 'No'"
+      "filter": {
+        "field": "region",
+        "oneOf": [
+          "North Coast NSW",
+          "Gold Coast",
+          "Tropical North Queensland",
+          "Whitsundays",
+          "Australia's North West",
+          "Murray River, Lakes and Coorong"
+        ]
+      }
     },
     {
       "calculate": "datum.visitors_k",
@@ -126,7 +136,7 @@
           "select": {
             "type": "point",
             "fields": [
-              "state"
+              "region"
             ]
           },
           "bind": "legend"
@@ -134,7 +144,11 @@
       ],
       "mark": {
         "type": "line",
-        "strokeWidth": 1.8
+        "strokeWidth": 2.6,
+        "point": {
+          "size": 40,
+          "filled": true
+        }
       },
       "encoding": {
         "y": {
@@ -147,38 +161,38 @@
           "type": "nominal"
         },
         "color": {
-          "field": "state",
+          "field": "region",
           "type": "nominal",
-          "title": "State (click)",
+          "title": "Region (click)",
           "scale": {
             "domain": [
-              "NSW",
-              "VIC",
-              "QLD",
-              "WA",
-              "SA",
-              "TAS",
-              "NT",
-              "ACT"
+              "North Coast NSW",
+              "Gold Coast",
+              "Tropical North Queensland",
+              "Whitsundays",
+              "Australia's North West",
+              "Murray River, Lakes and Coorong"
             ],
             "range": [
               "#4cc9f0",
               "#b388ff",
               "#ffb347",
-              "#ff5d8f",
               "#72e0a0",
-              "#f7f06d",
-              "#ff8552",
-              "#a0aec0"
+              "#ff5d8f",
+              "#f7f06d"
             ]
+          },
+          "legend": {
+            "orient": "right",
+            "labelLimit": 220
           }
         },
         "opacity": {
           "condition": {
             "param": "ps",
-            "value": 0.8
+            "value": 0.95
           },
-          "value": 0.08
+          "value": 0.1
         },
         "tooltip": [
           {
