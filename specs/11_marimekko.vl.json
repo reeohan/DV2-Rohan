@@ -3,9 +3,16 @@
   "description": "Idiom: Marimekko (mosaic). Rect marks: column WIDTH = each state's share of national tourism jobs, segment HEIGHT = coastal vs inland within that state, so every rectangle's area is its share of the national total. Two stack transforms with normalize.",
   "title": {
     "text": "Coastal regions dominate in almost every state",
-    "subtitle": "Column width: state's share of national direct tourism jobs. Column split: coastal vs inland regions (RTSA 2024-25)."
+    "subtitle": [
+      "Column width: state's share of national direct tourism jobs.",
+      "Column split: coastal vs inland regions (RTSA 2024-25)."
+    ]
   },
-  "width": 620,
+  "width": "container",
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
   "height": 340,
   "data": {
     "url": "data/regions.csv",

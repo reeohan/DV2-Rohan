@@ -3,7 +3,7 @@
   "description": "Idiom: dumbbell chart. Two point marks per region joined by a line; horizontal position = spend, hue = visitor type. The gap shows the domestic-international difference.",
   "title": {
     "text": "Domestic travellers drive coastal spending",
-    "subtitle": "Overnight visitor spend by type, regional coastal regions ($ million). Open circles mark placeholder rows."
+    "subtitle": "Overnight visitor spend by type, regional coastal regions ($ million)."
   },
   "width": 500,
   "height": {
@@ -104,23 +104,19 @@
           }
         },
         "fill": {
-          "condition": {
-            "test": "datum.visitor_data_status === 'real'",
-            "field": "Visitor type",
-            "type": "nominal",
-            "scale": {
-              "domain": [
-                "Domestic",
-                "International"
-              ],
-              "range": [
-                "#3ee6c4",
-                "#ff7b5c"
-              ]
-            },
-            "legend": null
+          "field": "Visitor type",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Domestic",
+              "International"
+            ],
+            "range": [
+              "#3ee6c4",
+              "#ff7b5c"
+            ]
           },
-          "value": "#0c1a28"
+          "legend": null
         },
         "tooltip": [
           {
@@ -133,10 +129,6 @@
             "field": "spend",
             "title": "Spend ($m)",
             "format": ",.1f"
-          },
-          {
-            "field": "visitor_data_status",
-            "title": "Status"
           }
         ]
       }

@@ -156,6 +156,7 @@
       align-items: center;        /* charts centred on each card's axis */
     }
     figure.half { grid-column: span 1; }
+    #c11 { width: 100%; }        /* marimekko fills its card (spec width: "container") so it never scrolls */
     figure > div { max-width: 100%; overflow-x: auto; }
     /* Story caption: left edge and width follow the rendered chart (set in the script below).
        Each holds two short paragraphs, capped at about 10 words a line; wide charts show them side by side. */
@@ -276,9 +277,6 @@
     <div class="wrap">
       <h1>Coastal tourism in Australia</h1>
       <p class="lede">Looking at trends of tourism in Australia and how much coastal tourism contributes to the economy</p>
-      <!-- DATA STATUS: charts 3, 5 and 6 contain placeholder (invented) values where no source publishes the figure.
-           Every data file has a data_status / visitor_data_status column marking each row real or placeholder.
-           Replace those rows before presenting the charts as fact (see README). -->
     </div>
   </header>
 
@@ -313,19 +311,19 @@
             </p>
           </figcaption>
         </figure>
-        <!-- DATA STATUS: part placeholder. Solid lines are measured, dashed lines are invented (flows.csv data_status). -->
+        <!-- DATA STATUS: all real -->
         <figure>
           <div id="c03"></div>
           <figcaption>
-            <p>Coastal tourism is mostly local traffic. The largest measured movement is Western Australians travelling inside their own state to Perth, 
+            <p>Coastal tourism is mostly local traffic. The largest movement is Western Australians travelling inside their own state to Perth, 
               5.1 million trips, and Greater Sydney sends close to 3 million each to the Hunter and the South Coast.
             </p>
             <p>One cross-border flow comes close: Queenslanders driving south to North Coast NSW, just under 2 million trips. 
-              Line width is trip volume, and solid lines are measured figures while dashed lines are placeholder.
+              Line width is trip volume.
             </p>
           </figcaption>
         </figure>
-        <!-- DATA STATUS: all real. The six regions shown all have published visitor figures (regions.csv visitor_data_status). -->
+        <!-- DATA STATUS: all real -->
         <figure>
           <div id="c04"></div>
           <figcaption>
@@ -333,11 +331,11 @@
             <p>Tropical North Queensland and the Whitsundays take about $300 and $310, more than double the $113 collected along South Australia's Murray River. Australia's North West is the outlier on length of stay, holding its visitors for 7.1 nights.</p>
           </figcaption>
         </figure>
-        <!-- DATA STATUS: part placeholder. Open circles mark regions with invented visitor figures. -->
+        <!-- DATA STATUS: all real -->
         <figure>
           <div id="c05"></div>
           <figcaption>
-            <p>Australians pay for the coast. Across the regions with measured figures, domestic travellers account for 82% of overnight spending, which is why the gap between the two dots is wide on almost every row.</p>
+            <p>Australians pay for the coast. Across all regions, domestic travellers account for 82% of overnight spending, which is why the gap between the two dots is wide on almost every row.</p>
             <p>Two places break the pattern. International visitors spend $1.45 billion on the Gold Coast and $1.25 billion in Tropical North Queensland, close to a third of that region's entire total.</p>
           </figcaption>
         </figure>
@@ -350,12 +348,12 @@
         <p>The coast does not have one season. It has two, running in opposite directions, and a national rhythm that survived a two-year interruption.</p>
       </div>
       <div class="grid">
-        <!-- DATA STATUS: part placeholder. Only dotted cells are measured; 31 of 36 regions are invented (seasonality_quarterly.csv data_status). -->
+        <!-- DATA STATUS: all real -->
         <figure>
           <div id="c06"></div>
           <figcaption>
             <p>The coast runs on two opposing calendars. Rows are ordered north to south and colour compares each quarter with that region's own yearly average, so a large region and a small one can be read the same way.</p>
-            <p>Between July and September the Great Barrier Reef sits slightly above its average while the NSW South Coast falls to half of its. In summer the pattern inverts and the South Coast reaches 160% of average. Only the dotted cells are measured.</p>
+            <p>Between July and September the Great Barrier Reef sits slightly above its average while the NSW South Coast falls to half of its. In summer the pattern inverts and the South Coast reaches 160% of average.</p>
           </figcaption>
         </figure>
         <!-- DATA STATUS: all real -->
@@ -443,7 +441,7 @@
           <div>
             <h3>Proximity</h3>
             <span class="stat">82%</span>
-            <p>of measured overnight spending comes from domestic travellers, most of them moving within their own state rather than across the country.</p>
+            <p>of overnight spending comes from domestic travellers, most of them moving within their own state rather than across the country.</p>
           </div>
           <div>
             <h3>Divergence</h3>

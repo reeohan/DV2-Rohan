@@ -204,10 +204,6 @@
           {
             "field": "value",
             "format": ",.1f"
-          },
-          {
-            "field": "visitor_data_status",
-            "title": "Visitor data"
           }
         ]
       }

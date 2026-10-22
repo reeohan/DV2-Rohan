@@ -17,10 +17,10 @@ The page fetches specs and CSVs, which browsers block for `file://` URLs. Serve 
 |---|---|---|---|
 | 1 | Choropleth map | regions + topojson | `aggregate`, `lookup` geometry, `geoshape`, equal-area projection |
 | 2 | Proportional symbol map | regions + topojson | layered basemap, `longitude`/`latitude`, area-proportional `size`, legend selection |
-| 3 | Flow map | flows + topojson | `rule` with `longitude2`/`latitude2`, `window` rank to thin lines, `strokeDash` for data status |
+| 3 | Flow map | flows + topojson | `rule` with `longitude2`/`latitude2`, `window` rank to thin lines, layered basemap |
 | 4 | Parallel coordinates | regions | `fold`, `joinaggregate` min-max normalisation, `window` row ids, `detail` |
-| 5 | Dumbbell chart | regions | `fold` wide→long, layered line + point, conditional `fill` for data status |
-| 6 | Heatmap | seasonality_quarterly | `rect`, diverging scale with `domainMid`, conditional `opacity`, overlay dots for real cells |
+| 5 | Dumbbell chart | regions | `fold` wide→long, layered line + point, shared colour scale for stroke and fill |
+| 6 | Heatmap | seasonality_quarterly | `rect`, diverging scale with `domainMid`, north-to-south `sort` by latitude |
 | 7 | Cycle plot | arrivals_monthly | `facet` by month, layered line + mean `rule` |
 | 8 | Radial heatmap | reef_quarterly | `arc` with explicit `theta`/`theta2` radians (`scale: null`), ring radii by year, clamped scale |
 | 9 | Streamgraph | arrivals_monthly | `area` with `stack: "center"`, `datetime()`, `order` channel |
@@ -48,7 +48,6 @@ quarter, each ring a year.
 | `lat`, `lon` | Approximate region centre, for the maps |
 | `visitors_k`, `nights_k`, `spend_m` | Overnight visitors ('000), nights ('000), spend ($m) |
 | `dom_spend_m`, `intl_spend_m` | Domestic and international split of spend |
-| `visitor_period`, `visitor_source`, `visitor_data_status` | Provenance of the four columns above |
 | `tourism_gva_m_2324/2425` | Direct tourism gross value added ($m) |
 | `tourism_jobs_k_2324/2425` | Direct tourism filled jobs ('000) |
 | `tourism_jobs_total_k_2425` | Direct + indirect filled jobs ('000) |
@@ -57,10 +56,10 @@ quarter, each ring a year.
 | `state_jobs_share_1819/2425` | Tourism's share of all filled jobs, **state level** |
 
 **flows.csv** — `origin`, `origin_lat`, `origin_lon`, `dest_region`, `dest_state`,
-`dest_lat`, `dest_lon`, `trips_k`, `data_status`, `source`
+`dest_lat`, `dest_lon`, `trips_k`
 
 **seasonality_quarterly.csv** — `region`, `state`, `coastal`, `lat`, `quarter` (1–4),
-`quarter_label`, `seasonal_index` (1.0 = that region's average quarter), `data_status`, `source`
+`quarter_label`, `seasonal_index` (1.0 = that region's average quarter)
 
 **arrivals_monthly.csv** — `year`, `month`, `state`, `arrivals`. ABS Table 11, 2015 to Aug 2026.
 
@@ -85,7 +84,7 @@ Three discontinuities affect this data and all three are worth naming:
 
 Also worth stating: the coastal/inland split is my own judgement, not an official category;
 reporting periods differ by state (NSW and QLD year-ending June 2026, WA calendar 2025,
-SA year-ending December 2024), which the `visitor_period` column records; and several regions
+SA year-ending December 2024); and several regions
 have figures suppressed as `n/p` where samples were too small.
 
 ### Validation
@@ -93,13 +92,3 @@ The jobs figures were checked against TRA's own published output. State totals m
 to within rounding (NSW 203.4 vs 203.2; national 695.7 vs 695.9), and the growth distribution
 reproduces TRA's Figure 2 exactly — 23 regions declining, 41 growing up to 10%, 9 growing
 10–20%, 2 growing 20–40%, 1 growing 40% or more — including the per-state decline counts.
-
-## Replacing the placeholders
-
-1. **Victoria and Tasmania visitors/nights** — the Victorian regional dashboard
-   (djsir.vic.gov.au) and Tourism Tasmania's regional data. Fill `visitors_k`, `nights_k`,
-   `spend_m`, `dom_spend_m`, `intl_spend_m` and set `visitor_data_status` to `real`.
-2. **Monthly or quarterly seasonality** — TRA's regional mobility dashboard. If it won't
-   export, `decode_powerbi.py` turns a captured `querydata` network response into a CSV.
-3. **Origin–destination flows** — the same dashboard's origin filter, or state agency
-   origin tables like the ones already used for NSW and WA.

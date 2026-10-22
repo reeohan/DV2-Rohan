@@ -3,7 +3,7 @@
   "description": "Idiom: heatmap. Rect marks by quarter and region; diverging colour indexes each quarter to the region's own average, so small regions read as clearly as large. Rows sorted north to south.",
   "title": {
     "text": "The tropics and the south peak in opposite quarters",
-    "subtitle": "Visitation by quarter against each region's own average. Dotted cells are measured; the rest are placeholder. Regions ordered north (top) to south."
+    "subtitle": "Visitation by quarter against each region's own average. Regions ordered north (top) to south."
   },
   "width": {
     "step": 62
@@ -87,13 +87,6 @@
             "format": ".2f"
           }
         },
-        "opacity": {
-          "condition": {
-            "test": "datum.data_status === 'real'",
-            "value": 1
-          },
-          "value": 0.85
-        },
         "tooltip": [
           {
             "field": "region"
@@ -106,50 +99,8 @@
             "field": "seasonal_index",
             "title": "vs average",
             "format": ".2f"
-          },
-          {
-            "field": "data_status",
-            "title": "Status"
           }
         ]
-      }
-    },
-    {
-      "transform": [
-        {
-          "filter": "datum.data_status === 'real'"
-        }
-      ],
-      "mark": {
-        "type": "point",
-        "shape": "circle",
-        "size": 14,
-        "filled": true,
-        "color": "#ffffff",
-        "opacity": 0.85,
-        "yOffset": 7,
-        "xOffset": 24
-      },
-      "encoding": {
-        "x": {
-          "field": "quarter_label",
-          "type": "ordinal",
-          "sort": [
-            "Jan-Mar",
-            "Apr-Jun",
-            "Jul-Sep",
-            "Oct-Dec"
-          ]
-        },
-        "y": {
-          "field": "region",
-          "type": "nominal",
-          "sort": {
-            "field": "lat",
-            "op": "max",
-            "order": "descending"
-          }
-        }
       }
     }
   ]

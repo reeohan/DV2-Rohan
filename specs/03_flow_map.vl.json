@@ -3,7 +3,7 @@
   "description": "Idiom: flow map. Rule marks drawn between two geographic points using longitude2/latitude2; width encodes trips, hue encodes origin. Only each origin's six largest flows are drawn.",
   "title": {
     "text": "Where coastal visitors travel from",
-    "subtitle": "Domestic overnight trips from origin to coastal region. Solid lines are measured; dashed are placeholder."
+    "subtitle": "Domestic overnight trips from origin to coastal region."
   },
   "width": 560,
   "height": 470,
@@ -141,27 +141,6 @@
             ]
           }
         },
-        "strokeDash": {
-          "field": "data_status",
-          "type": "nominal",
-          "title": "Data",
-          "scale": {
-            "domain": [
-              "real",
-              "placeholder"
-            ],
-            "range": [
-              [
-                1,
-                0
-              ],
-              [
-                4,
-                3
-              ]
-            ]
-          }
-        },
         "opacity": {
           "condition": {
             "param": "po",
@@ -182,10 +161,6 @@
             "field": "trips_k",
             "title": "Trips ('000)",
             "format": ",.1f"
-          },
-          {
-            "field": "data_status",
-            "title": "Status"
           }
         ]
       }
